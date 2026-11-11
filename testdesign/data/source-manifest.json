@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "dataset": "RezSite snapshot of Delta Owl Eyes public directories",
+  "version": "1.2",
+  "source_branch": "main",
+  "retrieved_date": "2026-11-11",
+  "generated_utc": "2026-11-11T13:09:05+00:00",
+  "counts": {
+    "businesses": 4996,
+    "churches": 200,
+    "events": 216
+  },
+  "verified_upcoming_events_on_2026_11_11": 153,
+  "source_blob_sha": {
+    "businesses_full": "81849d09094580211d675330ca392ce0909ed78b",
+    "churches": "fdd0dd9b4105f3b106ff37670f20ec9991d8dc98",
+    "events": "886c9d717f237d07a4274e631d009fa4979bf5b4",
+    "featured": "46550b960ef8c6356283009ea5d126841cd1973a",
+    "manifest": "9f47161f1a5c36bdd292964f082e4eb0ba950f73"
+  },
+  "source_business_manifest": {
+    "schema": 1,
+    "record_count": 4996,
+    "profile_shards": 256,
+    "source_sha256": [
+      "70d12051935cbc0f118de3d0e71d986f52a1835e8e20cf204124e99cb6edf82e",
+      "4b0ceded8f8b767b85944fc31558737f76e2970d22acb2218f1d13aa45386805"
+    ],
+    "fields": [
+      "name",
+      "city",
+      "province",
+      "community",
+      "category",
+      "original_category",
+      "directory_category",
+      "description",
+      "phone",
+      "website",
+      "source_url",
+      "source_id",
+      "verification_status",
+      "owner_confirmed",
+      "address"
+    ],
+    "asset_sha256": "07e65ec5aa75cd147b75be368b4e5bbd3d15be22b3dcc9c30307f5eb8eba199b"
+  },
+  "source_paths": {
+    "businesses_full": "indigenous-businesses/optimized/search-index.json",
+    "businesses_featured": "indigenous-businesses/optimized/featured.json",
+    "churches": "indigenous-churches/churches.json",
+    "events": "data/community-events.json"
+  },
+  "privacy": "Raw street-address fields removed from all business and church records; public event location descriptions retained.",
+  "verification": "Source status retained. Research listings are not presumed to be owner-confirmed.",
+  "file_sha256": {
+    "businesses-index.json": "d7ac1922273779cba658305a349dd04cbc4708f189cf59f5ab28042334ec48f4",
+    "businesses-featured.json": "bce1277f95e91d9a33a92ef421a05e0b1f27657b36881326dede83d47e820de1",
+    "churches.json": "46fc714e8c8644858ae0645ea54fa35ec540b8e206ca10d9656f4386b602cf7d",
+    "events.json": "3abd3ccb7c8f5d5a1e9d0b18ce1c088b6877d3c1d5cc2699be3431cc52e595ff"
+  },
+  "ready_for_review": true,
+  "deployed": false
+}

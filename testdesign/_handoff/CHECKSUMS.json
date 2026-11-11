@@ -1,0 +1,40 @@
+{
+  "release": "RezSite Shore to Shore Variation 2 \u2014 compact header",
+  "source_date": "2026-11-11",
+  "counts": {
+    "businesses": 4996,
+    "featured": 48,
+    "churches": 200,
+    "events": 216
+  },
+  "files": {
+    "START-HERE.md": "35e0d4b9c3db243bacee1335aadf4e43ad5b293a0198589ca1f963ef1bb01774",
+    "index.html": "f9c818421189c2ea94f75455ec90ebde0b4095b70dafc5ce2a081692d0f680fc",
+    "directory.html": "7a482a2a9bf6d6df09f1af6f1f952810fb6653952ae9e4c2e5c99e008a35e7b6",
+    "qa/qa-compact-results.json": "584e409a058c8bf01437ccf57722941cbb088f7ac7968d7be05949d27ae2948d",
+    "qa/home-390-final-compact.png": "940bea9ea6976ea8f83dadda77bae24e7a9b0b2683af520220f03d0e1df8e44e",
+    "qa/directory-1440-final-compact.png": "b445e3cd0865e434978a3f31e990a25688dd88b422bfd47bc1ff186b2284358e",
+    "qa/home-1440-final-compact.png": "e638694d7bb749710d7322c42c039bbd837519e23453135d4c46594c0e87b132",
+    "qa/directory-390-final-compact.png": "e20f09134dab3715fc058c830de87218e11c3ff3cc20b6469bd6b8e01b68d972",
+    "design-reference/approved-variation-2-original.png": "8897f4347cec0e4dd5c30d799dac14967de395e99e6c8fc3df526337f4eb129a",
+    "design-reference/approved-variation-2-equal-height-raster.png": "f9d40b262fd0a4cf0bb26425bb9224bd5d4d9b23c3a6b0de3d803fe89e18515f",
+    "data/businesses-featured.json": "bce1277f95e91d9a33a92ef421a05e0b1f27657b36881326dede83d47e820de1",
+    "data/source-manifest.json": "1ae901ed6534e29e000bc6637f57506f62d855b25b71f79b83cf2df908e37978",
+    "data/businesses-index.json": "d7ac1922273779cba658305a349dd04cbc4708f189cf59f5ab28042334ec48f4",
+    "data/churches.json": "46fc714e8c8644858ae0645ea54fa35ec540b8e206ca10d9656f4386b602cf7d",
+    "data/events.json": "3abd3ccb7c8f5d5a1e9d0b18ce1c088b6877d3c1d5cc2699be3431cc52e595ff",
+    "scripts/qa_compact.py": "e5bb4845aa255db853dc24f2c7c07cf6509004b4d272770592f7195b651ea6f4",
+    "scripts/sync-directory-data.py": "01b14de6b35370ba84ea26b22aa6d60214a7d4757f10aa4708588c1cd190c7d8",
+    "assets/site.js": "b93a74b0af0c7e39329a2e9c36f37f4afd97f64b1b293c9330d8508b525d276c",
+    "assets/directory.js": "6201818baf6ff0c0ef6a80eff680935ff5d6952c68fa78e125a0eb3f4177cede",
+    "assets/site.css": "11d6a4feccc0605ee1ea36b9659e9ddcec39ac3589a1ac7f565504a8342f214c",
+    "assets/brand/rezsite-affiliation.svg": "5bec2510be8dbb485412c0b9b88e549b564725eaedef239cd39ca7ed1f3a53c1",
+    "assets/brand/directory-businesses.svg": "10205da46dda6dc52fcd45bb57a60af771b288e54ccbac0a443e9582affe3b55",
+    "assets/brand/rezsite-home-hero.svg": "fc4a59a2fed447b490e311338572c90409e26594d8061f96c3e241872f539e29",
+    "assets/brand/directory-events.svg": "95262d7bac0c8cca2f1cd03eee21689db74a6a74a54e144579925a0bf9bd6892",
+    "assets/brand/directory-churches.svg": "025303a1f54b1c90093be4ad0c593bacd0127bf437a052e1f3797977a12557d3",
+    "assets/brand/rezsite-favicon.svg": "d4d684c415da1bc3794b530832dbbc0231640e20aee27facbf2c5bb8623a1569",
+    "assets/brand/rezsite-approved-bridge-equal-wordmark.svg": "73324d03ca7c0f94985db5a9272deea4facde3682e79439fd37849af68df5b22",
+    "assets/brand/rezsite-mobile-hero.svg": "54961190e55efa0a5130d8415cec29257aa02f0e0e22465bec8794fdf6811d81"
+  }
+}
