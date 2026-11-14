@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RezSite Admin · Businesses</title>
+<link href="../assets/brand/rezsite-favicon.svg" rel="icon" type="image/svg+xml">
+<style>
+:root{--ink:#153435;--pine:#123e40;--pine-dark:#082d31;--orange:#f09a55;--orange-deep:#d67f43;--cream:#f7f5ef;--white:#fffefa;--muted:#65736e;--line:#dedfd5;--purple:#6b397a;--red:#b23a2e;--amber:#c98a1b;--green:#2f7a4a;--font:system-ui,-apple-system,"Segoe UI",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:14px/1.45 var(--font);-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--pine)}
+:focus-visible{outline:3px solid #c27638;outline-offset:2px}
+.hidden{display:none!important}
+
+/* top bar */
+.top{background:var(--pine-dark);color:#eef5ef;position:sticky;top:0;z-index:30}
+.top-in{display:flex;align-items:center;gap:16px;padding:10px 20px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;font-weight:880;font-size:20px;letter-spacing:-1px;color:#fff;text-decoration:none}
+.mark{width:32px;height:32px;background:var(--pine);border-radius:10px 10px 5px 10px;display:grid;place-items:center;font-weight:900;position:relative;box-shadow:inset -3px -3px 0 #0b3033}
+.mark i{position:absolute;right:-3px;top:-3px;width:11px;height:11px;border:2px solid var(--pine-dark);background:var(--orange);border-radius:50%}
+.logo small{font-size:11px;font-weight:700;letter-spacing:1.4px;color:var(--orange);margin-left:4px}
+.stats{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto}
+.stat{background:#ffffff14;border-radius:10px;padding:5px 11px;font-size:12px}
+.stat b{display:block;font-size:16px;color:#fff}
+.who{font-size:12px;display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--line);background:var(--white);border-radius:9px;padding:7px 12px;font-weight:650}
+.btn:hover{border-color:var(--pine)}
+.btn.primary{background:var(--pine);border-color:var(--pine);color:#fff}
+.btn.primary:hover{background:var(--pine-dark)}
+.btn.orange{background:var(--orange);border-color:var(--orange-deep);color:#2a1a0c}
+.btn.ghost{background:transparent;color:#eef5ef;border-color:#ffffff40}
+.btn.sm{padding:4px 9px;font-size:12px}
+
+/* filters */
+.bar{padding:14px 20px 4px;display:flex;flex-direction:column;gap:10px}
+.views{display:flex;gap:6px;flex-wrap:wrap}
+.view{border:1px solid var(--line);background:var(--white);border-radius:999px;padding:6px 13px;font-weight:650;font-size:13px}
+.view.on{background:var(--pine);color:#fff;border-color:var(--pine)}
+.filters{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px}
+.filters label{display:flex;flex-direction:column;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;gap:3px}
+.filters input,.filters select{border:1px solid var(--line);border-radius:8px;padding:6px 8px;background:#fff;font-size:13px;text-transform:none;letter-spacing:0;font-weight:500;color:var(--ink)}
+.filters .wide{grid-column:span 2}
+.range{display:flex;gap:4px}.range input{width:100%}
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px}
+.tools .count{font-weight:700}
+.tools .sortinfo{color:var(--muted)}
+.spacer{flex:1}
+
+/* table */
+.wrap{margin:8px 20px 20px;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:auto;max-height:calc(100vh - 300px);min-height:300px}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px}
+th{position:sticky;top:0;background:#eef0e8;text-align:left;padding:8px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:#41524e;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none;z-index:2}
+th:hover{background:#e3e7da}
+th .arr{color:var(--orange-deep);margin-left:4px}
+td{padding:7px 10px;border-bottom:1px solid #eceee6;white-space:nowrap;max-width:280px;overflow:hidden;text-overflow:ellipsis;vertical-align:top}
+tbody tr{cursor:pointer}
+tbody tr:hover td{background:#fbf3ea}
+tbody tr.sel td{background:#fde9d6}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.pill{display:inline-block;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:700;background:#eceee6}
+.score{display:inline-grid;place-items:center;min-width:28px;height:22px;border-radius:6px;font-weight:800;color:#fff;font-size:12px;padding:0 5px}
+.s-bad{background:var(--red)}.s-mid{background:var(--amber)}.s-good{background:var(--green)}.s-none{background:#c9cdc3;color:#4a5753}
+.pager{display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:0 20px 24px;font-size:13px}
+
+/* drawer */
+.shade{position:fixed;inset:0;background:#08202255;z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(720px,100%);background:var(--cream);z-index:41;display:flex;flex-direction:column;box-shadow:-10px 0 40px #0003}
+.dh{background:var(--white);border-bottom:1px solid var(--line);padding:14px 18px;display:flex;gap:10px;align-items:flex-start}
+.dh h2{margin:0;font-size:20px;letter-spacing:-.5px}
+.dh .sub{color:var(--muted);font-size:13px}
+.db{overflow:auto;padding:14px 18px;flex:1}
+.df{background:var(--white);border-top:1px solid var(--line);padding:10px 18px;display:flex;gap:8px;align-items:center}
+.quick{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.sect{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:12px}
+.sect h3{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.7px;color:var(--orange-deep)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.f{display:flex;flex-direction:column;gap:3px}
+.f.full{grid-column:1/-1}
+.f>span{font-size:11px;font-weight:700;color:var(--muted)}
+.f input,.f select,.f textarea{border:1px solid var(--line);border-radius:8px;padding:7px 9px;background:#fff;font-size:13px}
+.f textarea{min-height:70px;resize:vertical}
+.f input[readonly]{background:#f2f2ec;color:var(--muted)}
+.f.changed input,.f.changed select,.f.changed textarea{border-color:var(--orange-deep);background:#fff8f0}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;font-size:13px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--pine-dark);color:#fff;padding:10px 18px;border-radius:10px;z-index:60;font-weight:650}
+.toast.err{background:var(--red)}
+
+/* columns menu */
+.colmenu{position:absolute;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:10px;z-index:35;box-shadow:0 10px 30px #0002;max-height:60vh;overflow:auto;columns:2;width:420px}
+.colmenu label{display:flex;gap:6px;align-items:center;font-size:13px;padding:3px 0;break-inside:avoid}
+
+/* login */
+.login{max-width:400px;margin:10vh auto;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px}
+.login h1{font-size:24px;margin:14px 0 6px;letter-spacing:-.6px}
+.login p{color:var(--muted);margin:0 0 16px}
+.login input{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;margin-bottom:10px;background:#fff}
+.login .row{display:flex;gap:8px;flex-wrap:wrap}
+.login .msg{margin-top:12px;font-size:13px}
+.login .mark{width:42px;height:42px;font-size:24px;color:#fff}
+.loading{padding:60px;text-align:center;color:var(--muted);font-size:15px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.filters .wide{grid-column:auto}.wrap{max-height:none}.colmenu{width:90vw;columns:1}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginView" class="hidden">
+  <div class="login">
+    <div class="mark"><span>R</span><i></i></div>
+    <h1>RezSite Admin</h1>
+    <p>Sign in to see and edit the business list. Only approved admin emails can see the data.</p>
+    <form id="loginForm">
+      <input id="email" type="email" placeholder="Email" autocomplete="username" required>
+      <input id="password" type="password" placeholder="Password (at least 8 characters)" autocomplete="current-password" minlength="8" required>
+      <div class="row">
+        <button class="btn primary" type="submit">Sign in</button>
+        <button class="btn" type="button" id="signupBtn">First time? Create account</button>
+        <button class="btn" type="button" id="resetBtn">Forgot password</button>
+      </div>
+    </form>
+    <div class="msg" id="loginMsg"></div>
+  </div>
+</div>
+
+<!-- NOT ADMIN -->
+<div id="deniedView" class="hidden">
+  <div class="login">
+    <div class="mark"><span>R</span><i></i></div>
+    <h1>No admin access yet</h1>
+    <p>You're signed in as <b id="deniedEmail"></b>, but this email isn't on the admin list (or hasn't been confirmed from the email Supabase sent). Ask Chris to add it.</p>
+    <button class="btn" id="signout2">Sign out</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="appView" class="hidden">
+  <header class="top"><div class="top-in">
+    <a class="logo" href="../"><span class="mark">R<i></i></span>RezSite<small>ADMIN</small></a>
+    <div class="stats" id="stats"></div>
+    <div class="who"><span id="whoEmail"></span><button class="btn ghost sm" id="reloadBtn">Reload</button><button class="btn ghost sm" id="signout">Sign out</button></div>
+  </div></header>
+
+  <section class="bar">
+    <div class="views" id="views"></div>
+    <div class="filters">
+      <label class="wide">Search (name, city, community, phone, website, notes)<input id="q" type="search" placeholder="Type to search…"></label>
+      <label>Review status<select id="f_review_status"></select></label>
+      <label>Auto check<select id="f_auto_status"></select></label>
+      <label>Auto grade<select id="f_auto_grade"></select></label>
+      <label>Call status<select id="f_call_status"></select></label>
+      <label>Website<select id="f_site"><option value="">Any</option><option value="yes">Has website</option><option value="no">No website</option></select></label>
+      <label>Phone<select id="f_phone"><option value="">Any</option><option value="yes">Has phone</option><option value="no">No phone</option></select></label>
+      <label>Possibly closed<select id="f_closed"><option value="">Any</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+      <label>Province<select id="f_province"></select></label>
+      <label>Community<select id="f_community"></select></label>
+      <label>Category<select id="f_category"></select></label>
+      <label>Built with<select id="f_built_with"></select></label>
+      <label>Design score (1–10)<span class="range"><input id="f_smin" type="number" min="0" max="10" placeholder="min"><input id="f_smax" type="number" min="0" max="10" placeholder="max"></span></label>
+      <label>Tech score (0–100)<span class="range"><input id="f_amin" type="number" min="0" max="100" placeholder="min"><input id="f_amax" type="number" min="0" max="100" placeholder="max"></span></label>
+    </div>
+    <div class="tools">
+      <span class="count" id="count"></span>
+      <span class="sortinfo" id="sortinfo"></span>
+      <span class="spacer"></span>
+      <button class="btn sm" id="clearBtn">Clear filters</button>
+      <button class="btn sm" id="colsBtn">Columns ▾</button>
+      <button class="btn sm" id="csvBtn">Download CSV (filtered)</button>
+      <button class="btn sm orange" id="addBtn">+ Add business</button>
+    </div>
+  </section>
+
+  <div class="wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
+  <div class="pager" id="pager"></div>
+</div>
+
+<div id="loadingView" class="loading">Loading…</div>
+
+<!-- DRAWER -->
+<div id="shade" class="shade hidden"></div>
+<aside id="drawer" class="drawer hidden" aria-label="Business details">
+  <div class="dh">
+    <div style="flex:1">
+      <h2 id="dTitle"></h2>
+      <div class="sub" id="dSub"></div>
+      <div class="links" id="dLinks"></div>
+    </div>
+    <button class="btn sm" id="dPrev" title="Previous (↑)">↑</button>
+    <button class="btn sm" id="dNext" title="Next (↓)">↓</button>
+    <button class="btn sm" id="dClose" title="Close (Esc)">✕</button>
+  </div>
+  <div class="db" id="dBody"></div>
+  <div class="df">
+    <span id="dDirty" style="color:var(--muted);font-size:13px"></span>
+    <span class="spacer"></span>
+    <button class="btn" id="dRevert">Undo changes</button>
+    <button class="btn primary" id="dSave">Save</button>
+  </div>
+</aside>
+
+<datalist id="dl_call_status"></datalist>
+<datalist id="dl_review_status"></datalist>
+<datalist id="dl_auto_status"></datalist>
+<datalist id="dl_category"></datalist>
+<datalist id="dl_community"></datalist>
+<datalist id="dl_province"></datalist>
+
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+const SUPABASE_URL = 'https://gpwxuunutljcauoknhrh.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_B7a1VEv6RX13n2JhA50tbQ_oR_oKfw9';
+const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+const TABLE = 'rezsite_businesses';
+const PAGE = 100;
+
+/* ---------- field definitions (every column we have) ---------- */
+const F = [
+  // key, label, type, section, editable
+  ['id','ID','int','meta',false],
+  ['name','Business name','text','biz',true],
+  ['category','Category','text','biz',true],
+  ['directory_category','Directory category','text','biz',true],
+  ['community','Community','text','biz',true],
+  ['city','City','text','biz',true],
+  ['province','Province','text','biz',true],
+  ['description','Description','long','biz',true],
+  ['phone','Phone','text','contact',true],
+  ['website','Website','text','contact',true],
+  ['source_url','Source URL','text','contact',true],
+  ['source_id','Source ID','text','contact',true],
+  ['verification_status','Verification status','text','contact',true],
+  ['owner_confirmed','Owner confirmed','bool','contact',true],
+  ['score','Design score (1–10)','int','review',true],
+  ['review_notes','Design review notes','long','review',true],
+  ['review_status','Review status','text','review',true],
+  ['reviewed_at','Reviewed at','time','review',true],
+  ['claimed_by','Claimed by (review chat)','text','review',true],
+  ['claimed_at','Claimed at','time','review',true],
+  ['possibly_closed','Possibly closed','bool','review',true],
+  ['built_with','Built with','text','review',true],
+  ['auto_score','Tech score (0–100)','int','auto',true],
+  ['auto_grade','Tech grade','text','auto',true],
+  ['auto_status','Auto check result','text','auto',true],
+  ['auto_notes','Auto check notes','long','auto',true],
+  ['site_loads','Site loads','bool','auto',true],
+  ['https','HTTPS','bool','auto',true],
+  ['mobile_ok','Mobile friendly','bool','auto',true],
+  ['parked_or_sale','Parked / for sale','bool','auto',true],
+  ['copyright_year','Copyright year','int','auto',true],
+  ['call_status','Call status','text','call',true],
+  ['called_at','Last called','time','call',true],
+  ['call_notes','Call notes','long','call',true],
+  ['admin_notes','Admin notes','long','call',true],
+  ['imported_at','Imported at','time','meta',false],
+  ['updated_at','Last edited','time','meta',false],
+  ['updated_by','Last edited by','text','meta',false],
+];
+const FD = Object.fromEntries(F.map(([k,l,t,s,e])=>[k,{k,l,t,s,e}]));
+const SECTIONS = [['call','Calls'],['review','Design review'],['auto','Automated technical check'],['biz','Business'],['contact','Contact & listing'],['meta','Record info']];
+const LISTS = {auto_status:'dl_auto_status',category:'dl_category',community:'dl_community',province:'dl_province'};
+const CALL_LABELS = {not_called:'Not called',no_answer:'No answer',left_message:'Left message',call_back:'Call back',interested:'Interested',demo_booked:'Demo booked',customer:'Customer',not_interested:'Not interested',wrong_number:'Wrong number',closed:'Closed'};
+const REVIEW_LABELS = {new:'Waiting for review',claimed:'Being reviewed',done:'Reviewed',error:'Site error',no_website:'No website'};
+const CHOICES = {call_status:CALL_LABELS, review_status:REVIEW_LABELS};
+const CALL_OUTCOMES = Object.keys(CALL_LABELS).filter(k=>k!=='not_called');
+const label = (k,v) => (CHOICES[k]&&CHOICES[k][v]) || v;
+const DEFAULT_COLS = ['name','community','city','province','category','phone','website','score','auto_score','auto_grade','auto_status','review_status','call_status','called_at'];
+
+/* ---------- state ---------- */
+let rows = [], filtered = [], page = 0, sorts = [{k:'score',d:1},{k:'auto_score',d:1}];
+let cols = loadPref('cols', DEFAULT_COLS).filter(k=>FD[k]);
+let current = null, draft = {}, userEmail = '';
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function loadPref(k,d){try{return JSON.parse(localStorage.getItem('rzadmin_'+k))??d}catch{return d}}
+function savePref(k,v){try{localStorage.setItem('rzadmin_'+k,JSON.stringify(v))}catch{}}
+function toast(msg, err){const t=document.createElement('div');t.className='toast'+(err?' err':'');t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),err?6000:2500)}
+function show(view){for(const v of ['loginView','deniedView','appView','loadingView'])$(v).classList.toggle('hidden',v!==view)}
+const safeUrl = u => { if(!u) return null; let s=String(u).trim(); if(!/^https?:\/\//i.test(s)) s='https://'+s; try{const x=new URL(s); return /^https?:$/.test(x.protocol)?x.href:null}catch{return null} };
+const fmtTime = v => v ? new Date(v).toLocaleString('en-CA',{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : '';
+
+/* ---------- auth ---------- */
+async function boot(){
+  const { data:{ session } } = await sb.auth.getSession();
+  if(!session){ show('loginView'); return; }
+  userEmail = session.user.email;
+  const { data:isAdmin, error } = await sb.rpc('is_rezsite_admin');
+  if(error || !isAdmin){ $('deniedEmail').textContent = userEmail; show('deniedView'); return; }
+  $('whoEmail').textContent = userEmail;
+  show('loadingView'); $('loadingView').textContent='Loading businesses…';
+  await loadAll();
+  show('appView');
+}
+$('loginForm').addEventListener('submit', async e=>{
+  e.preventDefault(); $('loginMsg').textContent='Signing in…';
+  const { error } = await sb.auth.signInWithPassword({ email:$('email').value.trim(), password:$('password').value });
+  if(error){ $('loginMsg').textContent = error.message.includes('not confirmed') ? 'Your email isn’t confirmed yet. Open the email from Supabase and click the confirm link, then come back and sign in.' : error.message; return; }
+  boot();
+});
+$('signupBtn').onclick = async ()=>{
+  const email=$('email').value.trim(), password=$('password').value;
+  if(!email || password.length<8){ $('loginMsg').textContent='Enter your email and a password of at least 8 characters first.'; return; }
+  const { data, error } = await sb.auth.signUp({ email, password, options:{ emailRedirectTo: location.origin + location.pathname } });
+  if(error){ $('loginMsg').textContent=error.message; return; }
+  if(data.session) boot();
+  else $('loginMsg').textContent='Account created. Check your email for a confirmation link from Supabase, click it, then come back here and press Sign in.';
+};
+$('resetBtn').onclick = async ()=>{
+  const email=$('email').value.trim(); if(!email){ $('loginMsg').textContent='Type your email first.'; return; }
+  const { error } = await sb.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+  $('loginMsg').textContent = error ? error.message : 'If that email has an account, a reset link is on its way.';
+};
+sb.auth.onAuthStateChange(async (ev)=>{
+  if(ev==='PASSWORD_RECOVERY'){ const p=prompt('Choose a new password (8+ characters):'); if(p){ const {error}=await sb.auth.updateUser({password:p}); toast(error?error.message:'Password updated', !!error);} boot(); }
+});
+const signOut = async ()=>{ await sb.auth.signOut(); show('loginView'); };
+$('signout').onclick = signOut; $('signout2').onclick = signOut;
+$('reloadBtn').onclick = async ()=>{ $('reloadBtn').textContent='Loading…'; await loadAll(); $('reloadBtn').textContent='Reload'; toast('Reloaded'); };
+
+/* ---------- data ---------- */
+async function loadAll(){
+  const { count, error:ce } = await sb.from(TABLE).select('id',{count:'exact',head:true});
+  if(ce){ toast('Could not load: '+ce.message, true); return; }
+  const batches = [];
+  for(let from=0; from<count; from+=1000) batches.push(sb.from(TABLE).select('*').order('id').range(from, from+999));
+  const res = await Promise.all(batches);
+  const bad = res.find(r=>r.error); if(bad){ toast('Could not load: '+bad.error.message, true); return; }
+  rows = res.flatMap(r=>r.data);
+  buildFilterOptions(); buildViews(); applyFilters();
+}
+
+function distinct(k){ const m=new Map(); for(const r of rows){ const v=r[k]??''; m.set(v,(m.get(v)||0)+1);} return [...m.entries()].sort((a,b)=>String(a[0]).localeCompare(String(b[0]))); }
+function buildFilterOptions(){
+  for(const k of ['review_status','auto_status','auto_grade','call_status','province','community','category','built_with']){
+    const sel=$('f_'+k), cur=sel.value;
+    sel.innerHTML='<option value="">Any</option>'+distinct(k).map(([v,n])=>`<option value="${esc(v===''?'__blank':v)}">${esc(v===''?(k==='call_status'?'Not called':'(blank)'):label(k,v))} (${n})</option>`).join('');
+    sel.value=cur;
+  }
+  for(const [k,id] of Object.entries(LISTS)){
+    const vals = new Set(distinct(k).map(x=>x[0]).filter(Boolean));
+    $(id).innerHTML=[...vals].map(v=>`<option value="${esc(v)}">`).join('');
+  }
+  // stats
+  const scored=rows.filter(r=>r.score!=null), avg=scored.length?(scored.reduce((a,r)=>a+r.score,0)/scored.length).toFixed(1):'–';
+  const called=rows.filter(r=>r.call_status&&r.call_status!=='not_called').length, interested=rows.filter(r=>['interested','demo_booked','call_back','customer'].includes(r.call_status)).length;
+  $('stats').innerHTML=[['Businesses',rows.length],['With website',rows.filter(r=>r.website).length],['Design reviewed',scored.length],['Avg design',avg],['Called',called],['Warm leads',interested]].map(([l,v])=>`<div class="stat"><b>${esc(v)}</b>${esc(l)}</div>`).join('');
+}
+
+/* quick views */
+const VIEWS = [
+  ['Call first', {site:'yes',phone:'yes',closed:'no',call:'__blank'}, [{k:'score',d:1},{k:'auto_score',d:1}]],
+  ['Worst design', {site:'yes'}, [{k:'score',d:1}]],
+  ['Worst technical', {site:'yes'}, [{k:'auto_score',d:1}]],
+  ['Not called yet', {call:'__blank'}, null],
+  ['Call back / warm', {callIn:['call_back','interested','demo_booked']}, [{k:'called_at',d:-1}]],
+  ['Site errors / closed', {closedOrErr:true}, null],
+  ['No website', {site:'no'}, [{k:'name',d:1}]],
+  ['Recently edited', {edited:true}, [{k:'updated_at',d:-1}]],
+  ['Everything', {}, null],
+];
+let activeView = null;
+function buildViews(){
+  $('views').innerHTML = VIEWS.map(([n],i)=>`<button class="view${activeView===i?' on':''}" data-i="${i}">${esc(n)}</button>`).join('');
+  $('views').querySelectorAll('.view').forEach(b=>b.onclick=()=>applyView(+b.dataset.i));
+}
+function applyView(i){
+  clearFilters(false);
+  const [,f,s]=VIEWS[i]; activeView=i;
+  if(f.site) $('f_site').value=f.site; if(f.phone) $('f_phone').value=f.phone; if(f.closed) $('f_closed').value=f.closed;
+  if(f.call) $('f_call_status').value=f.call;
+  viewExtra = f; if(s) sorts=s.map(x=>({...x}));
+  buildViews(); applyFilters();
+}
+let viewExtra = {};
+
+/* ---------- filtering & sorting ---------- */
+const FILTER_IDS=['q','f_review_status','f_auto_status','f_auto_grade','f_call_status','f_site','f_phone','f_closed','f_province','f_community','f_category','f_built_with','f_smin','f_smax','f_amin','f_amax'];
+FILTER_IDS.forEach(id=>$(id).addEventListener('input',()=>{ if(id!=='q'&&!id.startsWith('f_s')&&!id.startsWith('f_a')){} page=0; applyFilters(); }));
+function clearFilters(run=true){ FILTER_IDS.forEach(id=>$(id).value=''); viewExtra={}; activeView=null; if(run){buildViews();applyFilters();} }
+$('clearBtn').onclick=()=>clearFilters();
+
+function applyFilters(){
+  const q=$('q').value.trim().toLowerCase();
+  const eqs=['review_status','auto_status','auto_grade','call_status','province','community','category','built_with'].map(k=>[k,$('f_'+k).value]).filter(x=>x[1]);
+  const site=$('f_site').value, phone=$('f_phone').value, closed=$('f_closed').value;
+  const num=id=>{const v=$(id).value; return v===''?null:+v};
+  const smin=num('f_smin'),smax=num('f_smax'),amin=num('f_amin'),amax=num('f_amax');
+  filtered = rows.filter(r=>{
+    if(q){ const hay=[r.name,r.city,r.community,r.province,r.category,r.phone,r.website,r.review_notes,r.call_notes,r.admin_notes,r.description,r.id].join(' ').toLowerCase(); if(!hay.includes(q)) return false; }
+    for(const [k,v] of eqs){ if(v==='__blank'){ if(r[k]!=null&&r[k]!==''&&!(k==='call_status'&&r[k]==='not_called')) return false; } else if(String(r[k]??'')!==v) return false; }
+    if(site==='yes'&&!r.website) return false; if(site==='no'&&r.website) return false;
+    if(phone==='yes'&&!r.phone) return false; if(phone==='no'&&r.phone) return false;
+    if(closed==='yes'&&!r.possibly_closed) return false; if(closed==='no'&&r.possibly_closed) return false;
+    if(smin!=null&&(r.score==null||r.score<smin)) return false; if(smax!=null&&(r.score==null||r.score>smax)) return false;
+    if(amin!=null&&(r.auto_score==null||r.auto_score<amin)) return false; if(amax!=null&&(r.auto_score==null||r.auto_score>amax)) return false;
+    if(viewExtra.callIn && !viewExtra.callIn.includes(r.call_status)) return false;
+    if(viewExtra.closedOrErr && !(r.possibly_closed || r.review_status==='error' || /^Dead/.test(r.auto_status||''))) return false;
+    if(viewExtra.edited && !r.updated_at) return false;
+    return true;
+  });
+  sortRows(); render();
+}
+function cmp(a,b,k){
+  const t=FD[k].t, x=a[k], y=b[k];
+  const ex=x==null||x==='', ey=y==null||y==='';
+  if(ex&&ey) return 0; if(ex) return 1; if(ey) return -1;   // blanks always last
+  if(t==='int') return x-y;
+  if(t==='bool') return (x===y)?0:(x?-1:1);
+  if(t==='time') return new Date(x)-new Date(y);
+  return String(x).localeCompare(String(y),undefined,{sensitivity:'base',numeric:true});
+}
+function sortRows(){ filtered.sort((a,b)=>{ for(const s of sorts){ const c=cmp(a,b,s.k); if(c){ const blank=(a[s.k]==null||a[s.k]==='')||(b[s.k]==null||b[s.k]===''); return blank?c:c*s.d; } } return a.id-b.id; }); }
+
+/* ---------- render table ---------- */
+function scoreBadge(v,max){ if(v==null) return '<span class="score s-none">–</span>'; const p=v/max; return `<span class="score ${p<0.45?'s-bad':p<0.7?'s-mid':'s-good'}">${esc(v)}</span>`; }
+function cell(r,k){
+  const v=r[k], t=FD[k].t;
+  if(k==='score') return scoreBadge(v,10);
+  if(k==='auto_score') return scoreBadge(v,100);
+  if(k==='website'){ const u=safeUrl(v); return u?`<a href="${esc(u)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(String(v).replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a>`:''; }
+  if(k==='phone') return v?`<a href="tel:${esc(String(v).replace(/[^\d+]/g,''))}" onclick="event.stopPropagation()">${esc(v)}</a>`:'';
+  if(t==='bool') return v==null?'':(v?'✔':'✗');
+  if(t==='time') return esc(fmtTime(v));
+  if(['review_status','auto_status','call_status','auto_grade'].includes(k)) return v?`<span class="pill">${esc(label(k,v))}</span>`:'';
+  return esc(v);
+}
+function render(){
+  $('thead').innerHTML='<tr>'+cols.map(k=>{ const i=sorts.findIndex(s=>s.k===k); const arr=i<0?'':`<span class="arr">${sorts[i].d>0?'▲':'▼'}${sorts.length>1?i+1:''}</span>`; return `<th data-k="${k}" title="Click to sort · Shift-click to add a second sort">${esc(FD[k].l)}${arr}</th>`; }).join('')+'</tr>';
+  $('thead').querySelectorAll('th').forEach(th=>th.onclick=e=>{
+    const k=th.dataset.k, i=sorts.findIndex(s=>s.k===k);
+    if(e.shiftKey){ if(i<0) sorts.push({k,d:1}); else sorts[i].d*=-1; }
+    else { sorts = (i===0&&sorts.length===1) ? [{k,d:-sorts[0].d}] : [{k,d:(i===0?-sorts[0].d:1)}]; }
+    sortRows(); render();
+  });
+  const pages=Math.max(1,Math.ceil(filtered.length/PAGE)); if(page>=pages) page=pages-1;
+  const slice=filtered.slice(page*PAGE,(page+1)*PAGE);
+  $('tbody').innerHTML = slice.length ? slice.map(r=>`<tr data-id="${r.id}"${current&&current.id===r.id?' class="sel"':''}>${cols.map(k=>`<td class="${FD[k].t==='int'?'num':''}">${cell(r,k)}</td>`).join('')}</tr>`).join('')
+    : `<tr><td colspan="${cols.length}" style="padding:30px;text-align:center;color:var(--muted)">No businesses match these filters.</td></tr>`;
+  $('tbody').querySelectorAll('tr[data-id]').forEach(tr=>tr.onclick=()=>openRecord(+tr.dataset.id));
+  $('count').textContent=`${filtered.length.toLocaleString()} of ${rows.length.toLocaleString()} businesses`;
+  $('sortinfo').textContent='Sorted by '+sorts.map(s=>`${FD[s.k].l} ${s.d>0?'(low→high)':'(high→low)'}`).join(', then ');
+  $('pager').innerHTML=`<button class="btn sm" ${page===0?'disabled':''} id="pPrev">← Prev</button> Page ${page+1} of ${pages} <button class="btn sm" ${page>=pages-1?'disabled':''} id="pNext">Next →</button>`;
+  $('pPrev').onclick=()=>{page--;render();$('tbody').parentElement.parentElement.scrollTop=0};
+  $('pNext').onclick=()=>{page++;render();$('tbody').parentElement.parentElement.scrollTop=0};
+}
+
+/* columns menu */
+$('colsBtn').onclick=e=>{
+  const old=document.querySelector('.colmenu'); if(old){old.remove();return;}
+  const m=document.createElement('div'); m.className='colmenu';
+  const r=e.target.getBoundingClientRect(); m.style.top=(r.bottom+window.scrollY+6)+'px'; m.style.right='20px';
+  m.innerHTML=F.map(([k,l])=>`<label><input type="checkbox" value="${k}" ${cols.includes(k)?'checked':''}>${esc(l)}</label>`).join('')+'<div style="column-span:all;margin-top:8px"><button class="btn sm" id="colReset">Reset to default</button> <button class="btn sm" id="colAll">Show all</button></div>';
+  document.body.appendChild(m);
+  m.querySelectorAll('input').forEach(cb=>cb.onchange=()=>{ cols=F.map(f=>f[0]).filter(k=>m.querySelector(`input[value="${k}"]`).checked); savePref('cols',cols); render(); });
+  m.querySelector('#colReset').onclick=()=>{cols=[...DEFAULT_COLS];savePref('cols',cols);m.remove();render();};
+  m.querySelector('#colAll').onclick=()=>{cols=F.map(f=>f[0]);savePref('cols',cols);m.remove();render();};
+  setTimeout(()=>document.addEventListener('click',function h(ev){ if(!m.contains(ev.target)&&ev.target.id!=='colsBtn'){m.remove();document.removeEventListener('click',h);} }),0);
+};
+
+/* CSV */
+$('csvBtn').onclick=()=>{
+  const keys=F.map(f=>f[0]);
+  const q=v=>{ if(v==null) return ''; const s=String(v); return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
+  const csv=[keys.map(k=>q(FD[k].l)).join(','), ...filtered.map(r=>keys.map(k=>q(r[k])).join(','))].join('\n');
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['﻿'+csv],{type:'text/csv'})); a.download=`rezsite-businesses-${new Date().toISOString().slice(0,10)}.csv`; a.click();
+};
+
+/* ---------- detail drawer ---------- */
+function toLocalInput(v){ if(!v) return ''; const d=new Date(v); const p=n=>String(n).padStart(2,'0'); return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`; }
+function input(fd, v){
+  const ro = fd.e?'':'readonly';
+  const id='in_'+fd.k;
+  if(CHOICES[fd.k]) return `<select id="${id}" data-k="${fd.k}"><option value="">—</option>${Object.entries(CHOICES[fd.k]).map(([c,l])=>`<option value="${c}" ${v===c?'selected':''}>${esc(l)}</option>`).join('')}</select>`;
+  if(fd.t==='long') return `<textarea id="${id}" data-k="${fd.k}" ${ro}>${esc(v)}</textarea>`;
+  if(fd.t==='bool') return `<select id="${id}" data-k="${fd.k}" ${fd.e?'':'disabled'}><option value="" ${v==null?'selected':''}>—</option><option value="true" ${v===true?'selected':''}>Yes</option><option value="false" ${v===false?'selected':''}>No</option></select>`;
+  if(fd.t==='int') return `<input id="${id}" data-k="${fd.k}" type="number" value="${esc(v)}" ${fd.k==='score'?'min="1" max="10"':''} ${fd.k==='auto_score'?'min="0" max="100"':''} ${ro}>`;
+  if(fd.t==='time') return fd.e?`<input id="${id}" data-k="${fd.k}" type="datetime-local" value="${toLocalInput(v)}">`:`<input id="${id}" value="${esc(fmtTime(v))}" readonly>`;
+  return `<input id="${id}" data-k="${fd.k}" value="${esc(v)}" ${LISTS[fd.k]?`list="${LISTS[fd.k]}"`:''} ${ro}>`;
+}
+function readInput(el){
+  const fd=FD[el.dataset.k], v=el.value;
+  if(fd.t==='bool') return v===''?null:v==='true';
+  if(fd.t==='int') return v===''?null:parseInt(v,10);
+  if(fd.t==='time') return v===''?null:new Date(v).toISOString();
+  return v.trim()===''?null:v;
+}
+function same(a,b,t){ if(t==='time') return (a?new Date(a).getTime():null)===(b?new Date(b).getTime():null) || (a&&b&&Math.abs(new Date(a)-new Date(b))<60000); return (a??null)===(b??null); }
+
+function openRecord(id){
+  if(current && Object.keys(draft).length && !confirm('You have unsaved changes. Discard them?')) return;
+  current = rows.find(r=>r.id===id); draft={}; if(!current) return;
+  const r=current;
+  $('dTitle').textContent=r.name||'(no name)';
+  $('dSub').textContent=[r.community,r.city,r.province,r.category].filter(Boolean).join(' · ')+`  ·  #${r.id}`;
+  const site=safeUrl(r.website);
+  $('dLinks').innerHTML=[ r.phone?`<a href="tel:${esc(String(r.phone).replace(/[^\d+]/g,''))}">📞 ${esc(r.phone)}</a>`:'', site?`<a href="${esc(site)}" target="_blank" rel="noopener">🌐 Open website</a>`:'', safeUrl(r.source_url)?`<a href="${esc(safeUrl(r.source_url))}" target="_blank" rel="noopener">📄 Source listing</a>`:'', `<span>Design ${scoreBadge(r.score,10)} Tech ${scoreBadge(r.auto_score,100)}</span>` ].filter(Boolean).join('');
+  let html=`<div class="quick"><b style="font-size:12px;align-self:center;color:var(--muted)">LOG A CALL:</b>${CALL_OUTCOMES.map(o=>`<button class="btn sm" data-out="${esc(o)}">${esc(CALL_LABELS[o])}</button>`).join('')}</div>`;
+  for(const [s,title] of SECTIONS){
+    html+=`<div class="sect"><h3>${esc(title)}</h3><div class="grid">`;
+    for(const fd of F.map(f=>FD[f[0]]).filter(fd=>fd.s===s)) html+=`<label class="f ${fd.t==='long'?'full':''}"><span>${esc(fd.l)}</span>${input(fd,r[fd.k])}</label>`;
+    html+='</div></div>';
+  }
+  $('dBody').innerHTML=html; $('dBody').scrollTop=0;
+  $('dBody').querySelectorAll('[data-k]').forEach(el=>el.addEventListener('input',()=>{
+    const k=el.dataset.k, v=readInput(el);
+    if(same(v,current[k],FD[k].t)) delete draft[k]; else draft[k]=v;
+    el.closest('.f').classList.toggle('changed', k in draft); updateDirty();
+  }));
+  $('dBody').querySelectorAll('[data-out]').forEach(b=>b.onclick=()=>{
+    setField('call_status', b.dataset.out); setField('called_at', new Date().toISOString());
+    if(b.dataset.out==='closed') setField('possibly_closed', true);
+    $('in_call_notes').focus();
+  });
+  updateDirty();
+  $('shade').classList.remove('hidden'); $('drawer').classList.remove('hidden');
+  document.querySelectorAll('tbody tr').forEach(tr=>tr.classList.toggle('sel',+tr.dataset.id===id));
+}
+function setField(k,v){
+  const el=$('in_'+k); if(!el) return;
+  const t=FD[k].t; el.value = t==='time'?toLocalInput(v):t==='bool'?String(v):(v??'');
+  el.dispatchEvent(new Event('input'));
+}
+function updateDirty(){ const n=Object.keys(draft).length; $('dDirty').textContent=n?`${n} unsaved change${n>1?'s':''}`:'No changes'; $('dSave').disabled=!n; $('dRevert').disabled=!n; }
+function closeDrawer(force){
+  if(!force && Object.keys(draft).length && !confirm('You have unsaved changes. Discard them?')) return;
+  draft={}; current=null; $('shade').classList.add('hidden'); $('drawer').classList.add('hidden');
+  document.querySelectorAll('tbody tr.sel').forEach(tr=>tr.classList.remove('sel'));
+}
+$('dClose').onclick=()=>closeDrawer(); $('shade').onclick=()=>closeDrawer();
+$('dRevert').onclick=()=>{ const id=current.id; draft={}; current=null; openRecord(id); };
+function step(dir){ if(!current) return; const i=filtered.findIndex(r=>r.id===current.id); const n=filtered[i+dir]; if(n){ openRecord(n.id); const pi=Math.floor(filtered.indexOf(n)/PAGE); if(pi!==page){page=pi;render();} } }
+$('dPrev').onclick=()=>step(-1); $('dNext').onclick=()=>step(1);
+document.addEventListener('keydown',e=>{
+  if($('drawer').classList.contains('hidden')) return;
+  if(e.key==='Escape') closeDrawer();
+  if((e.metaKey||e.ctrlKey)&&e.key==='s'){ e.preventDefault(); save(); }
+  if(['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+  if(e.key==='ArrowDown'){e.preventDefault();step(1)} if(e.key==='ArrowUp'){e.preventDefault();step(-1)}
+});
+async function save(){
+  if(!current||!Object.keys(draft).length) return;
+  if('score' in draft && draft.score!=null && (draft.score<1||draft.score>10)) return toast('Design score must be 1–10', true);
+  $('dSave').disabled=true; $('dSave').textContent='Saving…';
+  const { data, error } = await sb.from(TABLE).update(draft).eq('id',current.id).select().single();
+  $('dSave').textContent='Save';
+  if(error){ toast('Save failed: '+error.message, true); updateDirty(); return; }
+  const i=rows.findIndex(r=>r.id===data.id); rows[i]=data; current=data; const id=data.id; draft={};
+  toast('Saved'); buildFilterOptions(); applyFilters(); current=null; openRecord(id);
+}
+$('dSave').onclick=save;
+
+/* add business */
+$('addBtn').onclick=async ()=>{
+  const name=prompt('Name of the new business:'); if(!name) return;
+  const nextId=Math.max(0,...rows.map(r=>r.id))+1;
+  const { data, error } = await sb.from(TABLE).insert({ id:nextId, name, review_status:'new', imported_at:new Date().toISOString() }).select().single();
+  if(error) return toast('Could not add: '+error.message, true);
+  rows.push(data); buildFilterOptions(); applyFilters(); openRecord(data.id); toast('Added — fill in the details and Save');
+};
+
+boot();
+</script>
+</body>
+</html>
