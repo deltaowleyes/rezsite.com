@@ -90,8 +90,10 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .toast.err{background:var(--red)}
 
 /* columns menu */
-.colmenu{position:absolute;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:10px;z-index:35;box-shadow:0 10px 30px #0002;max-height:60vh;overflow:auto;columns:2;width:420px}
-.colmenu label{display:flex;gap:6px;align-items:center;font-size:13px;padding:3px 0;break-inside:avoid}
+.colmenu{position:absolute;background:var(--white);border:1px solid var(--line);border-radius:12px;padding:0 12px 10px;z-index:35;box-shadow:0 10px 30px #0002;max-height:70vh;overflow-y:auto;overflow-x:hidden;width:min(360px,calc(100vw - 24px))}
+.colmenu label{display:flex;gap:6px;align-items:center;font-size:13px;padding:3px 0}
+.colmenu .cm-top{position:sticky;top:0;background:var(--white);padding:10px 0 8px;border-bottom:1px solid var(--line);display:flex;gap:6px;flex-wrap:wrap}
+.colmenu h4{margin:12px 0 4px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 
 /* login */
 .login{max-width:400px;margin:10vh auto;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px}
@@ -102,7 +104,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .login .msg{margin-top:12px;font-size:13px}
 .login .mark{width:42px;height:42px;font-size:24px;color:#fff}
 .loading{padding:60px;text-align:center;color:var(--muted);font-size:15px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}.filters .wide{grid-column:auto}.wrap{max-height:none}.colmenu{width:90vw;columns:1}}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.filters .wide{grid-column:auto}.wrap{max-height:none}}
 /* version line */
 .verbar{background:var(--pine-dark);color:#dfe7e3;font-size:12px;padding:4px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .verbar .new{background:var(--orange);color:var(--pine-dark);border-radius:999px;padding:2px 10px;font-weight:700}
@@ -490,8 +492,11 @@ function render(){
 $('colsBtn').onclick=e=>{
   const old=document.querySelector('.colmenu'); if(old){old.remove();return;}
   const m=document.createElement('div'); m.className='colmenu';
-  const r=e.target.getBoundingClientRect(); m.style.top=(r.bottom+window.scrollY+6)+'px'; m.style.right='20px';
-  m.innerHTML=F.map(([k,l])=>`<label><input type="checkbox" value="${k}" ${cols.includes(k)?'checked':''}>${esc(l)}</label>`).join('')+'<div style="column-span:all;margin-top:8px"><button class="btn sm" id="colReset">Reset to default</button> <button class="btn sm" id="colAll">Show all</button></div>';
+  const r=e.target.getBoundingClientRect(); m.style.top=(r.bottom+window.scrollY+6)+'px'; m.style.right='12px';
+  const box=k=>`<label><input type="checkbox" value="${k}" ${cols.includes(k)?'checked':''}>${esc(FD[k].l)}</label>`;
+  const grouped=SECTIONS.map(([sk,sl])=>{ const ks=F.map(f=>f[0]).filter(k=>FD[k].s===sk); return ks.length?`<h4>${esc(sl)}</h4>`+ks.map(box).join(''):''; }).join('');
+  const other=F.map(f=>f[0]).filter(k=>!SECTIONS.some(([sk])=>sk===FD[k].s));
+  m.innerHTML='<div class="cm-top"><button class="btn sm" id="colReset">Reset to default</button><button class="btn sm" id="colAll">Show all</button></div>'+(other.length?other.map(box).join(''):'')+grouped;
   document.body.appendChild(m);
   m.querySelectorAll('input').forEach(cb=>cb.onchange=()=>{ cols=F.map(f=>f[0]).filter(k=>m.querySelector(`input[value="${k}"]`).checked); savePref('cols',cols); render(); });
   m.querySelector('#colReset').onclick=()=>{cols=[...DEFAULT_COLS];savePref('cols',cols);m.remove();render();};
