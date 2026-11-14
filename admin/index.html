@@ -103,9 +103,34 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .login .mark{width:42px;height:42px;font-size:24px;color:#fff}
 .loading{padding:60px;text-align:center;color:var(--muted);font-size:15px}
 @media(max-width:700px){.grid{grid-template-columns:1fr}.filters .wide{grid-column:auto}.wrap{max-height:none}.colmenu{width:90vw;columns:1}}
+/* version line */
+.verbar{background:var(--pine-dark);color:#dfe7e3;font-size:12px;padding:4px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.verbar .new{background:var(--orange);color:var(--pine-dark);border-radius:999px;padding:2px 10px;font-weight:700}
+.verbar .new button{margin-left:6px;border:0;border-radius:999px;background:var(--pine-dark);color:#fff;font:inherit;padding:2px 10px;cursor:pointer}
 </style>
 </head>
 <body>
+<div class="verbar" id="verBar"><span id="verText">Version: checking…</span><span class="new hidden" id="verNew">A newer version of this page is available<button type="button" id="verReload">Reload page</button></span></div>
+<script>
+(function(){
+  var fmt=function(d){return d.toLocaleString('en-CA',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'});};
+  var mine=null;
+  function stamp(hdr){ var d=hdr?new Date(hdr):null; return d&&!isNaN(d)?d:null; }
+  async function head(){ try{ var r=await fetch(location.pathname+'?v='+Date.now(),{method:'HEAD',cache:'no-store'}); return stamp(r.headers.get('last-modified')); }catch(e){ return null; } }
+  async function check(){
+    var live=await head(); if(!live) return;
+    if(mine && live.getTime()-mine.getTime()>1000){ document.getElementById('verNew').classList.remove('hidden'); }
+  }
+  (async function(){
+    mine=stamp(document.lastModified);
+    if(!mine || Math.abs(Date.now()-mine.getTime())<3000) mine=await head();   /* no Last-Modified header: browsers report "now" */
+    document.getElementById('verText').textContent = mine ? 'Version: '+fmt(mine) : 'Version: unknown';
+    setInterval(check,120000); document.addEventListener('visibilitychange',function(){ if(!document.hidden) check(); });
+    check();
+  })();
+  document.getElementById('verReload').onclick=function(){ location.replace(location.pathname+'?v='+Date.now()+location.hash); };
+})();
+</script>
 
 <!-- LOGIN -->
 <div id="loginView" class="hidden">
