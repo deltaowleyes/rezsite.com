@@ -251,6 +251,16 @@ const F = [
   ['mobile_ok','Mobile friendly','bool','auto',true],
   ['parked_or_sale','Parked / for sale','bool','auto',true],
   ['copyright_year','Copyright year','int','auto',true],
+  ['est_tier','Size tier (estimate)','text','est',true],
+  ['est_budget_low','Website budget – low ($)','int','est',true],
+  ['est_budget_high','Website budget – high ($)','int','est',true],
+  ['est_package','Package to pitch','text','est',true],
+  ['est_value_low','Business value – low ($)','int','est',true],
+  ['est_value_high','Business value – high ($)','int','est',true],
+  ['est_revenue','Yearly revenue (estimate, $)','int','est',true],
+  ['est_confidence','Estimate confidence','text','est',true],
+  ['est_basis','How the estimate was made','long','est',true],
+  ['est_at','Estimated at','time','est',false],
   ['call_status','Call status','text','call',true],
   ['called_at','Last called','time','call',true],
   ['call_notes','Call notes','long','call',true],
@@ -260,18 +270,19 @@ const F = [
   ['updated_by','Last edited by','text','meta',false],
 ];
 const FD = Object.fromEntries(F.map(([k,l,t,s,e])=>[k,{k,l,t,s,e}]));
-const SECTIONS = [['call','Calls'],['review','Design review'],['auto','Automated technical check'],['biz','Business'],['contact','Contact & listing'],['meta','Record info']];
+const SECTIONS = [['call','Calls'],['review','Design review'],['est','Value and budget estimate'],['auto','Automated technical check'],['biz','Business'],['contact','Contact & listing'],['meta','Record info']];
 const LISTS = {auto_status:'dl_auto_status',category:'dl_category',community:'dl_community',province:'dl_province'};
 const CALL_LABELS = {not_called:'Not called',no_answer:'No answer',left_message:'Left message',call_back:'Call back',interested:'Interested',demo_booked:'Demo booked',customer:'Customer',not_interested:'Not interested',wrong_number:'Wrong number',closed:'Closed'};
 const REVIEW_LABELS = {new:'Waiting for review',claimed:'Being reviewed',done:'Reviewed',error:'Site error',no_website:'No website'};
 const CHOICES = {call_status:CALL_LABELS, review_status:REVIEW_LABELS};
 const CALL_OUTCOMES = Object.keys(CALL_LABELS).filter(k=>k!=='not_called');
 const label = (k,v) => (CHOICES[k]&&CHOICES[k][v]) || v;
-const DEFAULT_COLS = ['name','community','city','province','category','phone','website','score','auto_score','auto_grade','auto_status','review_status','call_status','called_at'];
+const DEFAULT_COLS = ['name','community','city','province','category','phone','website','score','auto_score','auto_grade','auto_status','est_tier','est_budget_low','est_budget_high','review_status','call_status','called_at'];
 
 /* ---------- state ---------- */
 let rows = [], filtered = [], page = 0, sorts = [{k:'score',d:1},{k:'auto_score',d:1}];
 let cols = loadPref('cols', DEFAULT_COLS).filter(k=>FD[k]);
+if(!loadPref('est_cols_added',false)){ if(!cols.includes('est_tier')){ const i=Math.max(cols.indexOf('auto_status')+1,0)||cols.length; cols.splice(i,0,'est_tier','est_budget_low','est_budget_high'); savePref('cols',cols); } savePref('est_cols_added',true); }
 let current = null, draft = {}, userEmail = '';
 
 const $ = id => document.getElementById(id);
@@ -354,6 +365,7 @@ function buildFilterOptions(){
 const VIEWS = [
   ['Call first', {site:'yes',phone:'yes',closed:'no',call:'__blank'}, [{k:'score',d:1},{k:'auto_score',d:1}]],
   ['Worst design', {site:'yes'}, [{k:'score',d:1}]],
+  ['Biggest budgets', {site:'yes',phone:'yes',closed:'no'}, [{k:'est_budget_high',d:-1},{k:'score',d:1}]],
   ['Worst technical', {site:'yes'}, [{k:'auto_score',d:1}]],
   ['Not called yet', {call:'__blank'}, null],
   ['Call back / warm', {callIn:['call_back','interested','demo_booked']}, [{k:'called_at',d:-1}]],
@@ -421,6 +433,7 @@ function cell(r,k){
   const v=r[k], t=FD[k].t;
   if(k==='score') return scoreBadge(v,10);
   if(k==='auto_score') return scoreBadge(v,100);
+  if(/^est_(budget|value|revenue)/.test(k)) return v==null?'':'$'+Number(v).toLocaleString('en-CA');
   if(k==='website'){ const u=safeUrl(v); return u?`<a href="${esc(u)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(String(v).replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))}</a>`:''; }
   if(k==='phone') return v?`<a href="tel:${esc(String(v).replace(/[^\d+]/g,''))}" onclick="event.stopPropagation()">${esc(v)}</a>`:'';
   if(t==='bool') return v==null?'':(v?'✔':'✗');
