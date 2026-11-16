@@ -109,6 +109,39 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
 .verbar{background:var(--pine-dark);color:#dfe7e3;font-size:12px;padding:4px 14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .verbar .new{background:var(--orange);color:var(--pine-dark);border-radius:999px;padding:2px 10px;font-weight:700}
 .verbar .new button{margin-left:6px;border:0;border-radius:999px;background:var(--pine-dark);color:#fff;font:inherit;padding:2px 10px;cursor:pointer}
+
+/* ---------- caller view ---------- */
+.cv-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:14px 20px 6px}
+.cv-bar h1{margin:0;font-size:22px;letter-spacing:-.6px}
+.cv-list{padding:6px 20px 40px;display:flex;flex-direction:column;gap:8px;max-width:980px}
+.cv-group{margin:14px 0 2px;font-size:12px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;color:var(--orange-deep)}
+.cv-group small{font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0;margin-left:6px}
+.cv-card{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:11px 14px;cursor:pointer;text-align:left;width:100%}
+.cv-card:hover{border-color:var(--pine)}
+.cv-card.done{opacity:.62}
+.cv-card.mine{border:2px solid var(--orange-deep);background:#fff8f0}
+.cv-card.theirs{border:2px dashed var(--red)}
+.cv-n{font-weight:800;color:var(--muted);font-size:13px}
+.cv-name{font-weight:750;font-size:15px}
+.cv-sub{color:var(--muted);font-size:12px}
+.cv-right{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.o-interested{background:#d8efdf;color:#1d5a34}.o-not_interested,.o-wrong_number,.o-closed,.o-do_not_call{background:#f6dcd8;color:#7d2219}
+.o-call_back{background:#fbeccb;color:#6c4b0a}.o-no_answer,.o-left_message{background:#e7e9e2;color:#41524e}
+.pill.lock{background:var(--orange);color:#2a1a0c}.pill.lockx{background:var(--red);color:#fff}.pill.early{background:#e4e7f2;color:#3a4470}.pill.tip{background:#efe3f3;color:var(--purple)}
+.big{font-size:16px;padding:12px 18px;border-radius:12px}
+.choice{display:flex;gap:6px;flex-wrap:wrap}
+.choice button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-weight:650;font-size:13px}
+.choice button.on{background:var(--pine);border-color:var(--pine);color:#fff}
+.tipbox{background:#fff4e6;border:1px solid #f3cf9f;border-radius:12px;padding:10px 12px;margin-bottom:12px;font-size:14px}
+.lockbox{border-radius:12px;padding:12px 14px;margin-bottom:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.lockbox.free{background:#eef4ee;border:1px solid #cfe2d3}
+.lockbox.mine{background:#fff1e2;border:2px solid var(--orange-deep)}
+.lockbox.theirs{background:#fbe5e2;border:2px solid var(--red)}
+.callnum{font-size:22px;font-weight:800;text-decoration:none}
+.script{font-size:14px}.script h3{margin:14px 0 6px}.script blockquote{margin:6px 0;padding:8px 12px;background:#fff;border-left:4px solid var(--orange);border-radius:6px}
+.script table{border-collapse:collapse;font-size:13px}.script td{white-space:normal;max-width:none;border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top}
+.mini{width:100%;font-size:13px}.mini td,.mini th{position:static;cursor:default;white-space:normal;max-width:none}
+.mini input{border:1px solid var(--line);border-radius:7px;padding:4px 6px;width:100%}
 </style>
 </head>
 <body>
@@ -158,7 +191,8 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
   <div class="login">
     <div class="mark"><span>R</span><i></i></div>
     <h1>No admin access yet</h1>
-    <p>You're signed in as <b id="deniedEmail"></b>, but this email isn't on the admin list (or hasn't been confirmed from the email Supabase sent). Ask Chris to add it.</p>
+    <p>You're signed in as <b id="deniedEmail"></b>, but this email isn't on the admin or caller list yet (or hasn't been confirmed from the email Supabase sent). Ask Chris to add it, then press Reload.</p>
+    <button class="btn primary" onclick="location.reload()">Reload</button>
     <button class="btn" id="signout2">Sign out</button>
   </div>
 </div>
@@ -168,7 +202,7 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
   <header class="top"><div class="top-in">
     <a class="logo" href="../"><span class="mark">R<i></i></span>RezSite<small>ADMIN</small></a>
     <div class="stats" id="stats"></div>
-    <div class="who"><span id="whoEmail"></span><button class="btn ghost sm" id="reloadBtn">Reload</button><button class="btn ghost sm" id="signout">Sign out</button></div>
+    <div class="who"><button class="btn orange sm" id="callersBtn">📞 Callers &amp; daily lists</button><span id="whoEmail"></span><button class="btn ghost sm" id="reloadBtn">Reload</button><button class="btn ghost sm" id="signout">Sign out</button></div>
   </div></header>
 
   <section class="bar">
@@ -203,6 +237,83 @@ td.num{text-align:right;font-variant-numeric:tabular-nums}
   <div class="wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div>
   <div class="pager" id="pager"></div>
 </div>
+
+<!-- CALLER APP (commission callers see only their own daily list) -->
+<div id="callerView" class="hidden">
+  <header class="top"><div class="top-in">
+    <a class="logo" href="../"><span class="mark">R<i></i></span>RezSite<small>CALLS</small></a>
+    <div class="stats" id="cStats"></div>
+    <div class="who"><span id="cWho"></span><button class="btn ghost sm" id="cScriptBtn">📄 Script</button><button class="btn ghost sm" id="cSignout">Sign out</button></div>
+  </div></header>
+  <div class="cv-bar">
+    <button class="btn sm" id="cPrev" title="Previous day">◀</button>
+    <h1 id="cDay"></h1>
+    <button class="btn sm" id="cNext" title="Next day">▶</button>
+    <button class="btn sm" id="cToday">Today</button>
+    <span class="spacer"></span>
+    <span class="cv-sub" id="cCount"></span>
+    <button class="btn sm" id="cRefresh">Refresh</button>
+  </div>
+  <div class="cv-list" id="cList"></div>
+</div>
+
+<!-- CALLER: one business -->
+<div id="cShade" class="shade hidden"></div>
+<aside id="cDrawer" class="drawer hidden" aria-label="Call">
+  <div class="dh">
+    <div style="flex:1">
+      <h2 id="cdTitle"></h2>
+      <div class="sub" id="cdSub"></div>
+      <div class="links" id="cdLinks"></div>
+    </div>
+    <button class="btn sm" id="cdClose" title="Close (Esc)">✕</button>
+  </div>
+  <div class="db" id="cdBody"></div>
+  <div class="df">
+    <button class="btn" id="cdUnlock">Close without saving</button>
+    <span class="spacer"></span>
+    <button class="btn" id="cdSaveKeep">Save, keep locked</button>
+    <button class="btn primary" id="cdSave">Save &amp; unlock</button>
+  </div>
+</aside>
+
+<!-- CALLER: script -->
+<aside id="cScript" class="drawer hidden" aria-label="Call script" style="width:min(560px,100%)">
+  <div class="dh"><div style="flex:1"><h2>Call script</h2><div class="sub">Offer: 3 free custom designs within 1–2 business days. No cost, no obligation.</div></div><button class="btn sm" id="csClose">✕</button></div>
+  <div class="db script">
+    <h3>1. Opening</h3>
+    <blockquote>“Hi, this is <b>[your name]</b> calling from <b>BAKE</b>, a web design studio. Could I speak with the owner or whoever looks after your website?”</blockquote>
+    <blockquote>“Thanks! I’ll be quick. We came across <b>[business]</b> and took a look at your website. We’d like to make you <b>three custom designs for a new site, free</b>, built around your business, your photos and your logo. You’d have them in your inbox within one or two business days, and there’s no obligation at all. Would you like us to make them for you?”</blockquote>
+    <h3>2. If yes, collect</h3>
+    <ol><li><b>Contact person</b> (name + role)</li><li><b>Email</b> (read it back letter by letter)</li><li><b>Logo</b>: “Could you email us your logo? Any size is fine.”</li><li><b>Photos</b>: “Photos of your work, team, food or place? Bigger is better.”</li><li><b>Pages</b>: Home, About, Services, Menu, Gallery, Contact…</li></ol>
+    <blockquote>“Perfect. You’ll get three designs from us by <b>[day]</b>. If you like one, we’ll walk you through the next steps then. Thanks!”</blockquote>
+    <h3>3. Voicemail (under 20 seconds)</h3>
+    <blockquote>“Hi, this is <b>[name]</b> from <b>BAKE</b>, a web design studio. We’d like to make <b>[business]</b> three free custom website designs, no obligation. I’ll try you again soon. Have a great day.”</blockquote>
+    <h3>Objections</h3>
+    <table>
+      <tr><td><b>We already have a website.</b></td><td>That’s exactly why we called. We’d show you what a fresh version could look like. If you like yours better, nothing changes. It’s free.</td></tr>
+      <tr><td><b>How much?</b></td><td>The designs are free. If you like one, simple sites start at about $100; bigger custom sites are quoted after you’ve seen the designs.</td></tr>
+      <tr><td><b>What’s the catch?</b></td><td>No catch. We make the designs, you look at them. If you don’t love one, you just say no thanks.</td></tr>
+      <tr><td><b>I’m busy.</b></td><td>It takes two minutes: I just need an email and what pages you’d want. Or when’s a better time? (→ Call back later)</td></tr>
+      <tr><td><b>Send me information.</b></td><td>The best information is the designs themselves, made for you. What email should they go to?</td></tr>
+      <tr><td><b>Someone does our website.</b></td><td>Great, they can have a look too. Three new designs cost nothing and might give you both ideas.</td></tr>
+      <tr><td><b>Need to ask my partner / board.</b></td><td>Of course. The designs make that easy. Can I send them to you so you can share them?</td></tr>
+      <tr><td><b>How did you get my number?</b></td><td>We’re BAKE, a small web design studio. Your business is in our directory, and your number is listed publicly with your website.</td></tr>
+      <tr><td><b>Not interested.</b></td><td>No problem, thanks for your time. (Don’t push.)</td></tr>
+      <tr><td><b>Don’t call again.</b></td><td>Understood, I’ll take you off our list. (→ Do not call again)</td></tr>
+      <tr><td><b>Can’t answer it?</b></td><td>Good question. I’ll have Chris get back to you on that. (Write it in Next step.)</td></tr>
+    </table>
+    <h3>Never</h3>
+    <p>Promise prices, dates or features beyond the above · say a business is Indigenous-owned unless they tell you · argue.</p>
+  </div>
+</aside>
+
+<!-- ADMIN: callers and daily lists -->
+<div id="apShade" class="shade hidden"></div>
+<aside id="ap" class="drawer hidden" aria-label="Callers and daily lists" style="width:min(1060px,100%)">
+  <div class="dh"><div style="flex:1"><h2>Callers &amp; daily lists</h2><div class="sub">Each caller signs in here with their email and sees only the businesses assigned to them for the day (plus unfinished calls from the last 2 weeks).</div></div><button class="btn sm" id="apClose">✕</button></div>
+  <div class="db" id="apBody"></div>
+</aside>
 
 <div id="loadingView" class="loading">Loading…</div>
 
@@ -317,7 +428,7 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
 function loadPref(k,d){try{return JSON.parse(localStorage.getItem('rzadmin_'+k))??d}catch{return d}}
 function savePref(k,v){try{localStorage.setItem('rzadmin_'+k,JSON.stringify(v))}catch{}}
 function toast(msg, err){const t=document.createElement('div');t.className='toast'+(err?' err':'');t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),err?6000:2500)}
-function show(view){for(const v of ['loginView','deniedView','appView','loadingView'])$(v).classList.toggle('hidden',v!==view)}
+function show(view){for(const v of ['loginView','deniedView','appView','callerView','loadingView'])$(v).classList.toggle('hidden',v!==view)}
 const safeUrl = u => { if(!u) return null; let s=String(u).trim(); if(!/^https?:\/\//i.test(s)) s='https://'+s; try{const x=new URL(s); return /^https?:$/.test(x.protocol)?x.href:null}catch{return null} };
 const fmtTime = v => v ? new Date(v).toLocaleString('en-CA',{year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}) : '';
 
@@ -327,10 +438,14 @@ async function boot(){
   if(!session){ show('loginView'); return; }
   userEmail = session.user.email;
   const { data:isAdmin, error } = await sb.rpc('is_rezsite_admin');
-  if(error || !isAdmin){ $('deniedEmail').textContent = userEmail; show('deniedView'); return; }
+  if(error || !isAdmin){
+    const { data:me } = await sb.rpc('caller_me');
+    if(me){ startCaller(me); return; }
+    $('deniedEmail').textContent = userEmail; show('deniedView'); return;
+  }
   $('whoEmail').textContent = userEmail;
   show('loadingView'); $('loadingView').textContent='Loading businesses…';
-  await loadAll();
+  await loadAll(); await loadCallers();
   show('appView');
 }
 $('loginForm').addEventListener('submit', async e=>{
@@ -355,8 +470,8 @@ $('resetBtn').onclick = async ()=>{
 sb.auth.onAuthStateChange(async (ev)=>{
   if(ev==='PASSWORD_RECOVERY'){ const p=prompt('Choose a new password (8+ characters):'); if(p){ const {error}=await sb.auth.updateUser({password:p}); toast(error?error.message:'Password updated', !!error);} boot(); }
 });
-const signOut = async ()=>{ await sb.auth.signOut(); show('loginView'); };
-$('signout').onclick = signOut; $('signout2').onclick = signOut;
+const signOut = async ()=>{ if(cv.open && cv.open.locked_by_me){ try{ await sb.rpc('caller_unlock',{p_id:cv.open.id}); }catch{} } await sb.auth.signOut(); location.reload(); };
+$('signout').onclick = signOut; $('signout2').onclick = signOut; $('cSignout').onclick = signOut;
 $('reloadBtn').onclick = async ()=>{ $('reloadBtn').textContent='Loading…'; await loadAll(); $('reloadBtn').textContent='Reload'; toast('Reloaded'); };
 
 /* ---------- data ---------- */
@@ -541,7 +656,8 @@ function openRecord(id){
   $('dSub').textContent=[r.community,r.city,r.province,r.category].filter(Boolean).join(' · ')+`  ·  #${r.id}`;
   const site=safeUrl(r.website);
   $('dLinks').innerHTML=[ r.phone?`<a href="tel:${esc(String(r.phone).replace(/[^\d+]/g,''))}">📞 ${esc(r.phone)}</a>`:'', site?`<a href="${esc(site)}" target="_blank" rel="noopener">🌐 Open website</a>`:'', safeUrl(r.source_url)?`<a href="${esc(safeUrl(r.source_url))}" target="_blank" rel="noopener">📄 Source listing</a>`:'', `<span>Design ${scoreBadge(r.score,10)} Tech ${scoreBadge(r.auto_score,100)}</span>` ].filter(Boolean).join('');
-  let html=`<div class="quick"><b style="font-size:12px;align-self:center;color:var(--muted)">LOG A CALL:</b>${CALL_OUTCOMES.map(o=>`<button class="btn sm" data-out="${esc(o)}">${esc(CALL_LABELS[o])}</button>`).join('')}</div>`;
+  let html=`<div class="sect" id="asgSect"><h3>Caller assignment</h3><div id="asgBody" class="cv-sub">Loading…</div></div>`;
+  html+=`<div class="quick"><b style="font-size:12px;align-self:center;color:var(--muted)">LOG A CALL:</b>${CALL_OUTCOMES.map(o=>`<button class="btn sm" data-out="${esc(o)}">${esc(CALL_LABELS[o])}</button>`).join('')}</div>`;
   for(const [s,title] of SECTIONS){
     html+=`<div class="sect"><h3>${esc(title)}</h3><div class="grid">`;
     for(const fd of F.map(f=>FD[f[0]]).filter(fd=>fd.s===s)) html+=`<label class="f ${fd.t==='long'?'full':''}"><span>${esc(fd.l)}</span>${input(fd,r[fd.k])}</label>`;
@@ -558,7 +674,7 @@ function openRecord(id){
     if(b.dataset.out==='closed') setField('possibly_closed', true);
     $('in_call_notes').focus();
   });
-  updateDirty();
+  updateDirty(); loadAsg(r.id);
   $('shade').classList.remove('hidden'); $('drawer').classList.remove('hidden');
   document.querySelectorAll('tbody tr').forEach(tr=>tr.classList.toggle('sel',+tr.dataset.id===id));
 }
@@ -587,6 +703,7 @@ document.addEventListener('keydown',e=>{
 async function save(){
   if(!current||!Object.keys(draft).length) return;
   if('score' in draft && draft.score!=null && (draft.score<1||draft.score>10)) return toast('Design score must be 1–10', true);
+  if(asgLockedBy && !confirm(`${asgLockedBy} is on a call with this business right now. Save your changes anyway?`)) return;
   $('dSave').disabled=true; $('dSave').textContent='Saving…';
   const { data, error } = await sb.from(TABLE).update(draft).eq('id',current.id).select().single();
   $('dSave').textContent='Save';
@@ -604,6 +721,269 @@ $('addBtn').onclick=async ()=>{
   if(error) return toast('Could not add: '+error.message, true);
   rows.push(data); buildFilterOptions(); applyFilters(); openRecord(data.id); toast('Added — fill in the details and Save');
 };
+
+/* =====================================================================
+   CALLERS: shared helpers
+   ===================================================================== */
+const OUT = {no_answer:'No answer',left_message:'Voicemail left',call_back:'Call back later',interested:'Interested: designs promised',not_interested:'Not interested',wrong_number:'Wrong number',closed:'Closed',do_not_call:'Do not call again'};
+const INT = {hot:'Hot: wants designs',warm:'Warm: maybe later',cold:'Cold',none:'None'};
+const RETRY = ['no_answer','left_message','call_back'];
+const LOCK_MIN = 20;
+const torontoDay = (d=new Date()) => d.toLocaleDateString('en-CA',{timeZone:'America/Toronto'});
+const addDays = (iso,n) => { const d=new Date(iso+'T12:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); };
+const addBizDays = (iso,n) => { let d=iso; while(n>0){ d=addDays(d,1); const w=new Date(d+'T12:00:00').getDay(); if(w!==0&&w!==6) n--; } return d; };
+const dayLabel = iso => new Date(iso+'T12:00:00').toLocaleDateString('en-CA',{weekday:'long',month:'long',day:'numeric'});
+const money = v => '$'+Number(v||0).toLocaleString('en-CA',{minimumFractionDigits:2,maximumFractionDigits:2});
+const telHref = p => 'tel:'+String(p||'').replace(/[^\d+]/g,'');
+/* earliest Eastern time to call, so nobody is called before 9 am their time */
+function callFrom(prov, city){
+  const c=String(city||'').toLowerCase(), p=String(prov||'').toUpperCase().trim();
+  const P={NL:'NL',NEWFOUNDLAND:'NL','NEWFOUNDLAND AND LABRADOR':'NL',NB:'NB','NEW BRUNSWICK':'NB',NS:'NS','NOVA SCOTIA':'NS',PE:'PE',PEI:'PE','PRINCE EDWARD ISLAND':'PE',ON:'ON',ONTARIO:'ON',QC:'QC',QUEBEC:'QC','QUÉBEC':'QC',MB:'MB',MANITOBA:'MB',SK:'SK',SASKATCHEWAN:'SK',AB:'AB',ALBERTA:'AB',NT:'NT','NORTHWEST TERRITORIES':'NT',NU:'NU',NUNAVUT:'NU',BC:'BC','BRITISH COLUMBIA':'BC',YT:'YT',YUKON:'YT'}[p]||p;
+  if(P==='BC' && /golden|fort st\.? john|dawson creek|cranbrook|fernie|invermere|creston|chetwynd|tumbler ridge/.test(c)) return [11,'11:00 AM','Mountain'];
+  if(P==='ON' && /kenora|dryden|sioux lookout|fort frances|red lake/.test(c)) return [10,'10:00 AM','Central'];
+  if(['NL','NB','NS','PE','ON','QC'].includes(P)) return [9,'9:00 AM', P==='ON'||P==='QC'?'Eastern':'Atlantic'];
+  if(['MB','SK'].includes(P)) return [10,'10:00 AM','Central'];
+  if(['AB','NT','NU'].includes(P)) return [11,'11:00 AM','Mountain'];
+  if(['BC','YT'].includes(P)) return [12,'12:00 PM', P==='YT'?'Yukon':'Pacific'];
+  return [9,'9:00 AM','?'];
+}
+const torontoHour = () => +new Date().toLocaleString('en-CA',{timeZone:'America/Toronto',hour:'numeric',hour12:false}).replace(/\D/g,'');
+
+/* =====================================================================
+   CALLER APP
+   ===================================================================== */
+const cv = { me:null, day:torontoDay(), list:[], open:null, form:{}, beat:null, poll:null };
+
+async function startCaller(me){
+  cv.me = me; $('cWho').textContent = me.name+' · '+userEmail;
+  show('callerView'); await cLoad();
+  clearInterval(cv.poll); cv.poll = setInterval(()=>{ if(!document.hidden && !cv.open) cLoad(true); }, 30000);
+}
+async function cLoad(quiet){
+  const [{ data, error }, { data:tot }] = await Promise.all([ sb.rpc('caller_calls',{ p_day:cv.day }), sb.rpc('caller_totals') ]);
+  if(error){ if(!quiet) toast('Could not load your list: '+error.message, true); return; }
+  cv.list = data||[];
+  const today = cv.list.filter(a=>!a.carried_over), called = today.filter(a=>a.outcome).length;
+  $('cDay').textContent = (cv.day===torontoDay()?'Today · ':'') + dayLabel(cv.day);
+  $('cCount').textContent = `${called} of ${today.length} called`;
+  if(tot) $('cStats').innerHTML = [['Called (all)',tot.called],['Interested',tot.interested],['Paid',money(tot.paid)],['Your commission',money(tot.commission)]].map(([l,v])=>`<div class="stat"><b>${esc(v)}</b>${esc(l)}</div>`).join('');
+  cRender();
+}
+function cCard(a){
+  const [h,t] = callFrom(a.province, a.city);
+  const isToday = cv.day===torontoDay(), early = isToday && torontoHour()<h;
+  const lock = a.locked_by_name ? (a.locked_by_me?'<span class="pill lock">🔒 You’re on this call</span>':`<span class="pill lockx">🔒 ${esc(a.locked_by_name)} is on this call</span>`) : '';
+  const out = a.outcome ? `<span class="pill o-${a.outcome}">${esc(OUT[a.outcome])}</span>` : '';
+  return `<button class="cv-card${a.outcome&&!RETRY.includes(a.outcome)?' done':''}${a.locked_by_me?' mine':(a.locked_by_name?' theirs':'')}" data-id="${a.id}">
+    <span class="cv-n">${a.carried_over?'↺':esc(a.sort_order)}</span>
+    <span><span class="cv-name">${esc(a.name)}</span><br><span class="cv-sub">${esc([a.city,a.province].filter(Boolean).join(', '))} · ${esc(a.phone||'no phone')}${a.carried_over?' · from '+esc(dayLabel(a.call_day)):''}</span></span>
+    <span class="cv-right">${lock}${out}${a.tips?'<span class="pill tip" title="Has call tips">💡 Tip</span>':''}${early&&!a.outcome?`<span class="pill early">Opens ${esc(t)} ET</span>`:''}</span>
+  </button>`;
+}
+function cRender(){
+  if(!cv.list.length){ $('cList').innerHTML='<div class="sect">No calls assigned for this day. Use ◀ ▶ to look at other days, or ask Chris for your list.</div>'; return; }
+  const carried = cv.list.filter(a=>a.carried_over), today = cv.list.filter(a=>!a.carried_over);
+  let html='';
+  if(carried.length) html+=`<div class="cv-group">Try again <small>no answer, voicemail or call back from earlier days</small></div>`+carried.map(cCard).join('');
+  const groups={}; for(const a of today){ const [h,t,z]=callFrom(a.province,a.city); (groups[h]=groups[h]||{t,z:new Set(),items:[]}).items.push(a); groups[h].z.add(z); }
+  for(const h of Object.keys(groups).sort((a,b)=>a-b)){ const g=groups[h]; html+=`<div class="cv-group">From ${esc(g.t)} Eastern <small>${esc([...g.z].join(', '))} time</small></div>`+g.items.map(cCard).join(''); }
+  $('cList').innerHTML=html;
+  $('cList').querySelectorAll('.cv-card').forEach(b=>b.onclick=()=>cOpen(+b.dataset.id));
+}
+function cOpen(id){
+  const a = cv.list.find(x=>x.id===id); if(!a) return;
+  cv.open = a; cv.form = { outcome:a.outcome||'', interest:a.interest||'', next_step:a.next_step||'', contact_person:a.contact_person||'', contact_email:a.contact_email||'', has_logo:!!a.has_logo, has_photos:!!a.has_photos, pages_wanted:a.pages_wanted||'', designs_due:a.designs_due||'', call_notes:a.call_notes||'' };
+  const [,t,z] = callFrom(a.province,a.city);
+  $('cdTitle').textContent = a.name;
+  $('cdSub').textContent = [a.community,a.city,a.province,a.category].filter(Boolean).join(' · ') + ` · call from ${t} ET (${z} time)`;
+  const site = safeUrl(a.website);
+  $('cdLinks').innerHTML = site?`<a href="${esc(site)}" target="_blank" rel="noopener">🌐 Their current website</a>`:'<span>No website on file</span>';
+  cDrawBody();
+  $('cShade').classList.remove('hidden'); $('cDrawer').classList.remove('hidden');
+}
+function cDrawBody(){
+  const a = cv.open, f = cv.form, mine = a.locked_by_me, theirs = a.locked_by_name && !mine;
+  const lockbox = mine
+    ? `<div class="lockbox mine"><b>🔒 Locked: you’re on this call.</b><a class="callnum" href="${esc(telHref(a.phone))}">📞 ${esc(a.phone||'')}</a><span class="cv-sub">Nobody else can call this business while it’s locked. Locks end when you save, or after ${LOCK_MIN} minutes.</span></div>`
+    : theirs
+    ? `<div class="lockbox theirs"><b>🔒 ${esc(a.locked_by_name)} is on a call with this business.</b><span class="cv-sub">Wait until it’s unlocked, then refresh.</span></div>`
+    : `<div class="lockbox free"><button class="btn primary big" id="cdLock">🔒 Start call: lock this business</button><span class="cv-sub">Lock it first, then dial <b>${esc(a.phone||'')}</b>. Tapping the number below locks it too.</span><a href="${esc(telHref(a.phone))}" id="cdDial">📞 ${esc(a.phone||'')}</a></div>`;
+  const btns = (k, map) => `<div class="choice" data-k="${k}">${Object.entries(map).map(([v,l])=>`<button type="button" data-v="${v}" class="${f[k]===v?'on':''}">${esc(l)}</button>`).join('')}</div>`;
+  const yes = f.outcome==='interested';
+  $('cdBody').innerHTML = lockbox
+    + (a.tips?`<div class="tipbox">💡 <b>Tip:</b> ${esc(a.tips)}</div>`:'')
+    + (a.description?`<div class="cv-sub" style="margin-bottom:12px">${esc(a.description)}</div>`:'')
+    + `<fieldset ${mine?'':'disabled'} style="border:0;padding:0;margin:0">
+      <div class="sect"><h3>What happened?</h3>${btns('outcome',OUT)}</div>
+      <div class="sect"><h3>Interest</h3>${btns('interest',INT)}</div>
+      <div class="sect"><h3>${yes?'They said yes! Collect the 5 things':'Details (if they’re interested)'}</h3><div class="grid">
+        <label class="f"><span>Contact person (name + role)</span><input data-f="contact_person" value="${esc(f.contact_person)}"></label>
+        <label class="f"><span>Email (read it back)</span><input data-f="contact_email" type="email" value="${esc(f.contact_email)}"></label>
+        <label class="f"><span><input type="checkbox" data-f="has_logo" ${f.has_logo?'checked':''}> They’ll send their logo</span></label>
+        <label class="f"><span><input type="checkbox" data-f="has_photos" ${f.has_photos?'checked':''}> They’ll send photos</span></label>
+        <label class="f full"><span>Pages they want</span><input data-f="pages_wanted" placeholder="Home, About, Services, Gallery, Contact…" value="${esc(f.pages_wanted)}"></label>
+        <label class="f"><span>Designs due (1–2 business days)</span><input data-f="designs_due" type="date" value="${esc(f.designs_due)}"></label>
+      </div></div>
+      <div class="sect"><h3>Next step and notes</h3><div class="grid">
+        <label class="f full"><span>Next step</span><input data-f="next_step" placeholder="e.g. Call back Tue 2pm, ask for Kyle" value="${esc(f.next_step)}"></label>
+        <label class="f full"><span>Notes</span><textarea data-f="call_notes">${esc(f.call_notes)}</textarea></label>
+      </div></div>
+    </fieldset>`
+    + (a.amount_paid!=null?`<div class="sect"><h3>Paid</h3>${money(a.amount_paid)} paid · your commission <b>${money(a.commission)}</b></div>`:'');
+  $('cdSave').disabled = $('cdSaveKeep').disabled = !mine;
+  $('cdUnlock').textContent = mine ? 'Unlock without saving' : 'Close';
+  if($('cdLock')) $('cdLock').onclick = ()=>cLock();
+  if($('cdDial')) $('cdDial').onclick = e=>{ cLock(true); };
+  $('cdBody').querySelectorAll('.choice').forEach(g=>g.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    const k=g.dataset.k; cv.form[k] = cv.form[k]===b.dataset.v ? '' : b.dataset.v;
+    if(k==='outcome' && cv.form.outcome==='interested'){ if(!cv.form.interest) cv.form.interest='hot'; if(!cv.form.designs_due) cv.form.designs_due=addBizDays(torontoDay(),2); }
+    if(k==='outcome' && ['not_interested','do_not_call','wrong_number','closed'].includes(cv.form.outcome) && !cv.form.interest) cv.form.interest='none';
+    cDrawBody();
+  }));
+  $('cdBody').querySelectorAll('[data-f]').forEach(el=>el.addEventListener('input',()=>{ cv.form[el.dataset.f] = el.type==='checkbox'?el.checked:el.value; }));
+}
+async function cLock(fromDial){
+  const a = cv.open;
+  const { data, error } = await sb.rpc('caller_lock',{ p_id:a.id });
+  if(error){ toast(error.message, true); return; }
+  if(!data.ok){ a.locked_by_name = data.locked_by; a.locked_by_me=false; toast(`${data.locked_by} is on this call right now`, true); cDrawBody(); return; }
+  a.locked_by_name = cv.me.name; a.locked_by_me = true; a.locked_at = new Date().toISOString();
+  clearInterval(cv.beat); cv.beat = setInterval(()=>{ if(cv.open && cv.open.locked_by_me) sb.rpc('caller_lock',{p_id:cv.open.id}); }, 5*60000);
+  if(!fromDial) toast('Locked. Dial when ready.');
+  cDrawBody();
+}
+async function cSave(unlock){
+  const a = cv.open, f = cv.form;
+  if(!f.outcome) return toast('Pick what happened first', true);
+  if(f.outcome==='interested' && !f.contact_email) { if(!confirm('No email yet. Save anyway?')) return; }
+  $('cdSave').disabled = $('cdSaveKeep').disabled = true;
+  const { error } = await sb.rpc('caller_save',{ p_id:a.id, p:f, p_unlock:unlock });
+  if(error){ toast('Save failed: '+error.message, true); $('cdSave').disabled = $('cdSaveKeep').disabled = false; return; }
+  toast(unlock?'Saved and unlocked':'Saved (still locked)');
+  if(unlock){ clearInterval(cv.beat); cClose(true); await cLoad(true); }
+  else { Object.assign(a, f); }
+}
+function cClose(skipUnlock){
+  const a = cv.open;
+  if(a && a.locked_by_me && !skipUnlock){ sb.rpc('caller_unlock',{ p_id:a.id }).then(()=>cLoad(true)); }
+  clearInterval(cv.beat); cv.open=null;
+  $('cShade').classList.add('hidden'); $('cDrawer').classList.add('hidden');
+}
+$('cdSave').onclick = ()=>cSave(true);
+$('cdSaveKeep').onclick = ()=>cSave(false);
+$('cdUnlock').onclick = ()=>{ if(cv.open && cv.open.locked_by_me && !confirm('Unlock without saving what you typed?')) return; cClose(); };
+$('cdClose').onclick = ()=>{ if(cv.open && cv.open.locked_by_me){ if(!confirm('Close and unlock? Anything you didn’t save will be lost.')) return; } cClose(); };
+$('cShade').onclick = ()=>$('cdClose').onclick();
+$('cPrev').onclick = ()=>{ cv.day=addDays(cv.day,-1); cLoad(); };
+$('cNext').onclick = ()=>{ cv.day=addDays(cv.day,1); cLoad(); };
+$('cToday').onclick = ()=>{ cv.day=torontoDay(); cLoad(); };
+$('cRefresh').onclick = ()=>cLoad();
+$('cScriptBtn').onclick = ()=>$('cScript').classList.toggle('hidden');
+$('csClose').onclick = ()=>$('cScript').classList.add('hidden');
+document.addEventListener('keydown',e=>{ if(e.key==='Escape' && !$('cDrawer').classList.contains('hidden')) $('cdClose').onclick(); });
+window.addEventListener('beforeunload',e=>{ if(cv.open && cv.open.locked_by_me){ e.preventDefault(); e.returnValue=''; } });
+
+/* =====================================================================
+   ADMIN: callers, daily lists, assignment from the business drawer
+   ===================================================================== */
+let callers = [], asgLockedBy = null;
+const ap = { caller:null, day:torontoDay() };
+async function loadCallers(){ const { data } = await sb.from('rezsite_callers').select('*').order('id'); callers = data||[]; if(!ap.caller && callers[0]) ap.caller = callers[0].id; }
+const callerName = id => (callers.find(c=>c.id===id)||{}).name || '?';
+const bizById = id => rows.find(r=>r.id===id) || {};
+
+async function loadAsg(bizId){
+  asgLockedBy = null;
+  const { data } = await sb.from('call_assignments').select('*').eq('business_id',bizId).order('call_day',{ascending:false}).limit(5);
+  if(!current || current.id!==bizId) return;
+  const live = (data||[]).find(a=>a.locked_at && Date.now()-new Date(a.locked_at) < LOCK_MIN*60000);
+  if(live) asgLockedBy = live.locked_by_name;
+  const lines = (data||[]).map(a=>`<div>📋 <b>${esc(callerName(a.caller_id))}</b> · ${esc(dayLabel(a.call_day))}${a.outcome?` · <span class="pill o-${a.outcome}">${esc(OUT[a.outcome])}</span>`:' · not called yet'}${a===live?` · <span class="pill lockx">🔒 on a call now</span> <button class="btn sm" data-unlock="${a.id}">Unlock</button>`:''}</div>`).join('');
+  const opts = callers.filter(c=>c.active).map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
+  $('asgBody').innerHTML = (lines||'<div>Not assigned to a caller.</div>')
+    + (opts?`<div class="tools" style="margin-top:8px">Assign to <select id="asgWho">${opts}</select> for <input type="date" id="asgDay" value="${esc(addDays(torontoDay(),1))}"> <button class="btn sm orange" id="asgGo">Assign</button></div>`:'<div>Add a caller in “Callers &amp; daily lists” first.</div>');
+  $('asgBody').querySelectorAll('[data-unlock]').forEach(b=>b.onclick=async()=>{ await sb.rpc('admin_unlock_call',{p_id:+b.dataset.unlock}); toast('Unlocked'); loadAsg(bizId); });
+  if($('asgGo')) $('asgGo').onclick = async()=>{
+    const n = await assign([bizId], +$('asgWho').value, $('asgDay').value);
+    if(n) toast('Assigned'); loadAsg(bizId);
+  };
+}
+/* add businesses to the end of a caller's list for a day; skips ones already assigned that day */
+async function assign(ids, callerId, day){
+  if(!callerId || !day) { toast('Pick a caller and a day', true); return 0; }
+  const { data:have } = await sb.from('call_assignments').select('business_id,sort_order').eq('call_day',day);
+  const taken = new Set((have||[]).map(a=>a.business_id));
+  let next = Math.max(0,...(have||[]).map(a=>a.sort_order))+1;
+  const rate = (callers.find(c=>c.id===callerId)||{}).commission_rate ?? 0.25;
+  const add = ids.filter(id=>!taken.has(id)).map(id=>({ business_id:id, caller_id:callerId, call_day:day, sort_order:next++, commission_rate:rate }));
+  if(!add.length){ toast('Already on a list for that day', true); return 0; }
+  const { error } = await sb.from('call_assignments').insert(add);
+  if(error){ toast('Could not assign: '+error.message, true); return 0; }
+  if(add.length<ids.length) toast(`${ids.length-add.length} were already on a list that day and were skipped`);
+  return add.length;
+}
+
+$('callersBtn').onclick = ()=>{ $('apShade').classList.remove('hidden'); $('ap').classList.remove('hidden'); apRender(); };
+$('apClose').onclick = $('apShade').onclick = ()=>{ $('apShade').classList.add('hidden'); $('ap').classList.add('hidden'); };
+
+async function apRender(){
+  await loadCallers();
+  const { data:list } = ap.caller ? await sb.from('call_assignments').select('*').eq('caller_id',ap.caller).eq('call_day',ap.day).order('sort_order') : { data:[] };
+  const L = list||[];
+  const cRows = callers.map(c=>`<tr data-c="${c.id}"><td><input data-cf="name" value="${esc(c.name)}"></td><td><input data-cf="email" type="email" placeholder="the email they sign in with" value="${esc(c.email||'')}"></td><td style="width:90px"><input data-cf="commission_rate" type="number" step="0.01" min="0" max="1" value="${esc(c.commission_rate)}"></td><td style="width:70px"><input data-cf="active" type="checkbox" ${c.active?'checked':''} style="width:auto"></td></tr>`).join('');
+  const tot = L.reduce((s,a)=>({paid:s.paid+(+a.amount_paid||0), com:s.com+(+a.commission||0), called:s.called+(a.outcome?1:0), yes:s.yes+(a.outcome==='interested'?1:0)}),{paid:0,com:0,called:0,yes:0});
+  const aRows = L.map(a=>{ const b=bizById(a.business_id); const live=a.locked_at && Date.now()-new Date(a.locked_at)<LOCK_MIN*60000; return `<tr data-a="${a.id}">
+    <td style="width:50px"><input data-af="sort_order" type="number" value="${esc(a.sort_order)}"></td>
+    <td><b>${esc(b.name||('#'+a.business_id))}</b><br><span class="cv-sub">${esc([b.city,b.province].filter(Boolean).join(', '))} · ${esc(b.phone||'')} · from ${esc(callFrom(b.province,b.city)[1])} ET</span>${live?`<br><span class="pill lockx">🔒 ${esc(a.locked_by_name)} on call</span> <button class="btn sm" data-unl="${a.id}">Unlock</button>`:''}</td>
+    <td>${a.outcome?`<span class="pill o-${a.outcome}">${esc(OUT[a.outcome])}</span>`:''}${a.interest?`<br><span class="cv-sub">${esc(INT[a.interest])}</span>`:''}${a.contact_email?`<br><span class="cv-sub">${esc(a.contact_person||'')} ${esc(a.contact_email)}</span>`:''}${a.next_step?`<br><span class="cv-sub">→ ${esc(a.next_step)}</span>`:''}</td>
+    <td><input data-af="tips" value="${esc(a.tips||'')}" placeholder="tip for the caller"></td>
+    <td style="width:100px"><input data-af="amount_paid" type="number" step="0.01" min="0" value="${esc(a.amount_paid??'')}" placeholder="$ paid"></td>
+    <td style="width:90px" class="num">${money(a.commission)}</td>
+    <td style="width:40px"><button class="btn sm" data-del="${a.id}" title="Remove from this list">✕</button></td></tr>`; }).join('');
+  $('apBody').innerHTML = `
+  <div class="sect"><h3>Callers</h3>
+    <table class="mini"><thead><tr><th>Name</th><th>Sign-in email</th><th>Rate</th><th>Active</th></tr></thead><tbody>${cRows}</tbody></table>
+    <div class="tools" style="margin-top:8px"><button class="btn sm" id="apAdd">+ Add caller</button><span class="cv-sub">Changes save as you leave each box. The caller creates their own password on the sign-in page (“First time? Create account”) with this exact email.</span></div>
+  </div>
+  <div class="sect"><h3>Daily list</h3>
+    <div class="tools">
+      <select id="apWho">${callers.map(c=>`<option value="${c.id}" ${c.id===ap.caller?'selected':''}>${esc(c.name)}</option>`).join('')}</select>
+      <button class="btn sm" id="apPrev">◀</button><input type="date" id="apDay" value="${esc(ap.day)}"><button class="btn sm" id="apNext">▶</button>
+      <b>${esc(dayLabel(ap.day))}</b>
+      <span class="spacer"></span>
+      <span>${L.length} assigned · ${tot.called} called · ${tot.yes} interested · paid ${money(tot.paid)} · commission <b>${money(tot.com)}</b></span>
+    </div>
+    <div class="tools" style="margin:8px 0">
+      <button class="btn sm orange" id="apAssignShown">Assign the ${Math.min(filtered.length,100)} businesses shown in the main list</button>
+      <span class="cv-sub">Filter the main list first (e.g. the “Call first” view). Businesses already on any list that day are skipped. Max 100 at a time.</span>
+    </div>
+    <table class="mini"><thead><tr><th>#</th><th>Business</th><th>Result</th><th>Tip</th><th>Paid</th><th>Commission</th><th></th></tr></thead><tbody>${aRows||'<tr><td colspan="7" style="padding:20px;color:var(--muted)">Nothing assigned to this caller for this day.</td></tr>'}</tbody></table>
+  </div>`;
+  $('apBody').querySelectorAll('tr[data-c] input').forEach(inp=>inp.addEventListener('change',async()=>{
+    const id=+inp.closest('tr').dataset.c, k=inp.dataset.cf; let v = inp.type==='checkbox'?inp.checked:inp.value.trim();
+    if(k==='email') v = v ? v.toLowerCase() : null; if(k==='commission_rate') v = +v;
+    const { error } = await sb.from('rezsite_callers').update({[k]:v}).eq('id',id);
+    toast(error?'Could not save: '+error.message:'Saved', !!error); await loadCallers();
+  }));
+  $('apAdd').onclick = async()=>{ const name=prompt('Caller’s name:'); if(!name) return; const email=prompt('The email they’ll sign in with (you can add it later):')||null; const { error } = await sb.from('rezsite_callers').insert({ name, email: email&&email.trim().toLowerCase() }); if(error) toast(error.message,true); apRender(); };
+  $('apWho').onchange = e=>{ ap.caller=+e.target.value; apRender(); };
+  $('apDay').onchange = e=>{ ap.day=e.target.value; apRender(); };
+  $('apPrev').onclick = ()=>{ ap.day=addDays(ap.day,-1); apRender(); };
+  $('apNext').onclick = ()=>{ ap.day=addDays(ap.day,1); apRender(); };
+  $('apAssignShown').onclick = async()=>{
+    const ids = filtered.slice(0,100).map(r=>r.id); if(!ids.length) return toast('The main list is empty', true);
+    if(!confirm(`Add ${ids.length} businesses to ${callerName(ap.caller)}’s list for ${dayLabel(ap.day)}?`)) return;
+    const n = await assign(ids, ap.caller, ap.day); if(n) toast(`Assigned ${n}`); apRender();
+  };
+  $('apBody').querySelectorAll('tr[data-a] input').forEach(inp=>inp.addEventListener('change',async()=>{
+    const id=+inp.closest('tr').dataset.a, k=inp.dataset.af; let v=inp.value.trim();
+    v = k==='tips' ? (v||null) : (v===''?null:+v);
+    const { error } = await sb.from('call_assignments').update({[k]:v, updated_at:new Date().toISOString()}).eq('id',id);
+    toast(error?'Could not save: '+error.message:'Saved', !!error); if(k!=='tips') apRender();
+  }));
+  $('apBody').querySelectorAll('[data-del]').forEach(b=>b.onclick=async()=>{ if(!confirm('Remove this business from the list?')) return; await sb.from('call_assignments').delete().eq('id',+b.dataset.del); apRender(); });
+  $('apBody').querySelectorAll('[data-unl]').forEach(b=>b.onclick=async()=>{ await sb.rpc('admin_unlock_call',{p_id:+b.dataset.unl}); toast('Unlocked'); apRender(); });
+}
 
 boot();
 </script>
