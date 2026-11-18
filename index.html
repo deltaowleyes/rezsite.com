@@ -1,49 +1,456 @@
-<!DOCTYPE html>
-
+<!doctype html>
 <html lang="en-CA">
 <head>
-<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>RezSite | Web design for Indigenous businesses &amp; community directories</title>
-<meta content="RezSite helps Indigenous entrepreneurs build professional websites, and connects communities through free business, church and event directories. Affiliated with BAKEaWeb." name="description"/>
-<meta content="#103b3c" name="theme-color"/>
-<link href="assets/site.css?v=shore-to-shore-13" rel="stylesheet"/>
-<script defer="" src="assets/site.js"></script>
-<link href="assets/brand/rezsite-favicon.svg" rel="icon" type="image/svg+xml"/><meta content="website" property="og:type"/><meta content="RezSite" property="og:site_name"/><meta content="light" name="color-scheme"/><!-- Cloudflare Web Analytics (visitor counts, no cookies) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "72da8042a421467a9c20229d86902248"}'></script></head>
-<body data-brand="shore-to-shore" data-page="home">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RezSite | Your website, built for you. Free at yourname.rezsite.com</title>
+<meta name="description" content="RezSite builds websites for Indigenous businesses. Free address at yourname.rezsite.com, free hosting, free preview first. Custom design from $100. Plus a free directory of 4,996 Indigenous businesses.">
+<meta name="theme-color" content="#06482F">
+<link rel="icon" type="image/svg+xml" href="assets/brand/rezsite-favicon.svg">
+<link rel="canonical" href="https://rezsite.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RezSite">
+<meta property="og:title" content="RezSite | Your website, built for you. Free at yourname.rezsite.com">
+<meta property="og:description" content="Websites for Indigenous businesses: free yourname.rezsite.com address, free hosting, free preview first, custom design from $100. Plus a free directory of 4,996 businesses.">
+<style>
+@font-face{font-family:"Bricolage";src:url(assets/home/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(assets/home/fonts/newsreader-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(assets/home/fonts/newsreader-latin-wght-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+@font-face{font-family:"DM Sans";src:url(assets/home/fonts/dm-sans-latin-wght-normal.woff2) format("woff2");font-weight:100 1000;font-display:swap}
+:root{--green:#06482F;--deep:#04281B;--gold:#F4AD27;--sun:#FFD36A;--orange:#A84E00;--wordmark:#F39200;--river:#08698A;--sky:#1DB6D2;--cream:#FBF5E9;--ink:#10241B;--muted:#4A5F55;--line:#E3DACA}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:"Newsreader",Georgia,serif;color:var(--ink);background:var(--cream);font-size:19px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:99;background:#fff;padding:8px 12px}
+h1,h2,h3{font-family:"Bricolage",sans-serif;line-height:.98;letter-spacing:-.02em;margin:0}
+.eyebrow{font-family:"Bricolage",sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+.btn,.nav,.ticks,.claim,.stat span,.card b,.card span,.badge,.bar,.pill,.res b,.ev .t,.ev-head,.contact a,footer h4,.legal,.sticker span,.search,.price,.list b,.step .n{font-family:"Bricolage",sans-serif}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:17px;padding:16px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;font-family:"Bricolage",sans-serif;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 6px 0 var(--deep)}
+.btn-primary:hover{box-shadow:0 8px 0 var(--deep)}
+.btn-gold{background:var(--gold);color:var(--deep);box-shadow:0 6px 0 #B97A08}
+.btn-ghost{background:transparent;color:inherit;border:2px solid currentColor}
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(251,245,233,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo img{height:44px;width:auto}
+.nav{display:flex;gap:28px;align-items:center;font-weight:600;font-size:15px}
+.nav a{text-decoration:none}.nav a:not(.btn):hover{color:var(--river)}
+.nav .btn{padding:11px 20px;font-size:15px;box-shadow:0 4px 0 var(--deep)}
+.menu-btn{display:none;background:none;border:2px solid var(--green);border-radius:12px;width:46px;height:46px;color:var(--green)}
+/* hero */
+.hero{position:relative;overflow:hidden;padding:48px 0 96px}
+.sunball{position:absolute;right:-180px;top:-200px;width:760px;height:760px;border-radius:50%;background:radial-gradient(circle at 40% 40%,var(--sun),var(--gold) 60%);z-index:0}
+.rays{position:absolute;right:-180px;top:-200px;width:760px;height:760px;z-index:0;animation:spin 90s linear infinite;opacity:.55}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(52px,6.2vw,90px);font-weight:800;color:var(--green)}
+.nw{white-space:nowrap}.hero h1 em{font-family:"Newsreader",serif;font-style:italic;font-weight:500;letter-spacing:-.03em;font-style:normal;color:var(--orange)}
+.lede{font-family:"Newsreader",Georgia,serif;font-size:23px;line-height:1.45;max-width:580px;margin:24px 0 0;color:#2E4339}
+.voice{font-family:"Newsreader",Georgia,serif;font-style:italic;font-weight:400}
+.claim{margin-top:34px;background:#fff;border:3px solid var(--green);border-radius:22px;padding:10px;display:flex;align-items:center;gap:6px;max-width:640px;box-shadow:0 10px 0 var(--green)}
+.claim label{display:flex;align-items:center;flex:1;min-width:0;font-family:"Bricolage";font-weight:700;font-size:24px;padding-left:14px;color:var(--green)}
+.claim .lock{width:18px;margin-right:8px;flex:none}
+.claim input{flex:0 1 auto;width:auto;min-width:0;border:0;outline:0;font:inherit;color:var(--orange);background:transparent;padding:10px 0;text-align:left}
+.claim label{cursor:text;position:relative}
+.meas{position:absolute;visibility:hidden;white-space:pre;font:inherit;left:0;top:0}
+.claim input::placeholder{color:#C9853A}
+.claim .tld{white-space:nowrap}
+.claim .btn{flex:none}
+.claim:focus-within{box-shadow:0 10px 0 var(--orange);border-color:var(--orange)}
+.small{font-size:15px;color:var(--muted);margin-top:22px}
+.small b{color:var(--green)}
+.contact{margin:16px 0 0;font-size:15px;color:var(--muted)}
+.contact a{color:var(--green);font-weight:700}
+.ticks{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 0;padding:0;list-style:none;font-weight:600;font-size:15px}
+.ticks li{display:flex;gap:8px;align-items:center}
+.ticks svg{flex:none}
+/* phone mock */
+.mock{position:relative;justify-self:center;width:330px}
+.phone{background:var(--deep);border-radius:44px;padding:12px;box-shadow:0 40px 80px -20px rgba(4,40,27,.55);transform:rotate(3deg)}
+.screen{border-radius:34px;overflow:hidden;background:#fff}
+.bar{display:flex;align-items:center;gap:6px;padding:12px 14px;background:#F2F2F0;font-size:13px;font-weight:600;color:#333}
+.bar .addr{flex:1;background:#fff;border-radius:10px;padding:7px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar .addr b{color:var(--orange)}
+.screen{position:relative}
+.screen img{width:100%;height:520px;object-fit:cover;object-position:top;transition:opacity .25s}
+.screen img.swap{opacity:0}
+.bar .addr b::after{content:"";display:inline-block;width:2px;height:13px;background:var(--orange);margin-left:1px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.badge{position:absolute;left:-46px;bottom:56px;background:#fff;border:2px solid var(--green);border-radius:16px;padding:10px 14px;display:flex;gap:10px;align-items:center;font-weight:700;font-size:14px;box-shadow:0 8px 0 var(--green);transform:rotate(-4deg)}
+.badge small{display:block;font-weight:500;color:var(--muted);font-size:12px}
+.sticker{position:absolute;right:-28px;top:40px;width:118px;height:118px;border-radius:50%;background:var(--green);color:var(--sun);display:grid;place-items:center;text-align:center;font-family:"Bricolage";font-weight:800;font-size:19px;line-height:1;transform:rotate(12deg)}
+.sticker span{display:block;font-size:12px;font-weight:700;letter-spacing:.08em;color:#fff;margin-top:4px}
+.riverband{display:block;width:100%;height:70px;margin-top:-40px;position:relative;z-index:2}
+.riverband .wv{animation:wv 7s linear infinite}
+@keyframes wv{to{transform:translateX(-240px)}}
+.hero .wrap.fw{display:block}
+.facts{position:relative;z-index:1;list-style:none;margin:56px 0 0;padding:22px 0 0;border-top:2px solid var(--green);display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.facts b{display:block;font-family:"Bricolage";font-weight:800;font-size:34px;color:var(--green);line-height:1.05}
+.facts li:first-child b{color:var(--orange)}
+.facts span{font-family:"Bricolage";font-size:15px;color:var(--muted)}
+/* offer blocks */
+.offer{padding:56px 0 96px}
+.offer-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.block{border-radius:32px;padding:44px}
+.free{background:var(--green);color:#fff}
+.paid{background:var(--gold);color:var(--deep)}
+.block h2{font-size:clamp(38px,4.2vw,60px);font-weight:800}
+.free h2 em{font-style:normal;color:var(--sun)}
+.list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:16px}
+.list li{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
+.list .ic{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.12);display:grid;place-items:center}
+.list b{display:block;font-size:19px}
+.list span{opacity:.86;font-size:16px}
+.price{font-family:"Bricolage";font-weight:800;font-size:clamp(80px,9vw,132px);line-height:.85;letter-spacing:-.04em;margin:18px 0 6px}
+.price sup{font-size:.4em;vertical-align:top;margin-right:4px}
+.paid p{font-size:18px;margin:12px 0 26px;max-width:420px}
+/* case study */
+.case{padding:20px 0 110px}
+.case-head{max-width:820px;margin-bottom:46px}
+.case-head h2{font-size:clamp(44px,5.4vw,80px);font-weight:800;color:var(--green);margin-top:10px}
+.case-head h2 em{color:var(--orange)}
+.case-head p:not(.eyebrow){font-size:22px;line-height:1.45;color:#3A4D44;margin:18px 0 0}
+.case-grid{display:grid;grid-template-columns:1.05fr 1fr .55fr;gap:44px;align-items:start}
+.case-shot{margin:0;position:relative;border-radius:22px;overflow:hidden;border:3px solid var(--green);box-shadow:0 12px 0 var(--green)}
+.case-shot img{width:100%;height:640px;object-fit:cover;object-position:top}
+.case-url{position:absolute;left:14px;top:14px;background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;color:var(--ink);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.case-url b{color:var(--orange)}
+.pins{list-style:none;margin:0;padding:0;counter-reset:p;display:grid;gap:22px}
+.pins li{counter-increment:p;display:grid;grid-template-columns:44px 1fr;column-gap:14px;row-gap:4px;align-items:start}
+.pins li::before{content:counter(p);width:44px;height:44px;border-radius:50%;background:var(--gold);color:var(--deep);display:grid;place-items:center;font-family:"Bricolage";font-weight:800;font-size:20px;grid-row:span 2}
+.pins b{display:block;font-family:"Bricolage";font-size:22px;line-height:1.15;color:var(--green);grid-column:2;padding-top:9px}
+.pins span{grid-column:2;color:var(--muted);font-size:16px}
+.case-phone{margin:60px 0 0;background:var(--deep);padding:9px;border-radius:34px;box-shadow:0 30px 60px -20px rgba(4,40,27,.5)}
+.case-phone img{border-radius:26px;width:100%}
+[data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+[data-reveal].on{opacity:1;transform:none}
+/* portfolio */
+.work{background:var(--deep);color:#fff;padding:100px 0;overflow:hidden}
+.work-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px}
+.work h2{font-size:clamp(44px,5.6vw,84px);font-weight:800;max-width:780px}
+.work h2 em{font-style:normal;color:var(--gold)}
+.work-head p{max-width:360px;color:#C9D8CF;margin:0;font-family:"Newsreader",serif;font-size:20px;line-height:1.45}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:#0B3A28;border-radius:20px;overflow:hidden;text-decoration:none;transition:transform .2s}
+.card:hover{transform:translateY(-6px)}
+.card img{aspect-ratio:960/645;height:auto;object-fit:cover;object-position:top;width:100%}
+.card .meta{padding:14px 16px 16px}
+.card b{display:block;font-size:16px}
+.card span{font-size:13px;color:var(--sun);font-weight:600;overflow-wrap:anywhere}
+.note{font-size:13px;color:#9FB7AA;margin-top:22px}
+/* directory */
+.dir{padding:100px 0;background:var(--cream)}
+.dir-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.dir .stats{margin-top:40px}
+.dir h2{font-size:clamp(42px,5vw,72px);font-weight:800;color:var(--green)}
+.bignum{font-family:"Bricolage";font-weight:800;color:var(--orange);font-size:clamp(70px,8vw,120px);line-height:.9;letter-spacing:-.04em}
+.dir p{font-family:"Newsreader",serif;font-size:21px;line-height:1.5;color:#3A4D44;max-width:520px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.stat{background:#fff;border:2px solid var(--line);border-radius:24px;padding:26px;text-decoration:none;transition:border-color .2s}
+.stat:hover{border-color:var(--green)}
+.stat b{font-family:"Bricolage";font-size:46px;font-weight:800;color:var(--green);display:block;line-height:1}
+.stat span{font-weight:600}
+.stat small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+.stat.hl{background:var(--green);border-color:var(--green);color:#fff}
+.stat.hl b{color:var(--sun)}.stat.hl small{color:#C9D8CF}
+.search{display:flex;margin-top:28px;max-width:520px;background:#fff;border:2px solid var(--green);border-radius:999px;padding:6px}
+.search input{flex:1;border:0;outline:0;font:inherit;padding:10px 16px;background:transparent;min-width:0}
+.search .btn{padding:12px 22px;box-shadow:none}
+.results{margin-top:14px;max-width:520px;display:grid;gap:8px}
+.res{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;background:#fff;border:2px solid var(--line);border-radius:16px;padding:12px 16px}
+.res b{display:block;font-size:16px;line-height:1.25}
+.res small{color:var(--muted);font-size:13px}
+.res .pill{font-size:12px;font-weight:700;border-radius:999px;padding:5px 11px;white-space:nowrap;text-decoration:none}
+.res .pill.y{background:#E1EFE6;color:var(--green)}
+.res .pill.n{background:#B85F00;color:#fff}
+.res-more{font-size:14px;color:var(--muted);padding-left:6px}
+.res-more a{color:var(--green);font-weight:700}
+.events{grid-column:1/-1;background:#fff;border:2px solid var(--line);border-radius:24px;padding:22px 26px}
+.ev-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.ev-head b{font-family:"Bricolage";font-size:24px;color:var(--green)}
+.ev-head a{font-weight:700;color:var(--river);text-decoration:none;font-size:15px;white-space:nowrap}
+.ev-head{gap:12px}
+.ev{display:grid;grid-template-columns:58px 1fr;gap:14px;align-items:center;padding:12px 0;border-top:1px solid var(--line);text-decoration:none}
+.ev .d{background:var(--gold);color:var(--deep);border-radius:12px;text-align:center;line-height:1;padding:7px 0;font-family:"Bricolage";font-weight:800}
+.ev .d small{display:block;font-size:11px;letter-spacing:.08em;margin-bottom:2px}
+.ev .d b{font-size:22px}
+.ev .t{font-weight:700;font-size:16px;line-height:1.25;display:block}
+.ev .w{font-size:13px;color:var(--muted)}
+.ev:hover .t{color:var(--river)}
+/* steps */
+.steps{padding:96px 0;background:#fff;border-top:1px solid var(--line)}
+.steps h2{font-size:clamp(40px,4.6vw,64px);font-weight:800;color:var(--green);max-width:760px}
+.step-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px;counter-reset:s}
+.step{border-top:6px solid var(--gold);padding-top:22px}
+.step:nth-child(2){border-color:var(--sky)}.step:nth-child(3){border-color:var(--green)}
+.step h3{font-size:28px;margin:10px 0 8px}
+.step p{margin:0;color:var(--muted)}
+.step .n{font-family:"Bricolage";font-weight:800;font-size:15px;color:var(--orange);letter-spacing:.08em}
+/* final cta */
+.final{background:var(--gold);padding:96px 0;text-align:center;position:relative;overflow:hidden}
+.final h2{font-size:clamp(46px,6.6vw,104px);font-weight:800;color:var(--deep)}
+.final p{font-size:20px;max-width:620px;margin:20px auto 34px}
+footer{background:var(--deep);color:#C9D8CF;padding:56px 0 40px;font-size:15px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+footer h4{color:#fff;margin:0 0 12px;font-size:15px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+footer a{text-decoration:none}footer a:hover{color:var(--sun)}
+.foot-logo{background:#fff;border-radius:14px;padding:10px 14px;display:inline-block}
+.foot-logo img{height:36px}
+.legal{border-top:1px solid #1E4A39;margin-top:40px;padding-top:20px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px}
+.bake{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #3C6B58;border-radius:999px;padding:6px 12px 6px 8px;color:#fff;font-weight:600}
+@media (prefers-reduced-motion:reduce){.rays{animation:none}*{transition:none!important}}
+@media (max-width:1020px){
+ .hero .wrap,.offer-grid,.dir-grid{grid-template-columns:minmax(0,1fr)}
+ .case-grid{grid-template-columns:1fr 1fr}.case-phone{display:none}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .mock{margin-top:20px}
+ .foot{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+ body{font-size:16px}
+ .wrap{width:calc(100% - 36px)}
+ .nav{display:none}.menu-btn{display:grid;place-items:center}
+ .nav.open{display:flex;position:absolute;top:76px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--cream);padding:18px;gap:4px;border-bottom:1px solid var(--line)}
+ .nav.open a{padding:12px 4px}
+ .logo img{height:38px}
+ .hero{padding:36px 0 70px}
+ .sunball,.rays{width:420px;height:420px;right:-200px;top:-150px}
+ .hero h1{font-size:44px}
+ .lede{font-size:18px}
+ .claim{flex-direction:column;align-items:stretch;border-radius:20px;padding:12px}
+ .claim label{font-size:19px;padding:6px 6px 10px;border-bottom:2px dashed var(--line)}
+ .nw{white-space:normal}
+ .hero .wrap>div:first-child{display:contents}
+ .hero .wrap{display:flex;flex-direction:column;align-items:stretch;gap:0}
+ .hero h1{margin-top:6px}.lede{margin-top:18px}
+ .hero .eyebrow{order:1}.hero h1{order:2}.mock{order:3;margin:26px auto 4px;width:230px}.lede{order:4}.claim{order:5}.claim-msg{order:6}.contact{order:7}.ticks{order:8}
+ .screen img{height:300px}
+ .sticker{width:84px;height:84px;font-size:15px;right:-30px;top:30px}
+ .badge{left:-40px;bottom:30px;font-size:12px;padding:8px 10px}
+ .facts{grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+ .facts b{font-size:26px}.facts span{font-size:13px}
+ .sunball,.rays{opacity:.35}
+ .claim label{font-size:18px}
+ .claim .btn{justify-content:center;margin-top:10px}
+ .mock{width:270px}.screen img{height:400px}
+ .badge{left:-20px}.sticker{right:-14px;width:96px;height:96px;font-size:16px}
+ .block{padding:30px 24px;border-radius:24px}
+ .work,.dir,.steps,.final{padding:70px 0}
+ .work-head{flex-direction:column;align-items:start}
+ .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:18px;gap:12px;margin-inline:-18px;padding:0 18px 8px;scrollbar-width:none}
+ .grid::-webkit-scrollbar{display:none}
+ .card{flex:0 0 78%;scroll-snap-align:start}
+ .swipe-hint{display:block!important}
+ .card .meta{padding:10px 12px}
+ .card b{font-size:14px}
+ .card span{font-size:11.5px}
+ .stat small{font-size:13px}
+ .step-row{grid-template-columns:1fr;gap:30px}
+ .case{padding:10px 0 70px}
+ .case-head p{font-size:19px}
+ .case-grid{grid-template-columns:1fr;gap:28px}
+ .case-shot img{height:420px}
+ .case-phone{display:none}
+ .pins b{font-size:19px}
+ .lede{font-size:19px}
+ .riverband{height:44px;margin-top:-30px}
+ .eyebrow{font-size:12px;letter-spacing:.1em}
+ .stats{grid-template-columns:1fr 1fr;gap:10px}.stat{padding:18px}.stat b{font-size:34px}
+ .foot{grid-template-columns:1fr}
+ .btn{width:100%;justify-content:center}
+ .search .btn{width:auto}
+}
+.claim-msg{font-size:14px;margin:12px 0 0;min-height:0}
+.claim-msg:empty{display:none}
+</style>
+<!-- Cloudflare Web Analytics (visitor counts, no cookies) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "72da8042a421467a9c20229d86902248"}'></script>
+</head>
+<body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="announcement"><div class="container"><span aria-hidden="true" class="announce-dot"></span><span>Free community listings. Personal website design.</span><a href="directory.html?type=businesses">Explore the directories →</a></div></div>
-<header class="site-header"><div class="container nav-wrap">
-<a aria-label="RezSite — Web Design, Business Directories, Community" class="logo rezsite-readable-logo" href="index.html"><img alt="RezSite Shore to Shore, approved second logo variation: river, bridge, sunrise and forest" class="brand-logo-readable" height="210" src="assets/brand/rezsite-approved-bridge-equal-wordmark.svg" width="1075"/><span class="brand-services" aria-label="Web Design, Business Directories, Community"><span class="brand-services-desktop">WEB DESIGN <b aria-hidden="true">•</b> BUSINESS DIRECTORIES <b aria-hidden="true">•</b> COMMUNITY</span><span class="brand-services-mobile">WEB DESIGN <b aria-hidden="true">•</b> BUSINESS DIRECTORIES</span></span></a>
-<button aria-controls="primary-nav" aria-expanded="false" aria-label="Open navigation" class="nav-toggle" type="button"><span></span><span></span><span></span></button>
-<nav aria-label="Main navigation" class="nav-links" id="primary-nav"><a class="is-active" href="index.html">Home</a><a href="#services">Web design</a><a href="directory.html?type=businesses">Business directory</a><a href="directory.html?type=churches">Churches</a><a href="directory.html?type=events">Events</a><a class="nav-contact" href="mailto:deltaowleyes@gmail.com?subject=RezSite%20Website%20Consultation">Get a free consultation ↗</a></nav>
-</div></header>
+<header class="top">
+ <div class="wrap">
+  <a class="logo" href="#" aria-label="RezSite home"><img src="assets/home/img/logo.svg" alt="RezSite" width="226" height="44"></a>
+  <nav class="nav" id="nav" aria-label="Main">
+   <a href="#free">What's free</a><a href="#case">Case study</a><a href="#work">Our work</a><a href="#directory">Directory</a><a href="#how">How it works</a>
+   <a class="btn btn-primary" href="#claim">Claim your address</a>
+  </nav>
+  <button class="menu-btn" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+ </div>
+</header>
+
 <main id="main">
-<section aria-labelledby="hero-title" class="hero brand-hero">
-<div class="container brand-hero-grid">
-<div class="brand-hero-copy">
-<p class="eyebrow light"><span aria-hidden="true" class="accent-dot"></span> SHORE TO SHORE. BUSINESS TO COMMUNITY.</p>
-<h1 id="hero-title">Your business deserves a <em>place to grow.</em></h1>
-<p class="brand-hero-lead">Web design built around Indigenous entrepreneurs. From your first website to a fresh new look, RezSite helps people discover the work you do.</p>
-<div class="brand-hero-actions"><a class="button brand-button-gold" href="mailto:deltaowleyes@gmail.com?subject=RezSite%20Free%20Website%20Consultation">Get a free consultation <span aria-hidden="true">↗</span></a><a class="brand-text-link" href="directory.html?type=businesses">Find a business <span aria-hidden="true">→</span></a></div>
-<div class="brand-hero-points"><span><b>01</b> Indigenous business focus</span><span><b>02</b> Real people, personal service</span><span><b>03</b> Community directories</span></div>
-</div>
-<div class="brand-hero-visual"><picture><source media="(max-width: 600px)" srcset="assets/brand/rezsite-mobile-hero.svg"/><img alt="RezSite Shore to Shore artwork: pine forests, arched bridge, winding blue river and a golden sunrise, with BAKEaWeb affiliation" fetchpriority="high" height="860" src="assets/brand/rezsite-home-hero.svg" width="1920"/></picture><span class="brand-art-caption">OUR APPROVED SHORE TO SHORE DESIGN</span></div>
-</div>
-<div aria-hidden="true" class="brand-river-wave"></div>
+<section class="hero" id="claim">
+ <div class="sunball" aria-hidden="true"></div>
+ <svg class="rays" viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="#F4AD27" stroke-width=".6"><circle cx="100" cy="100" r="80"/><circle cx="100" cy="100" r="92" stroke-dasharray="2 4"/></g></svg>
+ <div class="wrap">
+  <div>
+   <p class="eyebrow" style="color:var(--river)">Shore to shore. Business to community.</p>
+   <h1><span class="nw">Your business.</span><br><span class="nw">Your website.</span><br><em class="nw">Free address.</em></h1>
+   <p class="lede">We design websites for Indigenous businesses. Every site gets a free <b>yourname.rezsite.com</b> address and free hosting. See your free preview before you pay a cent.</p>
+   <form class="claim" id="claimForm" action="mailto:chris@rezsite.com" method="get">
+    <label for="biz"><svg class="lock" viewBox="0 0 24 24" fill="none" stroke="#06482F" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><input id="biz" name="biz" size="12" autocomplete="organization" placeholder="yourbusiness" aria-label="Your business name"><span class="tld">.rezsite.com</span><span class="meas" id="meas" aria-hidden="true"></span></label>
+    <button class="btn btn-primary" type="submit">Claim it free <span aria-hidden="true">→</span></button>
+   </form>
+   <p class="claim-msg" id="claimMsg" role="status" aria-live="polite"></p>
+   <p class="contact">Rather talk first? Email <a href="mailto:chris@rezsite.com?subject=RezSite%20website">chris@rezsite.com</a> — you'll hear back from Chris or Leah, not a robot.</p>
+   <ul class="ticks">
+    <li><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#06482F"/><path d="M7 12.5l3.2 3L17 9" stroke="#FFD36A" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Free address</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#06482F"/><path d="M7 12.5l3.2 3L17 9" stroke="#FFD36A" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Free hosting</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#06482F"/><path d="M7 12.5l3.2 3L17 9" stroke="#FFD36A" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Free preview first</li>
+    <li><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#C25A00"/><path d="M7 12.5l3.2 3L17 9" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>Custom design from $100</li>
+   </ul>
+  </div>
+  <div class="mock" aria-hidden="true">
+   <div class="phone"><div class="screen">
+    <div class="bar"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="3"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span class="addr"><b id="mockName" data-live>pinecrestbay</b>.rezsite.com</span></div>
+    <img id="mockImg" src="assets/home/img/harbour-a-phone.webp" alt="" width="293" height="600">
+   </div></div>
+   <div class="sticker">$0<span>TO SEE IT</span></div>
+   <div class="badge"><svg width="30" height="30" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#F4AD27"/><path d="M7 19c0-5 4-9 9-9s9 4 9 9v3H7z" fill="#06482F"/><path d="M11 15v4M16 13v6M21 15v4" stroke="#F4AD27" stroke-width="2" stroke-linecap="round"/></svg><div>Baked with BAKE<small>the only catch: a small badge</small></div></div>
+  </div>
+ </div>
+ <div class="wrap fw">
+  <ul class="facts" aria-label="RezSite at a glance">
+   <li><b>$0</b><span>to see your preview</span></li>
+   <li><b>1–2 days</b><span>to your preview link</span></li>
+   <li><b>from $100</b><span>custom design, one time</span></li>
+   <li><b>4,996</b><span>businesses in our directory</span></li>
+  </ul>
+ </div>
 </section>
-<section aria-labelledby="hosting-title" class="hosting-band"><div class="container hosting-band-inner">
-<div aria-hidden="true" class="hosting-icon">✳</div><div class="hosting-copy"><p class="eyebrow">THE BAKEaWEB CONNECTION</p><h2 id="hosting-title">Free lifetime hosting for sites made with BAKEaWeb, <em>no purchase required.</em></h2><p>RezSite is affiliated with BAKEaWeb. <strong>Test-site notice:</strong> the hosting promise and eligibility terms are being finalized before the public RezSite.com launch; domain registration and service limits have not been specified.</p></div><a class="hosting-cta" href="https://bakeaweb.com/" rel="noopener noreferrer" target="_blank">Explore BAKEaWeb <span aria-hidden="true">↗</span></a>
-</div></section><section class="approved-logo-feature" aria-label="RezSite approved brand identity"><div class="container approved-logo-frame"><p class="eyebrow">REZSITE BRANDING · SELECTED DESIGN 02</p><picture><source media="(max-width: 650px)" srcset="assets/brand/rezsite-approved-bridge-equal-wordmark.svg"/><img alt="Approved second RezSite logo, web design, business directories and community events, affiliated with BAKEaWeb" loading="lazy" src="assets/brand/rezsite-approved-bridge-equal-wordmark.svg" width="1200" height="400"/></picture><p class="brand-feature-caption">Web design <span aria-hidden="true">•</span> Business directories <span aria-hidden="true">•</span> Community events</p></div></section><section class="service-intro section-pad" id="services"><div class="container"><div class="section-head"><div><p class="eyebrow">WHAT WE DO</p><h2>Websites shaped by <br/><span class="serif-italic">your story.</span></h2></div><p>We’re starting with hands-on website design services while our self-service Web Design Studio is being developed. We offer personal web design consultations now. Our self-service Studio is coming later — you can get started today.</p></div>
-<div class="service-grid"><article class="service-card"><span class="service-number">01</span><div class="service-symbol">▣</div><h3>New business websites</h3><p>Get a professional home online with clear information, mobile-friendly pages and a design that suits your work.</p><span class="service-foot">Start with a conversation <span aria-hidden="true">↗</span></span></article><article class="service-card"><span class="service-number">02</span><div class="service-symbol">◇</div><h3>Refresh what you have</h3><p>Already have a website? Let’s improve the presentation, make it easier to navigate and help customers find what matters.</p><span class="service-foot">Clear, practical improvements <span aria-hidden="true">↗</span></span></article><article class="service-card"><span class="service-number">03</span><div class="service-symbol">◎</div><h3>Get discovered</h3><p>Be part of our free, searchable directory of Indigenous businesses and community resources. Submit updates or corrections any time.</p><a class="service-foot" href="directory.html?type=businesses">Browse the directory <span aria-hidden="true">↗</span></a></article></div></div></section>
-<section aria-label="Ways to begin" class="trust-strip"><div class="container trust-grid"><div><span class="trust-number">01</span><strong>Free initial consultation</strong><small>Tell us what your business needs.</small></div><div><span class="trust-number">02</span><strong>Personal website design</strong><small>Human-led service while the Studio is in development.</small></div><div><span class="trust-number">03</span><strong>Free community listing</strong><small>Connect with customers through the directories.</small></div></div></section>
-<section class="partner-strip"><div class="container partner-inner"><div class="partner-label"><img alt="Affiliated with BAKEaWeb" height="75" src="assets/brand/rezsite-affiliation.svg" width="395"/></div><div class="partner-statement"><span class="baker-ribbon">WEB BAKERS FOR HIRE!</span><p>RezSite is affiliated with BAKEaWeb — a growing approach to website creation and access to web design help.</p></div><a class="partner-link" href="https://bakeaweb.com/" rel="noopener noreferrer" target="_blank">Visit BAKEaWeb <span aria-hidden="true">↗</span></a></div></section>
-<section class="directory-section section-pad" id="directory"><div class="container"><div class="directory-head"><div><p class="eyebrow">THE COMMUNITY DIRECTORY</p><h2>Find the people and places<br/><span class="serif-italic">that make community.</span></h2></div><p>Free listings, useful connections. Explore public-source research records curated by Delta Owl Eyes. Inclusion does not itself verify ownership, operation or eligibility.</p></div><div aria-label="Directory snapshot totals" class="directory-meta homepage-meta">
-<span><strong data-record-total="businesses">—</strong> business records</span>
-<span><strong data-record-total="churches">—</strong> church records</span>
-<span><strong data-record-total="events">—</strong> event records</span>
-<small data-snapshot-date="">Source-linked public research · verification varies</small>
-</div><div class="directory-grid"><a class="directory-tile featured" href="directory.html?type=businesses"><div class="tile-top"><span>01 / BUSINESS DIRECTORY</span><span class="arrow-bubble">↗</span></div><div class="tile-art brand-directory-art"><img alt="" height="460" loading="lazy" src="assets/brand/directory-businesses.svg" width="1600"/></div><div class="tile-bottom"><div><h3>Indigenous businesses</h3><p>Explore businesses, makers, trades and services across Canada.</p></div><span class="tile-action">EXPLORE <span aria-hidden="true">→</span></span></div></a><a class="directory-tile" href="directory.html?type=churches"><div class="tile-top"><span>02 / COMMUNITY DIRECTORY</span><span class="arrow-bubble">↗</span></div><div class="tile-art brand-directory-art"><img alt="" height="460" loading="lazy" src="assets/brand/directory-churches.svg" width="1600"/></div><div class="tile-bottom"><div><h3>Churches</h3><p>Find public church listings serving First Nations communities.</p></div><span class="tile-action">EXPLORE <span aria-hidden="true">→</span></span></div></a><a class="directory-tile" href="directory.html?type=events"><div class="tile-top"><span>03 / WHAT'S HAPPENING</span><span class="arrow-bubble">↗</span></div><div class="tile-art brand-directory-art"><img alt="" height="460" loading="lazy" src="assets/brand/directory-events.svg" width="1600"/></div><div class="tile-bottom"><div><h3>Community events</h3><p>See public cultural, educational and community gatherings.</p></div><span class="tile-action">EXPLORE <span aria-hidden="true">→</span></span></div></a></div><div class="directory-note"><span aria-hidden="true">ⓘ</span><p>Listings are sourced from Delta Owl Eyes and may not be owner-confirmed. Information can change; always verify details with the business, church or organizer.</p><a href="mailto:deltaowleyes@gmail.com?subject=RezSite%20Directory%20Listing%20Update">Claim or correct a listing <span aria-hidden="true">↗</span></a></div></div></section>
-<section class="process-section section-pad" id="how-it-works"><div class="container process-grid"><div><p class="eyebrow light">OUR APPROACH</p><h2>From idea to<br/><span class="serif-italic">online presence.</span></h2><p>No confusing process. We start by understanding your business, then agree on the work and pricing before any paid project begins.</p><a class="button button-cream" href="mailto:deltaowleyes@gmail.com?subject=RezSite%20Website%20Inquiry">Let's talk about your project ↗</a></div><div class="process-steps"><article><span>01</span><div><h3>Tell us what you need</h3><p>Share your business, your goals, and what your website needs to accomplish.</p></div></article><article><span>02</span><div><h3>Review your options</h3><p>We discuss the scope, approach and quote before any paid work begins.</p></div></article><article><span>03</span><div><h3>Build something useful</h3><p>We focus on clear, accessible design that works across screen sizes.</p></div></article></div></div></section>
-<section class="closing-section"><div class="container closing-inner" data-brand="final"><div><p class="eyebrow">READY WHEN YOU ARE</p><h2>Let's make your next<br/><span class="serif-italic">chapter easier to find.</span></h2></div><div><p>Whether you need a first website, a redesign, or an update to your free listing, reach out. Website consultations are free; paid work is quoted before it begins.</p><a class="button button-dark" href="mailto:deltaowleyes@gmail.com?subject=RezSite%20Website%20Consultation">Start a conversation <span aria-hidden="true">↗</span></a></div></div></section>
-</main><footer class="site-footer"><div class="container footer-main"><a aria-label="RezSite — home" class="logo footer-logo rezsite-readable-logo" href="index.html"><img alt="RezSite Shore to Shore approved logo variation two" class="brand-logo-readable" height="210" loading="lazy" src="assets/brand/rezsite-approved-bridge-equal-wordmark.svg" width="1075"/><span class="brand-services"><span class="brand-services-desktop">WEB DESIGN <b aria-hidden="true">•</b> BUSINESS DIRECTORIES <b aria-hidden="true">•</b> COMMUNITY</span><span class="brand-services-mobile">WEB DESIGN <b aria-hidden="true">•</b> BUSINESS DIRECTORIES</span></span></a><div class="footer-columns"><div><b>Explore</b><a href="index.html#services">Web design</a><a href="directory.html?type=businesses">Businesses</a><a href="directory.html?type=churches">Churches</a><a href="directory.html?type=events">Events</a></div><div><b>Connect</b><a href="mailto:deltaowleyes@gmail.com?subject=RezSite%20Inquiry">Contact RezSite</a><a href="https://bakeaweb.com/" rel="noopener noreferrer" target="_blank">BAKEaWeb</a><a href="https://deltaowleyes.ca/" rel="noopener noreferrer" target="_blank">Delta Owl Eyes</a></div></div></div><div class="container footer-bottom"><span>© <span data-year="">2026</span> RezSite · Currently in development</span><span>Community first. Built with purpose.</span></div></footer>
-</body></html>
+
+<svg class="riverband" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 40 C 240 10 420 70 720 40 S 1200 10 1440 36 V90 H0Z" fill="#1DB6D2"/><path d="M0 58 C 260 30 460 86 760 56 S 1220 30 1440 54 V90 H0Z" fill="#08698A"/><path class="wv" d="M0 50 q60-14 120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0 t120 0" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".7"/></svg>
+<section class="offer" id="free" aria-labelledby="free-h">
+ <div class="wrap offer-grid">
+  <div class="block free">
+   <p class="eyebrow" style="color:var(--sun)">Free, for every site we build</p>
+   <h2 id="free-h">Three things you <em class="voice">never</em> pay for.</h2>
+   <ul class="list">
+    <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD36A" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><div><b>yourname.rezsite.com</b><span>Your own web address, ready the day your site goes live.</span></div></li>
+    <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD36A" stroke-width="2.2"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><div><b>Hosting</b><span>We keep your site online. In return, a small “Baked with BAKE” badge sits in your footer.</span></div></li>
+    <li><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FFD36A" stroke-width="2.2"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><div><b>Your preview</b><span>We design it first. You look it over on your phone. No payment, no pressure.</span></div></li>
+   </ul>
+  </div>
+  <div class="block paid">
+   <p class="eyebrow">When you love it</p>
+   <h2>Custom design</h2>
+   <div class="price"><sup>from</sup>$100</div>
+   <p>One-time price, quoted before any work you pay for. Already have a website? We'll give it a fresh new look the same way. Real people, personal service.</p>
+   <a class="btn btn-primary" href="#claim">Start my free preview <span aria-hidden="true">→</span></a>
+  </div>
+ </div>
+</section>
+
+
+<section class="case" id="case" aria-labelledby="case-h">
+ <div class="wrap">
+  <div class="case-head"><p class="eyebrow" style="color:var(--orange)">Case study · a marina on the lake</p><h2 id="case-h">What we build, <em class="voice">piece by piece.</em></h2><p>Pinecrest Bay Marina (a sample business) needed boaters to see slip rates and book fast — on a phone, on the water. Here's every part we built, and why.</p></div>
+  <div class="case-grid">
+   <figure class="case-shot" data-reveal><img src="assets/home/img/harbour-a-tall.webp" alt="Full-page design for Pinecrest Bay Marina" width="640" height="1200" loading="lazy"><span class="case-url"><b>pinecrestbay</b>.rezsite.com</span></figure>
+   <ol class="pins">
+    <li><b>A hero that's really theirs</b><span>Their own aerial photo of the docks, the lake's coordinates and one job up top: Book a slip.</span></li>
+    <li><b>The numbers boaters ask for</b><span>180 slips, 6 ft depth, VHF channel 68 and the anchor rating — answered before anyone calls.</span></li>
+    <li><b>Slip rates, in a real table</b><span>Seasonal and transient prices by boat length. No PDF, no “call for pricing.”</span></li>
+    <li><b>Fuel dock and boat storage</b><span>Covered slips, open slips, the fuel dock and storage — each easy to find, none buried in a menu.</span></li>
+    <li><b>Built for a thumb on a boat</b><span>“Book a slip” and “See slip rates” as big buttons on the phone, right under the headline.</span></li>
+   </ol>
+   <figure class="case-phone" data-reveal><img src="assets/home/img/harbour-a-phone.webp" alt="Phone view of the Pinecrest Bay Marina design" width="293" height="600" loading="lazy"></figure>
+  </div>
+ </div>
+</section>
+
+<section class="work" id="work" aria-labelledby="work-h">
+ <div class="wrap">
+  <div class="work-head">
+   <h2 id="work-h">Built for marinas, cafés, lodges, <em class="voice">trappers</em> and trades.</h2>
+   <p>Every design starts from the business's own story, photos and colours. Eight we've made — names changed.</p>
+  </div>
+  <div class="grid">
+   <a class="card" href="#claim" data-n="pinecrestbay" data-i="harbour"><img src="assets/home/img/harbour-a.webp" alt="Sample design for Pinecrest Bay Marina" loading="lazy" width="960" height="645"><div class="meta"><b>Pinecrest Bay Marina</b><span>pinecrestbay.rezsite.com</span></div></a>
+   <a class="card" href="#claim" data-n="cattailcoffee" data-i="letterboard"><img src="assets/home/img/letterboard-a.webp" alt="Sample design for Cattail Coffee &amp; Sweets" loading="lazy" width="960" height="645"><div class="meta"><b>Cattail Coffee &amp; Sweets</b><span>cattailcoffee.rezsite.com</span></div></a>
+   <a class="card" href="#claim" data-n="fernhilllodge" data-i="timber"><img src="assets/home/img/timber-b.webp" alt="Sample design for Fernhill Lake Lodge" loading="lazy" width="960" height="645"><div class="meta"><b>Fernhill Lake Lodge</b><span>fernhilllodge.rezsite.com</span></div></a>
+   <a class="card" href="#claim" data-n="islandhaul" data-i="homeward"><img src="assets/home/img/homeward-b.webp" alt="Sample design for Island Haul Moving &amp; Storage" loading="lazy" width="960" height="645"><div class="meta"><b>Island Haul Moving</b><span>islandhaul.rezsite.com</span></div></a>
+   <a class="card" href="#claim" data-n="ironwoodcivil" data-i="bedrock"><img src="assets/home/img/bedrock-a.webp" alt="Sample design for Ironwood Civil &amp; Shoreline" loading="lazy" width="960" height="645"><div class="meta"><b>Ironwood Civil &amp; Shoreline</b><span>ironwoodcivil.rezsite.com</span></div></a>
+   <a class="card" href="#claim" data-n="morningstarpress" data-i="colophon"><img src="assets/home/img/colophon-a.webp" alt="Sample design for Morning Star Press" loading="lazy" width="960" height="645"><div class="meta"><b>Morning Star Press</b><span>morningstarpress.rezsite.com</span></div></a>
+   <a class="card" href="#claim" data-n="northwaygroup" data-i="quill"><img src="assets/home/img/quill-a.webp" alt="Sample design for Northway Consulting Group" loading="lazy" width="960" height="645"><div class="meta"><b>Northway Consulting</b><span>northwaygroup.rezsite.com</span></div></a>
+   <a class="card" href="#claim" data-n="cedarmarsh" data-i="trapline"><img src="assets/home/img/trapline-a.webp" alt="Sample design for Cedar Marsh Trapping &amp; Tanning" loading="lazy" width="960" height="645"><div class="meta"><b>Cedar Marsh Trapping</b><span>cedarmarsh.rezsite.com</span></div></a>
+  </div>
+  <p class="note"><span class="swipe-hint" style="display:none">Swipe to see all eight → · </span>Sample designs use invented business names.</p>
+ </div>
+</section>
+
+<section class="dir" id="directory" aria-labelledby="dir-h">
+ <div class="wrap dir-grid">
+  <div>
+   <p class="eyebrow" style="color:var(--river)">The RezSite directory · free listings</p>
+   <h2 id="dir-h">Find the people and places that make community.</h2>
+   <p>A free, searchable directory of Indigenous businesses, churches and community events in 13 provinces and territories. Is your business listed? Claim it or fix it any time.</p>
+   <form class="search" id="dirSearch" role="search" action="https://rezsite.com/directory.html">
+    <input type="hidden" name="type" value="businesses">
+    <input id="dq" name="q" aria-label="Search 4,996 businesses by name or town" placeholder="Search a name or town — try “Kettle Point”" autocomplete="off">
+    <button class="btn btn-primary" type="submit">Search</button>
+   </form>
+   <div class="results" id="dres" aria-live="polite"></div>
+  </div>
+  <div class="stats">
+   <a class="stat hl" href="https://rezsite.com/directory.html?type=businesses"><b>4,996</b><span>Indigenous businesses</span><small>from BC to Newfoundland and Labrador</small></a>
+   <a class="stat" href="https://rezsite.com/directory.html?type=events"><b>216</b><span>Community events</span><small>gatherings, conferences, celebrations</small></a>
+   <a class="stat" href="https://rezsite.com/directory.html?type=churches"><b>200</b><span>Churches</span><small>serving First Nations communities</small></a>
+   <a class="stat" href="mailto:chris@rezsite.com?subject=RezSite%20listing%20update"><b>2,992</b><span>listed with no website yet</span><small>is yours one of them? →</small></a>
+   <div class="events"><div class="ev-head"><b>Coming up in community</b><a href="https://rezsite.com/directory.html?type=events">All events →</a></div><div id="evList"></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="steps" id="how" aria-labelledby="how-h">
+ <div class="wrap">
+  <p class="eyebrow" style="color:var(--orange)">How it works</p>
+  <h2 id="how-h">From your name to your website, in three steps.</h2>
+  <div class="step-row">
+   <div class="step"><span class="n">01</span><h3>Tell us about you</h3><p>Your business, your photos, your logo and the one thing your website must do — calls, bookings or orders.</p></div>
+   <div class="step"><span class="n">02</span><h3>See your free preview</h3><p>We design it and send you a link. Look it over on your phone. Ask for changes.</p></div>
+   <div class="step"><span class="n">03</span><h3>Go live</h3><p>Pick it, and it's online at yourname.rezsite.com with free hosting. Prices from $100, quoted first.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="final" aria-labelledby="final-h">
+ <div class="wrap">
+  <h2 id="final-h">yourname<br>.rezsite.com</h2>
+  <p>Tell us your business name and we'll build your free preview. Website consultations are free; paid work is quoted before it begins.</p>
+  <a class="btn btn-primary" href="#claim">Claim my free address <span aria-hidden="true">→</span></a>
+  <p style="font-size:16px;margin-top:22px">Questions? Email <a href="mailto:chris@rezsite.com?subject=RezSite%20Inquiry" style="font-weight:700">chris@rezsite.com</a></p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="foot">
+   <div><span class="foot-logo"><img src="assets/home/img/logo.svg" alt="RezSite" width="185" height="36"></span><p style="max-width:300px">Web design and community directories for Indigenous businesses. Shore to shore.</p></div>
+   <div><h4>Websites</h4><ul><li><a href="#free">What's free</a></li><li><a href="#work">Our work</a></li><li><a href="#how">How it works</a></li></ul></div>
+   <div><h4>Directory</h4><ul><li><a href="https://rezsite.com/directory.html?type=businesses">Businesses</a></li><li><a href="https://rezsite.com/directory.html?type=churches">Churches</a></li><li><a href="https://rezsite.com/directory.html?type=events">Events</a></li></ul></div>
+   <div><h4>Contact</h4><ul><li><a href="mailto:chris@rezsite.com?subject=RezSite%20Inquiry">Email us</a></li><li><a href="mailto:chris@rezsite.com?subject=RezSite%20listing%20update">Claim or fix a listing</a></li><li><a href="https://bakeaweb.com/">BAKEaWeb</a></li></ul></div>
+  </div>
+  <div class="legal"><span>© 2026 RezSite. Directory listings come from public sources and may not be owner-confirmed.</span><a class="bake" href="https://bakeaweb.com/"><svg width="20" height="20" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#F4AD27"/><path d="M7 19c0-5 4-9 9-9s9 4 9 9v3H7z" fill="#06482F"/></svg>Baked with BAKE</a></div>
+ </div>
+</footer>
+<script src="assets/home/events.js"></script>
+<script src="assets/home/shared.js"></script>
+<script>
+(function(){var L=[['pinecrestbay','harbour-a'],['cattailcoffee','letterboard-a'],['fernhilllodge','timber-b'],['islandhaul','homeward-b'],['cedarmarsh','trapline-a'],['ironwoodcivil','bedrock-a']],k=0,biz=document.getElementById('biz'),nm=document.getElementById('mockName'),im=document.getElementById('mockImg');
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ L.forEach(function(x){var i=new Image();i.src='assets/home/img/'+x[1]+'-phone.webp'});
+ function type(w,cb){var j=0;nm.textContent='';var t=setInterval(function(){if(biz.value){clearInterval(t);return}nm.textContent=w.slice(0,++j);if(j>=w.length){clearInterval(t);cb&&cb()}},70)}
+ setInterval(function(){if(biz.value||document.activeElement===biz)return;k=(k+1)%L.length;im.src='assets/home/img/'+L[k][1]+'-phone.webp';type(L[k][0])},3600);
+})();
+</script>
+<script>
+document.querySelectorAll('.card').forEach(function(c){c.addEventListener('mouseenter',function(){if(document.getElementById('biz').value)return;document.getElementById('mockName').textContent=c.dataset.n;document.getElementById('mockImg').src='assets/home/img/'+c.dataset.i+'-'+(c.dataset.i==='timber'||c.dataset.i==='homeward'?'b':'a')+'-phone.webp'})});
+</script>
+</body>
+</html>
