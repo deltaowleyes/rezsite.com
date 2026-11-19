@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verified businesses | RezSite</title>
+<meta name="description" content="Indigenous businesses whose RezSite listing was confirmed by the owner, newest first. Verified businesses can add their logo for free.">
+<meta name="theme-color" content="#06482F">
+<link rel="icon" type="image/svg+xml" href="assets/brand/rezsite-favicon.svg">
+<link rel="canonical" href="https://rezsite.com/verified.html">
+<meta property="og:type" content="website"><meta property="og:site_name" content="RezSite">
+<meta property="og:title" content="Verified businesses | RezSite">
+<meta property="og:description" content="Listings confirmed by the business owner, newest first.">
+<style>
+@font-face{font-family:"Bricolage";src:url(assets/home/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(assets/home/fonts/newsreader-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(assets/home/fonts/newsreader-latin-wght-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+:root{--green:#06482F;--deep:#04281B;--gold:#F4AD27;--sun:#FFD36A;--orange:#A84E00;--river:#08698A;--cream:#FBF5E9;--ink:#10241B;--muted:#4A5F55;--line:#E3DACA}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Newsreader",Georgia,serif;color:var(--ink);background:var(--cream);font-size:19px;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;z-index:99;background:#fff;padding:8px 12px}
+h1,h2,h3,.eyebrow,.btn,.nav,.pill,.meta,.count,label,input,button,.foot{font-family:"Bricolage",sans-serif}
+h1,h2,h3{line-height:1;letter-spacing:-.02em;margin:0}
+.eyebrow{font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
+.top{background:var(--cream);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.nav{display:flex;gap:22px;align-items:center;font-weight:600;font-size:16px}.nav a{text-decoration:none}.nav a:hover{color:var(--orange)}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:16px;padding:13px 22px;border-radius:999px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--green);color:#fff;box-shadow:0 5px 0 var(--deep)}
+.btn-gold{background:var(--gold);color:var(--deep);box-shadow:0 5px 0 #c98a12}
+.btn-ghost{background:#fff;color:var(--green);border:2px solid var(--green);padding:9px 16px;font-size:15px;box-shadow:none}
+.hero{background:var(--green);color:#fff;padding:64px 0 54px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-120px;top:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,var(--sun),var(--gold) 55%,transparent 56%);opacity:.9}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:18px;max-width:1240px}
+.hero h1{font-size:clamp(44px,7vw,84px);font-weight:800}
+.hero h1 em{font-family:"Newsreader",serif;font-weight:500;color:var(--sun)}
+.hero p{max-width:640px;margin:0;font-size:21px;color:#e5efe8}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:34px auto 22px}
+.tools input{flex:1 1 320px;font-size:18px;padding:15px 20px;border-radius:999px;border:2px solid var(--line);background:#fff}
+.tools input:focus{outline:3px solid var(--gold);border-color:var(--green)}
+.count{color:var(--muted);font-weight:600;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px;margin-bottom:70px}
+.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:12px;align-content:start;scroll-margin-top:100px}
+.card.hl{outline:4px solid var(--gold)}
+.head{display:flex;gap:14px;align-items:center}
+.logo-box{width:72px;height:72px;border-radius:16px;flex:none;display:grid;place-items:center;background:var(--cream);border:1px solid var(--line);overflow:hidden}
+.logo-box img{width:100%;height:100%;object-fit:contain;padding:6px;background:#fff}
+.logo-box span{font:800 30px "Bricolage",sans-serif;color:var(--green)}
+.card h2{font-size:23px;font-weight:700}
+.meta{font-size:14px;color:var(--muted);font-weight:500}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;background:#E4F3EA;color:var(--green);padding:4px 11px;border-radius:999px;width:max-content}
+.card p{margin:0;font-size:17px}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;font:600 15px "Bricolage",sans-serif}
+.links a{color:var(--river);text-decoration:underline;text-underline-offset:3px;word-break:break-all}
+.empty{background:#fff;border:1px dashed var(--line);border-radius:22px;padding:40px;text-align:center;color:var(--muted)}
+dialog{border:0;border-radius:24px;padding:28px;max-width:460px;width:calc(100% - 32px);box-shadow:0 30px 80px #0006}
+dialog::backdrop{background:#04281bb3}
+dialog h3{font-size:28px;margin-bottom:6px}
+dialog form{display:grid;gap:14px}
+dialog label{display:grid;gap:6px;font-weight:700;font-size:15px}
+dialog input[type=text]{font:800 26px/1 "Bricolage",sans-serif;letter-spacing:.25em;text-transform:uppercase;padding:12px 14px;border:2px solid var(--line);border-radius:14px;text-align:center}
+dialog input[type=file]{font-size:15px}
+.msg{min-height:1.5em;margin:0;font:600 15px "Bricolage",sans-serif}.msg.err{color:#b3261e}.msg.ok{color:var(--green)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+#prev{max-height:110px;object-fit:contain;margin:auto;display:none}
+.how{background:#fff;border-top:1px solid var(--line);padding:46px 0}
+.how .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
+.how b{font:700 20px "Bricolage",sans-serif;display:block;margin-bottom:4px}
+.how p{margin:0;color:var(--muted);font-size:17px}
+.foot{padding:28px 0;font-size:14px;color:var(--muted)}.foot .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between}.foot a{color:var(--green);font-weight:700}
+@media (max-width:720px){.nav a:not(.btn){display:none}.hero{padding:44px 0 40px}.grid{grid-template-columns:1fr}}
+</style>
+<!-- Cloudflare Web Analytics (visitor counts, no cookies) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "72da8042a421467a9c20229d86902248"}'></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+ <div class="wrap">
+  <a class="logo" href="index.html" aria-label="RezSite home"><img src="assets/home/img/logo.svg" alt="RezSite" width="226" height="44"></a>
+  <nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="directory.html?type=businesses">Directory</a><a href="verified.html" aria-current="page">Verified</a><a class="btn btn-primary" href="index.html#claim">Claim your address</a></nav>
+ </div>
+</header>
+<main id="main">
+ <section class="hero">
+  <div class="wrap">
+   <p class="eyebrow" style="color:var(--sun)">✓ Confirmed by the owner</p>
+   <h1>Verified <em>businesses.</em></h1>
+   <p>Every listing here was checked with the business itself, newest first. Is yours here? Add your logo for free with the code we gave you on the phone.</p>
+  </div>
+ </section>
+ <div class="wrap">
+  <div class="tools">
+   <input id="q" type="search" placeholder="Find your business: name, town or community" aria-label="Search verified businesses" autocomplete="off">
+   <span class="count" id="count" aria-live="polite">Loading…</span>
+  </div>
+  <div class="grid" id="list"></div>
+ </div>
+ <section class="how" aria-label="How verification works">
+  <div class="wrap">
+   <div><b>1. We call you</b><p>Chris or Leah from RezSite reads your listing back to you and fixes anything that's out of date.</p></div>
+   <div><b>2. You're verified</b><p>Your listing gets the ✓ Verified badge and shows up on this page.</p></div>
+   <div><b>3. Add your logo, free</b><p>Press <i>Add your logo</i> on your listing and type the 6-letter code we gave you. Lost it? Email <a href="mailto:chris@rezsite.com?subject=RezSite%20logo%20code">chris@rezsite.com</a>.</p></div>
+  </div>
+ </section>
+</main>
+<footer class="foot"><div class="wrap"><span>© 2026 RezSite · Listings confirmed by phone with each business</span><span><a href="directory.html?type=businesses">Full directory</a> · <a href="mailto:chris@rezsite.com?subject=RezSite%20listing%20update">Fix a listing</a> · <a href="https://bakeaweb.com/">Baked with BAKE</a></span></div></footer>
+
+<dialog id="dlg" aria-labelledby="dlg-h">
+ <form id="upForm">
+  <div><h3 id="dlg-h">Add your logo</h3><div class="meta" id="dlg-biz"></div></div>
+  <label>Your 6-letter code<input type="text" id="code" maxlength="8" autocomplete="off" required placeholder="ABC123"></label>
+  <label>Your logo (PNG, JPG or WebP, up to 2 MB)<input type="file" id="file" accept="image/png,image/jpeg,image/webp" required></label>
+  <img id="prev" alt="Logo preview">
+  <p class="msg" id="upMsg" role="status"></p>
+  <div class="row"><button class="btn btn-primary" id="upBtn">Upload my logo</button><button type="button" class="btn btn-ghost" id="cancel">Cancel</button></div>
+ </form>
+</dialog>
+
+<script>
+(() => {
+  const URL_ = 'https://gpwxuunutljcauoknhrh.supabase.co', KEY = 'sb_publishable_B7a1VEv6RX13n2JhA50tbQ_oR_oKfw9';
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const href = u => /^https?:\/\//i.test(u) ? u : 'https://' + u;
+  const day = d => new Date(d).toLocaleDateString('en-CA', { timeZone: 'America/Toronto', year: 'numeric', month: 'long', day: 'numeric' });
+  const want = +new URLSearchParams(location.search).get('id') || 0;
+  let all = [], current = null;
+
+  function card(b) {
+    const place = [b.address, b.city, b.province].filter(Boolean).join(', ');
+    const links = [];
+    if (b.phone) links.push(`<a href="tel:${esc(b.phone.replace(/[^\d+]/g, ''))}">${esc(b.phone)}</a>`);
+    if (b.website) links.push(`<a href="${esc(href(b.website))}" target="_blank" rel="noopener">${esc(b.website.replace(/^https?:\/\/(www\.)?/i, '').replace(/\/$/, ''))}</a>`);
+    (b.social_links || '').split(/[\s,]+/).filter(x => /^(https?:\/\/|www\.)/i.test(x)).slice(0, 3).forEach(x => links.push(`<a href="${esc(href(x))}" target="_blank" rel="noopener">${esc(x.replace(/^https?:\/\/(www\.)?/i, '').split('/')[0])}</a>`));
+    return `<article class="card${b.id === want ? ' hl' : ''}" id="b${b.id}">
+      <div class="head"><div class="logo-box">${b.logo_url ? `<img src="${esc(b.logo_url)}" alt="${esc(b.name)} logo" loading="lazy">` : `<span aria-hidden="true">${esc((b.name || '?').trim()[0])}</span>`}</div>
+        <div><h2>${esc(b.name)}</h2><div class="meta">${esc([b.category, b.community].filter(Boolean).join(' · '))}</div></div></div>
+      <span class="pill">✓ Verified ${esc(day(b.verified_at))}</span>
+      ${place ? `<div class="meta">📍 ${esc(place)}</div>` : ''}
+      ${b.description ? `<p>${esc(b.description)}</p>` : ''}
+      ${b.hours ? `<div class="meta">🕑 ${esc(b.hours)}</div>` : ''}
+      ${links.length ? `<div class="links">${links.join('')}</div>` : ''}
+      <div><button class="btn btn-ghost" data-logo="${b.id}">${b.logo_url ? 'Change your logo' : 'Add your logo (free)'}</button></div>
+    </article>`;
+  }
+  function render() {
+    const q = $('#q').value.trim().toLowerCase();
+    const rows = q ? all.filter(b => [b.name, b.city, b.province, b.community, b.category].join(' ').toLowerCase().includes(q)) : all;
+    $('#count').textContent = rows.length + (rows.length === 1 ? ' verified business' : ' verified businesses') + (q ? ' match' : '');
+    $('#list').innerHTML = rows.length ? rows.map(card).join('') : `<div class="empty">${all.length ? 'No verified business matches that search.' : 'The first verified businesses will appear here soon.'}</div>`;
+  }
+  async function load() {
+    try {
+      const r = await fetch(URL_ + '/rest/v1/rpc/verified_list', { method: 'POST', headers: { apikey: KEY, 'Content-Type': 'application/json' }, body: '{}' });
+      if (!r.ok) throw Error(r.status);
+      all = await r.json(); render();
+      if (want) document.getElementById('b' + want)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch { $('#count').textContent = 'The list could not load. Please refresh the page.'; }
+  }
+  $('#q').addEventListener('input', render);
+  $('#list').addEventListener('click', e => {
+    const id = +e.target.closest('[data-logo]')?.dataset.logo; if (!id) return;
+    current = all.find(b => b.id === id);
+    $('#dlg-biz').textContent = current.name; $('#upMsg').textContent = ''; $('#upMsg').className = 'msg';
+    $('#upForm').reset(); $('#prev').style.display = 'none'; $('#dlg').showModal(); $('#code').focus();
+  });
+  $('#cancel').addEventListener('click', () => $('#dlg').close());
+  $('#file').addEventListener('change', () => {
+    const f = $('#file').files[0]; const p = $('#prev');
+    if (f && f.size <= 2097152) { p.src = URL.createObjectURL(f); p.style.display = 'block'; } else p.style.display = 'none';
+    if (f && f.size > 2097152) { $('#upMsg').textContent = 'That file is over 2 MB. Please pick a smaller one.'; $('#upMsg').className = 'msg err'; }
+  });
+  $('#upForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const fd = new FormData(); fd.append('id', current.id); fd.append('code', $('#code').value); fd.append('file', $('#file').files[0]);
+    $('#upBtn').disabled = true; $('#upMsg').textContent = 'Uploading…'; $('#upMsg').className = 'msg';
+    try {
+      const r = await fetch(URL_ + '/functions/v1/logo-upload', { method: 'POST', headers: { apikey: KEY }, body: fd });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || !j.ok) throw Error(j.error || 'Upload failed. Please try again.');
+      current.logo_url = j.logo_url; $('#upMsg').textContent = 'Your logo is up. Miigwech!'; $('#upMsg').className = 'msg ok';
+      render(); setTimeout(() => $('#dlg').close(), 1400);
+    } catch (err) { $('#upMsg').textContent = err.message; $('#upMsg').className = 'msg err'; }
+    $('#upBtn').disabled = false;
+  });
+  load();
+})();
+</script>
+</body>
+</html>

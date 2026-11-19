@@ -155,6 +155,7 @@ h1,h2,h3{font-family:"Bricolage",sans-serif;line-height:.98;letter-spacing:-.02e
 .stat span{font-weight:600}
 .stat small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
 .stat.hl{background:var(--green);border-color:var(--green);color:#fff}
+.vcard{display:flex;align-items:center;gap:16px;margin-top:26px;background:var(--gold);color:var(--deep);border-radius:22px;padding:18px 22px;text-decoration:none;box-shadow:0 6px 0 #c98a12;transition:transform .15s,box-shadow .15s;font-family:"Bricolage",sans-serif}.vcard:hover{transform:translateY(-2px);box-shadow:0 8px 0 #c98a12}.vtick{flex:none;width:46px;height:46px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:24px;font-weight:800}.vcard b{display:block;font-size:22px;line-height:1.1}.vcard small{display:block;font-size:15px;font-weight:500;margin-top:3px}.varr{margin-left:auto;font-size:26px;font-weight:800}
 .stat.hl b{color:var(--sun)}.stat.hl small{color:#C9D8CF}
 .search{display:flex;margin-top:28px;max-width:520px;background:#fff;border:2px solid var(--green);border-radius:999px;padding:6px}
 .search input{flex:1;border:0;outline:0;font:inherit;padding:10px 16px;background:transparent;min-width:0}
@@ -275,7 +276,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--sun)}
  <div class="wrap">
   <a class="logo" href="#" aria-label="RezSite home"><img src="assets/home/img/logo.svg" alt="RezSite" width="226" height="44"></a>
   <nav class="nav" id="nav" aria-label="Main">
-   <a href="#free">What's free</a><a href="#case">Case study</a><a href="#work">Our work</a><a href="#directory">Directory</a><a href="#how">How it works</a>
+   <a href="#free">What's free</a><a href="#case">Case study</a><a href="#work">Our work</a><a href="#directory">Directory</a><a href="verified.html">Verified ✓</a><a href="#how">How it works</a>
    <a class="btn btn-primary" href="#claim">Claim your address</a>
   </nav>
   <button class="menu-btn" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -395,6 +396,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--sun)}
     <button class="btn btn-primary" type="submit">Search</button>
    </form>
    <div class="results" id="dres" aria-live="polite"></div>
+   <a class="vcard" href="verified.html"><span class="vtick" aria-hidden="true">✓</span><span><b>Verified businesses</b><small>Listings confirmed by the owner, newest first. Verified? Add your logo free.</small></span><span class="varr" aria-hidden="true">→</span></a>
   </div>
   <div class="stats">
    <a class="stat hl" href="https://rezsite.com/directory.html?type=businesses"><b>4,996</b><span>Indigenous businesses</span><small>from BC to Newfoundland and Labrador</small></a>
@@ -433,7 +435,7 @@ footer a{text-decoration:none}footer a:hover{color:var(--sun)}
   <div class="foot">
    <div><span class="foot-logo"><img src="assets/home/img/logo.svg" alt="RezSite" width="185" height="36"></span><p style="max-width:300px">Web design and community directories for Indigenous businesses. Shore to shore.</p></div>
    <div><h4>Websites</h4><ul><li><a href="#free">What's free</a></li><li><a href="#work">Our work</a></li><li><a href="#how">How it works</a></li></ul></div>
-   <div><h4>Directory</h4><ul><li><a href="https://rezsite.com/directory.html?type=businesses">Businesses</a></li><li><a href="https://rezsite.com/directory.html?type=churches">Churches</a></li><li><a href="https://rezsite.com/directory.html?type=events">Events</a></li></ul></div>
+   <div><h4>Directory</h4><ul><li><a href="https://rezsite.com/directory.html?type=businesses">Businesses</a></li><li><a href="https://rezsite.com/directory.html?type=churches">Churches</a></li><li><a href="https://rezsite.com/directory.html?type=events">Events</a></li><li><a href="verified.html">Verified businesses</a></li></ul></div>
    <div><h4>Contact</h4><ul><li><a href="mailto:chris@rezsite.com?subject=RezSite%20Inquiry">Email us</a></li><li><a href="mailto:chris@rezsite.com?subject=RezSite%20listing%20update">Claim or fix a listing</a></li><li><a href="https://bakeaweb.com/">BAKEaWeb</a></li></ul></div>
   </div>
   <div class="legal"><span>© 2026 RezSite. Directory listings come from public sources and may not be owner-confirmed.</span><a class="bake" href="https://bakeaweb.com/"><svg width="20" height="20" viewBox="0 0 32 32"><rect width="32" height="32" rx="9" fill="#F4AD27"/><path d="M7 19c0-5 4-9 9-9s9 4 9 9v3H7z" fill="#06482F"/></svg>Baked with BAKE</a></div>
