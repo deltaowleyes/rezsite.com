@@ -10,7 +10,7 @@
   var meas=$('meas'),fit=function(){if(!meas)return;meas.textContent=i.value||i.placeholder;var max=i.parentNode.clientWidth-130;i.style.width=Math.max(60,Math.min(meas.offsetWidth+3,max))+'px'};
   fit();if(document.fonts)document.fonts.ready.then(fit);addEventListener('resize',fit);
   i.addEventListener('input',function(){var n=slug(i.value)||i.dataset.def||'yourbusiness';document.querySelectorAll('[data-live]').forEach(function(e){e.textContent=n});fit()});
-  f.addEventListener('submit',function(e){e.preventDefault();var n=slug(i.value)||'yourbusiness';var m=$('claimMsg');if(m)m.innerHTML='Opening your email… If nothing opens, email <b>'+EMAIL+'</b> with the subject “Claim '+n+'.rezsite.com”.';location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Claim '+n+'.rezsite.com')+'&body='+encodeURIComponent('Hi Leah,\n\nI would like a free preview of my website at '+n+'.rezsite.com.\n\nBusiness name: '+i.value+'\nTown / community:\nPhone:\n')});
+  f.addEventListener('submit',function(e){e.preventDefault();var n=slug(i.value)||'yourbusiness';var m=$('claimMsg');if(m)m.innerHTML='Opening your email… If nothing opens, email <b>'+EMAIL+'</b> with the subject “Claim '+n+'.rezsite.com”.';(window.emailNotice||function(u){location.href=u})('mailto:'+EMAIL+'?subject='+encodeURIComponent('Claim '+n+'.rezsite.com')+'&body='+encodeURIComponent('Hi Leah,\n\nI would like a free preview of my website at '+n+'.rezsite.com.\n\nBusiness name: '+i.value+'\nTown / community:\nPhone:\n'))});
  }
  /* live directory search over 4,996 listings */
  var dq=$('dq'),dres=$('dres'),D=null,ld=null;
