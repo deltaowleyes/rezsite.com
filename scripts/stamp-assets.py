@@ -7,6 +7,17 @@ PAGES = ['index.html', 'directory.html', 'verified.html', 'update.html', 'faq.ht
 PAT = re.compile(r'((?:href|src)=")((?:\.\./)?assets/[\w./-]+\.(?:css|js))(\?v=[\w.-]+)?(")')
 def h(path): return hashlib.sha1(open(os.path.join(ROOT, path), 'rb').read()).hexdigest()[:10]
 stale = []
+# Module files whose own import/asset URLs need stamping too (stamped first, so pages then get their final hash).
+MODULES = ['assets/rezsite/arrowhead/install.js']
+MPAT = re.compile(r"(['\"]\./)([\w.-]+\.(?:js|svg))(\?v=[\w.-]+)?(['\"])")
+for m_path in MODULES:
+    f = os.path.join(ROOT, m_path); s = open(f).read(); base = os.path.dirname(m_path)
+    def mfix(m):
+        want = '?v=' + h(os.path.join(base, m.group(2)))
+        if m.group(3) != want: stale.append(f'{m_path}: {m.group(2)}')
+        return m.group(1) + m.group(2) + want + m.group(4)
+    new_s = MPAT.sub(mfix, s)
+    if '--check' not in sys.argv and new_s != s: open(f, 'w').write(new_s)
 for p in PAGES:
     f = os.path.join(ROOT, p); s = open(f).read()
     def fix(m):

@@ -1,0 +1,7 @@
+/* RezSite v1.3 landing Spirit Trail. Decorative fixed overlays only. */
+.rs-touch-arrow,.rs-touch-ring,.rs-touch-spark{position:fixed;pointer-events:none!important;z-index:2147483645;will-change:transform,opacity}
+.rs-touch-arrow{width:42px;transform:translate(-50%,0);filter:drop-shadow(0 0 5px #61c8b692)}
+.rs-touch-arrow svg{display:block;width:100%;height:auto}
+.rs-touch-ring{width:12px;height:12px;transform:translate(-50%,-50%);border:2px solid #d8a274;border-radius:50%}
+.rs-touch-spark{width:5px;height:5px;border-radius:50%;background:#63dfc1;box-shadow:0 0 7px #60dec1}
+@media(prefers-reduced-motion:reduce){.rs-touch-arrow,.rs-touch-spark{display:none!important}}

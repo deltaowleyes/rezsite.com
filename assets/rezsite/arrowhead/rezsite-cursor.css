@@ -1,0 +1,28 @@
+/* RezSite rugged arrowhead v1.0 — production-style progressive enhancement */
+:root { --rs-cursor-size: 46px; }
+@media (hover: hover) and (pointer: fine) {
+  html.rs-cursor-enabled, html.rs-cursor-enabled body,
+  html.rs-cursor-enabled a, html.rs-cursor-enabled button,
+  html.rs-cursor-enabled [role="button"] { cursor: none !important; }
+  html.rs-cursor-enabled input, html.rs-cursor-enabled textarea,
+  html.rs-cursor-enabled [contenteditable="true"] { cursor: text !important; }
+}
+.rs-cursor-head, .rs-cursor-projectile, .rs-cursor-impact, .rs-cursor-spark {
+  position: fixed; pointer-events: none; z-index: 2147483646;
+}
+.rs-cursor-head, .rs-cursor-projectile {
+  width: var(--rs-cursor-size); height: auto;
+  transform: translate(-50%, -7%); transform-origin: 50% 7%;
+  filter: drop-shadow(0 2px 4px #000b); will-change: transform, opacity;
+}
+.rs-cursor-impact { border: 2px solid #7aebd1; border-radius: 50%; width: 12px; height: 12px; box-shadow: 0 0 12px #5ad1bb; }
+.rs-cursor-spark { width: 4px; height: 4px; border-radius: 50%; background: #d4a074; }
+@media (prefers-reduced-motion: reduce) {
+  .rs-cursor-projectile, .rs-cursor-impact, .rs-cursor-spark { display: none !important; }
+}
+/* RezSite page fixes: elements that set their own cursor (FAQ questions, field labels, upload drop zone)
+   would otherwise show the native pointer on top of the arrowhead. */
+@media (hover: hover) and (pointer: fine) {
+  html.rs-cursor-enabled summary, html.rs-cursor-enabled label,
+  html.rs-cursor-enabled label span, html.rs-cursor-enabled .drop { cursor: none !important; }
+}
