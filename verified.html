@@ -70,18 +70,13 @@ dialog input[type=file]{font-size:15px}
 .how p{margin:0;color:var(--muted);font-size:17px}
 .foot{padding:28px 0;font-size:14px;color:var(--muted)}.foot .wrap{display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between}.foot a{color:var(--green);font-weight:700}
 @media (max-width:720px){.nav a:not(.btn){display:none}.hero{padding:44px 0 40px}.grid{grid-template-columns:1fr}}
-@media (max-width:720px){.top .wrap{height:70px}.top .nav .btn{white-space:nowrap;padding:10px 14px;font-size:13px}.rz-tag{display:none}.rz-lockup .rz-emblem{height:42px!important}.rz-name{font-size:23px}}
 </style>
 <!-- Cloudflare Web Analytics (visitor counts, no cookies) --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "72da8042a421467a9c20229d86902248"}'></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
- <div class="wrap">
-  <a class="logo rz-lockup" href="index.html" aria-label="RezSite home"><img class="rz-emblem" src="assets/brand/v2/rezsite-emblem.svg" alt="" width="66" height="58"><span class="rz-wm"><span class="rz-name">RezSite</span><span class="rz-tag">Connected. Grounded. Community-led.</span></span></a>
-  <nav class="nav" aria-label="Main"><a href="index.html">Home</a><a href="directory.html?type=businesses">Directory</a><a href="verified.html" aria-current="page">Verified</a><a class="btn btn-primary" href="index.html#claim">Claim your address</a></nav>
- </div>
-</header>
+<header class="rz-top"><div class="rz-wrap"><a class="rz-lockup" href="index.html" aria-label="RezSite home"><img class="rz-emblem" src="assets/brand/v2/rezsite-emblem.svg" alt="" width="66" height="58"><span class="rz-wm"><span class="rz-name">RezSite</span><span class="rz-tag">Connected. Grounded. Community-led.</span></span></a><div class="rz-top-actions"><a class="rz-cta" href="index.html#claim">Claim your address</a><button class="rz-menu-btn" type="button" aria-controls="rz-nav" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></div></header>
+<div class="rz-navbar"><nav class="rz-nav rz-wrap" id="rz-nav" aria-label="Main"><a href="index.html">Home</a><a href="index.html#free">What's free</a><a href="index.html#work">Our work</a><a href="directory.html?type=businesses">Directory</a><a href="verified.html" aria-current="page">Verified ✓</a><a href="index.html#how">How it works</a><a href="faq.html">FAQ</a><a class="rz-cta" href="index.html#claim">Claim your address</a></nav></div>
 <main id="main">
  <section class="hero">
   <div class="wrap">
@@ -189,5 +184,7 @@ dialog input[type=file]{font-size:15px}
   load();
 })();
 </script>
+<script defer src="assets/brand/v2/rezsite-ui.js"></script>
+<script defer src="assets/contact-buttons.js" data-email="leah@rezsite.com" data-subject="RezSite question" data-faq="faq.html" data-bg="#004F45" data-fg="#FFFFFF" data-ring="#B87333"></script>
 </body>
 </html>

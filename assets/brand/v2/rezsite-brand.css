@@ -19,13 +19,35 @@
 .rz-lockup.on-dark .rz-emblem{background:var(--rz-cream);border-radius:50%;padding:5px;height:62px!important;box-shadow:0 0 0 2px var(--rz-copper)}
 @media (max-width:760px){.rz-lockup .rz-emblem{height:46px!important}.rz-name{font-size:26px}.rz-tag{font-size:9.5px;margin-top:4px}}
 @media (max-width:360px){.rz-tag{display:none}}
-/* phthalo navigation bar */
-.rz-navbar{background:var(--rz-phthalo);border-top:2px solid var(--rz-copper);border-bottom:2px solid var(--rz-copper);position:sticky;top:0;z-index:20;box-shadow:0 6px 18px rgba(0,61,53,.18)}
-.rz-navbar .rz-nav{display:flex;align-items:center;gap:6px 30px;min-height:50px;font:600 15px/1 var(--rz-font)}
-.rz-navbar .rz-nav a{color:var(--rz-cream);text-decoration:none;padding:16px 0 13px;border-bottom:3px solid transparent}
-.rz-navbar .rz-nav a:hover,.rz-navbar .rz-nav a[aria-current="page"],.rz-navbar .rz-nav a.is-active{border-bottom-color:var(--rz-turq);color:#fff}
-.rz-navbar .rz-nav a:focus-visible{outline:3px solid var(--rz-turq-light);outline-offset:2px}
-.rz-navbar .rz-nav .nav-cta{display:none}
+/* ===== Shared site header (same on every page) =====
+   Brand bar scrolls away; the green menu bar stays stuck to the top.
+   On phones the brand bar stays and the menu opens as a dropdown. */
+.rz-wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+.rz-top{position:relative;z-index:31;background:var(--rz-cream);font-family:var(--rz-font)}
+.rz-top .rz-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;height:84px}
+.rz-top-actions{display:flex;align-items:center;gap:12px}
+.rz-cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--rz-phthalo);color:#fff;border:2px solid var(--rz-copper);border-radius:999px;padding:11px 22px;font:700 15px/1 var(--rz-font);text-decoration:none;box-shadow:0 4px 0 var(--rz-dark);transition:transform .15s}
+.rz-cta:hover{transform:translateY(-2px);background:var(--rz-dark)}
+.rz-menu-btn{display:none;place-items:center;width:46px;height:46px;border:2px solid var(--rz-phthalo);border-radius:12px;background:#fff;color:var(--rz-phthalo);cursor:pointer;padding:0}
+.rz-navbar{background:var(--rz-phthalo);border-top:2px solid var(--rz-copper);border-bottom:2px solid var(--rz-copper);position:sticky;top:0;z-index:30;box-shadow:0 6px 18px rgba(0,61,53,.18);font-family:var(--rz-font)}
+.rz-nav{display:flex;align-items:center;flex-wrap:wrap;gap:0 30px;min-height:50px;font:600 15px/1 var(--rz-font)}
+.rz-nav a{color:var(--rz-cream);text-decoration:none;padding:16px 0 13px;border-bottom:3px solid transparent}
+.rz-nav a:hover,.rz-nav a[aria-current="page"]{border-bottom-color:var(--rz-turq);color:#fff}
+.rz-nav a:focus-visible{outline:3px solid var(--rz-turq-light);outline-offset:2px}
+.rz-nav .rz-cta{display:none}
+@media (max-width:980px){.rz-nav{gap:0 20px;font-size:14px}}
+@media (max-width:860px){
+ .rz-wrap{width:calc(100% - 36px)}
+ .rz-top{position:sticky;top:0;box-shadow:0 1px 0 var(--rz-line)}
+ .rz-top .rz-wrap{height:68px}
+ .rz-top .rz-cta{display:none}
+ .rz-menu-btn{display:grid}
+ .rz-navbar{top:68px;height:0;border:0;box-shadow:none}
+ .rz-nav{display:none}
+ .rz-nav.open{display:flex;position:absolute;top:0;left:0;right:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--rz-phthalo);padding:8px 18px 18px;border-bottom:3px solid var(--rz-copper);box-shadow:0 14px 30px rgba(0,61,53,.3)}
+ .rz-nav.open a{padding:14px 4px;border-bottom:1px solid rgba(247,241,230,.15)}
+ .rz-nav.open .rz-cta{display:flex;margin-top:14px;padding:14px;border:2px solid var(--rz-copper);box-shadow:none}
+}
 /* buttons */
 .rz-btn-primary{background:var(--rz-phthalo)!important;color:#fff!important;border:2px solid var(--rz-copper)!important}
 .rz-btn-primary:hover{background:var(--rz-dark)!important}

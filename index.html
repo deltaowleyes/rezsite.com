@@ -212,12 +212,6 @@ footer .rz-lockup{margin-bottom:14px}
 @media (max-width:760px){
  body{font-size:16px}
  .wrap{width:calc(100% - 36px)}
- .top{position:sticky;top:0;box-shadow:0 1px 0 var(--line)}.top .wrap{height:68px}.top-cta{display:none}.menu-btn{display:grid;place-items:center}
- .rz-navbar{position:sticky;top:68px;height:0;border:0;box-shadow:none;z-index:20}
- .rz-navbar .rz-nav{display:none}
- .rz-navbar .rz-nav.open{display:flex;position:absolute;top:0;left:0;right:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:var(--green);padding:8px 18px 18px;border-bottom:3px solid var(--copper);box-shadow:0 14px 30px rgba(0,61,53,.3)}
- .rz-navbar .rz-nav.open a{padding:14px 4px;border-bottom:1px solid rgba(247,241,230,.15)}
- .rz-navbar .rz-nav.open .nav-cta{display:flex;justify-content:center;margin-top:14px;padding:14px;color:#fff;border:2px solid var(--copper)}
  .hero{padding:36px 0 70px}
  .sunball,.rays{width:420px;height:420px;right:-200px;top:-150px}
  .hero h1{font-size:44px}
@@ -272,21 +266,8 @@ footer .rz-lockup{margin-bottom:14px}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
- <div class="wrap">
-  <a class="logo rz-lockup" href="#" aria-label="RezSite home"><img class="rz-emblem" src="assets/brand/v2/rezsite-emblem.svg" alt="" width="66" height="58"><span class="rz-wm"><span class="rz-name">RezSite</span><span class="rz-tag">Connected. Grounded. Community-led.</span></span></a>
-  <div class="top-actions">
-  <a class="btn btn-primary top-cta" href="#claim">Claim your address</a>
-  <button class="menu-btn" aria-controls="nav" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  </div>
- </div>
-</header>
-<div class="rz-navbar">
- <nav class="nav rz-nav wrap" id="nav" aria-label="Main">
-  <a href="#free">What's free</a><a href="#case">Case study</a><a href="#work">Our work</a><a href="#directory">Directory</a><a href="verified.html">Verified ✓</a><a href="#how">How it works</a>
-  <a class="btn btn-primary nav-cta" href="#claim">Claim your address</a>
- </nav>
-</div>
+<header class="rz-top"><div class="rz-wrap"><a class="rz-lockup" href="index.html" aria-label="RezSite home"><img class="rz-emblem" src="assets/brand/v2/rezsite-emblem.svg" alt="" width="66" height="58"><span class="rz-wm"><span class="rz-name">RezSite</span><span class="rz-tag">Connected. Grounded. Community-led.</span></span></a><div class="rz-top-actions"><a class="rz-cta" href="index.html#claim">Claim your address</a><button class="rz-menu-btn" type="button" aria-controls="rz-nav" aria-expanded="false" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></div></header>
+<div class="rz-navbar"><nav class="rz-nav rz-wrap" id="rz-nav" aria-label="Main"><a href="index.html" aria-current="page">Home</a><a href="index.html#free">What's free</a><a href="index.html#work">Our work</a><a href="directory.html?type=businesses">Directory</a><a href="verified.html">Verified ✓</a><a href="index.html#how">How it works</a><a href="faq.html">FAQ</a><a class="rz-cta" href="index.html#claim">Claim your address</a></nav></div>
 
 <main id="main">
 <section class="hero" id="claim">
@@ -442,7 +423,7 @@ footer .rz-lockup{margin-bottom:14px}
  <div class="wrap">
   <div class="foot">
    <div><a class="logo rz-lockup on-dark" href="#" aria-label="RezSite home"><img class="rz-emblem" src="assets/brand/v2/rezsite-emblem.svg" alt="" width="66" height="58"><span class="rz-wm"><span class="rz-name">RezSite</span><span class="rz-tag">Connected. Grounded. Community-led.</span></span></a><p style="max-width:300px">Web design and community directories for Indigenous businesses. Shore to shore.</p></div>
-   <div><h4>Websites</h4><ul><li><a href="#free">What's free</a></li><li><a href="#work">Our work</a></li><li><a href="#how">How it works</a></li></ul></div>
+   <div><h4>Websites</h4><ul><li></li><li><a href="#work">Our work</a></li><li><a href="#how">How it works</a></li></ul></div>
    <div><h4>Directory</h4><ul><li><a href="https://rezsite.com/directory.html?type=businesses">Businesses</a></li><li><a href="https://rezsite.com/directory.html?type=churches">Churches</a></li><li><a href="https://rezsite.com/directory.html?type=events">Events</a></li><li><a href="verified.html">Verified businesses</a></li></ul></div>
    <div><h4>Contact</h4><ul><li><a href="mailto:chris@rezsite.com?subject=RezSite%20Inquiry">Email us</a></li><li><a href="mailto:chris@rezsite.com?subject=RezSite%20listing%20update">Claim or fix a listing</a></li><li><a href="https://bakeaweb.com/">BAKEaWeb</a></li></ul></div>
   </div>
@@ -462,5 +443,7 @@ footer .rz-lockup{margin-bottom:14px}
 <script>
 document.querySelectorAll('.card').forEach(function(c){c.addEventListener('mouseenter',function(){if(document.getElementById('biz').value)return;document.getElementById('mockName').textContent=c.dataset.n;document.getElementById('mockImg').src='assets/home/img/'+c.dataset.i+'-'+(c.dataset.i==='timber'||c.dataset.i==='homeward'?'b':'a')+'-phone.webp'})});
 </script>
+<script defer src="assets/brand/v2/rezsite-ui.js"></script>
+<script defer src="assets/contact-buttons.js" data-email="leah@rezsite.com" data-subject="RezSite question" data-faq="faq.html" data-bg="#004F45" data-fg="#FFFFFF" data-ring="#B87333"></script>
 </body>
 </html>
