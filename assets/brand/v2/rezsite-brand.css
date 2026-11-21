@@ -1,0 +1,38 @@
+/* RezSite brand layer (2026 canoe / Woodland floral identity)
+   Tokens: edit colours and type here. Loaded after each page's own styles. */
+@font-face{font-family:"Montserrat";src:url(../../home/fonts/montserrat-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Montserrat";src:url(../../home/fonts/montserrat-latin-wght-italic.woff2) format("woff2");font-weight:100 900;font-style:italic;font-display:swap}
+:root{
+ --rz-phthalo:#004F45;--rz-dark:#003D35;--rz-earth:#5B483F;--rz-turq:#1FB5B5;--rz-turq-light:#7FD8D4;--rz-turq-text:#0B7A78;
+ --rz-rust:#C44512;--rz-rust-text:#A63A0F;--rz-copper:#B87333;--rz-cream:#F7F1E6;--rz-sand:#D9C7B2;--rz-line:#E3D6C4;
+ --rz-ink:#1E2B27;--rz-muted:#5A6B64;--rz-font:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+/* logo lockup: compact emblem + live-text wordmark */
+.rz-lockup{display:inline-flex!important;align-items:center;gap:10px;text-decoration:none;white-space:nowrap}
+.rz-lockup .rz-emblem{width:auto!important;height:58px!important;flex:none;display:block}
+.rz-wm{display:flex;flex-direction:column;line-height:1}
+.rz-name{font:800 32px/1 var(--rz-font);letter-spacing:-.025em;color:var(--rz-phthalo);
+ text-shadow:-1px -1px 0 var(--rz-copper),1px -1px 0 var(--rz-copper),-1px 1px 0 var(--rz-copper),1px 1px 0 var(--rz-copper),0 2px 0 rgba(91,72,63,.25)}
+.rz-tag{font:italic 600 11.5px/1.2 var(--rz-font);color:var(--rz-dark);margin-top:5px;letter-spacing:.01em}
+.rz-lockup.on-dark .rz-name{color:var(--rz-cream)}
+.rz-lockup.on-dark .rz-tag{color:var(--rz-turq-light)}
+.rz-lockup.on-dark .rz-emblem{background:var(--rz-cream);border-radius:50%;padding:5px;height:62px!important;box-shadow:0 0 0 2px var(--rz-copper)}
+@media (max-width:760px){.rz-lockup .rz-emblem{height:46px!important}.rz-name{font-size:26px}.rz-tag{font-size:9.5px;margin-top:4px}}
+@media (max-width:360px){.rz-tag{display:none}}
+/* phthalo navigation bar */
+.rz-navbar{background:var(--rz-phthalo);border-top:2px solid var(--rz-copper);border-bottom:2px solid var(--rz-copper);position:sticky;top:0;z-index:20;box-shadow:0 6px 18px rgba(0,61,53,.18)}
+.rz-navbar .rz-nav{display:flex;align-items:center;gap:6px 30px;min-height:50px;font:600 15px/1 var(--rz-font)}
+.rz-navbar .rz-nav a{color:var(--rz-cream);text-decoration:none;padding:16px 0 13px;border-bottom:3px solid transparent}
+.rz-navbar .rz-nav a:hover,.rz-navbar .rz-nav a[aria-current="page"],.rz-navbar .rz-nav a.is-active{border-bottom-color:var(--rz-turq);color:#fff}
+.rz-navbar .rz-nav a:focus-visible{outline:3px solid var(--rz-turq-light);outline-offset:2px}
+.rz-navbar .rz-nav .nav-cta{display:none}
+/* buttons */
+.rz-btn-primary{background:var(--rz-phthalo)!important;color:#fff!important;border:2px solid var(--rz-copper)!important}
+.rz-btn-primary:hover{background:var(--rz-dark)!important}
+/* floral divider */
+.rz-divider{display:block;width:min(520px,100%);height:auto;margin:0 auto 22px}
+.rz-divider.left{margin-left:0}
+/* beadwork strip (footer top edge) */
+.rz-bead-strip{height:48px;background:url(beadwork-strip.svg) repeat-x center/auto 48px;border-top:2px solid var(--rz-copper)}
+/* focus visibility everywhere */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--rz-turq);outline-offset:3px}

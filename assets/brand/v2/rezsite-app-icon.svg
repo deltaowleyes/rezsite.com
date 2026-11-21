@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="RezSite app icon">
+  <rect x="10" y="10" width="492" height="492" rx="112" fill="#004F45" stroke="#B87333" stroke-width="16"/>
+  <rect x="34" y="34" width="444" height="444" rx="92" fill="none" stroke="#1FB5B5" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round"/>
+  <!-- sunrise arch -->
+  <path d="M112 252 A144 144 0 0 1 400 252" fill="none" stroke="#C44512" stroke-width="22" stroke-linecap="round"/>
+  <!-- figures -->
+  <circle cx="196" cy="166" r="22" fill="#F7F1E6"/><path d="M152 240 Q196 176 240 240 Z" fill="#F7F1E6"/>
+  <circle cx="316" cy="166" r="22" fill="#1FB5B5"/><path d="M272 240 Q316 176 360 240 Z" fill="#1FB5B5"/>
+  <circle cx="256" cy="140" r="25" fill="#E2683A"/><path d="M206 228 Q256 156 306 228 Z" fill="#E2683A"/>
+  <!-- hills -->
+  <path d="M60 340 L170 236 L230 290 L270 250 L330 300 L380 244 L452 340 Z" fill="#2E8572"/>
+  <!-- river -->
+  <path d="M268 262 C 230 290 300 300 250 326 C 220 342 290 350 330 358" fill="none" stroke="#1FB5B5" stroke-width="20" stroke-linecap="round"/>
+  <!-- canoe -->
+  <path d="M96 330 Q112 356 150 362 L362 362 Q400 356 416 330 Q404 404 256 412 Q108 404 96 330 Z" fill="#8A6A55" stroke="#D9A066" stroke-width="8" stroke-linejoin="round"/>
+  <g fill="#F7F1E6"><path d="M206 382 l12 -10 l12 10 l-12 10 Z"/><path d="M244 384 l12 -10 l12 10 l-12 10 Z"/><path d="M282 382 l12 -10 l12 10 l-12 10 Z"/></g>
+  <!-- flower -->
+  <g transform="translate(256 432)" fill="#1FB5B5" stroke="#003D35" stroke-width="5">
+    <ellipse cy="-20" rx="15" ry="20"/><ellipse cy="-20" rx="15" ry="20" transform="rotate(72)"/><ellipse cy="-20" rx="15" ry="20" transform="rotate(144)"/><ellipse cy="-20" rx="15" ry="20" transform="rotate(216)"/><ellipse cy="-20" rx="15" ry="20" transform="rotate(288)"/>
+    <circle r="11" fill="#F2B632"/>
+  </g>
+</svg>

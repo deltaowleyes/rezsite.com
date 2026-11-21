@@ -218,8 +218,8 @@
     const banner = document.getElementById('directory-banner');
     if (!banner) return;
     const titles = {businesses:'Business',churches:'Church',events:'Community event'};
-    banner.src='assets/brand/directory-'+next+'.svg';
-    banner.alt='RezSite '+titles[next]+' directory — illustrated arched bridge, forests, blue river and sunrise';
+    banner.src='assets/brand/v2/directory-'+next+'.svg';
+    banner.alt='RezSite '+titles[next]+' directory — canoe, river, hills and turquoise beaded flower';
   }
   let sequence = 0;
   async function showType(next, preserveSearch = false) {

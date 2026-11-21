@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 48" width="160" height="48" aria-hidden="true">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</svg>

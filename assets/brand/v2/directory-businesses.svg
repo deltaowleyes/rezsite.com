@@ -1,0 +1,274 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="460" viewBox="0 0 1600 460" role="img" aria-label="RezSite Business Directory">
+<defs><radialGradient id="g" cx=".2" cy=".45" r=".9"><stop offset="0" stop-color="#0E6B5C"/><stop offset="1" stop-color="#003D35"/></radialGradient></defs>
+<rect width="1600" height="460" fill="url(#g)"/>
+<circle cx="250" cy="215" r="200" fill="#F7F1E6"/>
+<circle cx="250" cy="215" r="200" fill="none" stroke="#B87333" stroke-width="6"/>
+<circle cx="250" cy="215" r="186" fill="none" stroke="#1FB5B5" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>
+<g transform="translate(90 85) scale(2)">
+  <!-- sunrise arch -->
+  <path d="M28 70 A52 52 0 0 1 132 70" fill="none" stroke="#C44512" stroke-width="6" stroke-linecap="round"/>
+  <path d="M36 70 A44 44 0 0 1 124 70" fill="none" stroke="#B87333" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- three community figures -->
+  <g stroke="#F7F1E6" stroke-width="1.4">
+    <circle cx="57" cy="35" r="7.5" fill="#004F45"/>
+    <path d="M43 61 Q57 40 71 61 Z" fill="#004F45"/>
+    <circle cx="103" cy="35" r="7.5" fill="#1FB5B5"/>
+    <path d="M89 61 Q103 40 117 61 Z" fill="#1FB5B5"/>
+    <circle cx="80" cy="27" r="8.5" fill="#C44512"/>
+    <path d="M64 57 Q80 33 96 57 Z" fill="#C44512"/>
+  </g>
+  <!-- hills -->
+  <path d="M8 98 L46 64 L66 78 L82 66 L102 80 L120 64 L152 98 Z" fill="#0E6B5C"/>
+  <path d="M8 98 L40 70 L62 88 L84 72 L112 90 L130 74 L152 98 Z" fill="#004F45"/>
+  <!-- pines -->
+  <g fill="#003D35" stroke="#F7F1E6" stroke-width=".8" stroke-linejoin="round">
+    <path d="M22 86 L28 66 L34 86 Z"/><path d="M23.5 78 L28 60 L32.5 78 Z"/>
+    <path d="M126 86 L132 66 L138 86 Z"/><path d="M127.5 78 L132 60 L136.5 78 Z"/>
+    <path d="M14 92 L18.5 78 L23 92 Z"/><path d="M137 92 L141.5 78 L146 92 Z"/>
+  </g>
+  <!-- winding river -->
+  <path d="M84 66 C 72 74 96 78 80 86 C 66 93 98 96 112 100" fill="none" stroke="#1FB5B5" stroke-width="7" stroke-linecap="round"/>
+  <path d="M84 66 C 72 74 96 78 80 86 C 66 93 98 96 112 100" fill="none" stroke="#F7F1E6" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="3 4"/>
+  <!-- water under the canoe -->
+  <path d="M10 100 Q80 92 150 100 L150 107 Q80 99 10 107 Z" fill="#1FB5B5"/>
+  <!-- canoe -->
+  <path d="M24 90 Q30 99 42 101 L118 101 Q130 99 136 90 Q132 113 80 116 Q28 113 24 90 Z" fill="#5B483F" stroke="#B87333" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M30 100 Q80 110 130 100" fill="none" stroke="#F7F1E6" stroke-width="1" opacity=".55"/>
+  <g fill="#F7F1E6" stroke="#B87333" stroke-width=".6">
+    <path d="M62 106 l4 -3.5 l4 3.5 l-4 3.5 Z"/><path d="M72 106.5 l4 -3.5 l4 3.5 l-4 3.5 Z"/>
+    <path d="M82 106.5 l4 -3.5 l4 3.5 l-4 3.5 Z"/><path d="M92 106 l4 -3.5 l4 3.5 l-4 3.5 Z"/>
+  </g>
+  <!-- paddle -->
+  <path d="M52 82 L94 110" stroke="#D9A066" stroke-width="3.2" stroke-linecap="round"/>
+  <path d="M49 80 L55 84" stroke="#B87333" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="99" cy="113.5" rx="3.6" ry="9" transform="rotate(-56 99 113.5)" fill="#D9A066" stroke="#B87333" stroke-width="1.2"/>
+  <!-- leaves and berries -->
+  <g stroke="#004F45" stroke-width="1.3" stroke-linejoin="round">
+    <path d="M70 127 Q54 116 40 124 Q54 133 70 127 Z" fill="#5E9B3C"/>
+    <path d="M90 127 Q106 116 120 124 Q106 133 90 127 Z" fill="#5E9B3C"/>
+  </g>
+  <g fill="#C44512" stroke="#7A2A0A" stroke-width=".6">
+    <circle cx="36" cy="121" r="2.8"/><circle cx="34" cy="128" r="2.4"/>
+    <circle cx="124" cy="121" r="2.8"/><circle cx="126" cy="128" r="2.4"/>
+  </g>
+  <!-- five-petal beaded flower -->
+  <g transform="translate(80 125)" fill="#1FB5B5" stroke="#004F45" stroke-width="1.5">
+    <ellipse cx="0" cy="-7.5" rx="5.6" ry="7.6"/>
+    <ellipse cx="0" cy="-7.5" rx="5.6" ry="7.6" transform="rotate(72)"/>
+    <ellipse cx="0" cy="-7.5" rx="5.6" ry="7.6" transform="rotate(144)"/>
+    <ellipse cx="0" cy="-7.5" rx="5.6" ry="7.6" transform="rotate(216)"/>
+    <ellipse cx="0" cy="-7.5" rx="5.6" ry="7.6" transform="rotate(288)"/>
+    <circle r="4.2" fill="#F2B632" stroke="#B87333" stroke-width="1"/>
+  </g>
+</g>
+<text x="520" y="190" fill="#F7F1E6" font-family="Montserrat,'Helvetica Neue',Arial,sans-serif" font-size="84" font-weight="800" letter-spacing="-2">Business Directory</text>
+<g transform="translate(470 210) scale(.75)">
+  <!-- copper rules with green beads -->
+  <path d="M8 28 H196 M444 28 H632" stroke="#B87333" stroke-width="2" stroke-linecap="round"/>
+  <g fill="#004F45"><circle cx="176" cy="28" r="4"/><circle cx="188" cy="28" r="4"/><circle cx="452" cy="28" r="4"/><circle cx="464" cy="28" r="4"/></g>
+  <g fill="#1FB5B5"><circle cx="164" cy="28" r="3"/><circle cx="476" cy="28" r="3"/></g>
+  <!-- leaf sprays -->
+  <g stroke="#004F45" stroke-width="1.6" stroke-linejoin="round" fill="#5E9B3C">
+    <path d="M292 30 Q258 8 222 22 Q256 40 292 30 Z"/>
+    <path d="M274 34 Q246 50 210 40 Q240 26 274 34 Z" fill="#7CB043"/>
+    <path d="M348 30 Q382 8 418 22 Q384 40 348 30 Z"/>
+    <path d="M366 34 Q394 50 430 40 Q400 26 366 34 Z" fill="#7CB043"/>
+  </g>
+  <!-- berries -->
+  <g fill="#C44512" stroke="#7A2A0A" stroke-width=".8">
+    <circle cx="210" cy="16" r="4"/><circle cx="203" cy="26" r="3.4"/><circle cx="214" cy="49" r="3.2"/>
+    <circle cx="430" cy="16" r="4"/><circle cx="437" cy="26" r="3.4"/><circle cx="426" cy="49" r="3.2"/>
+  </g>
+  <!-- beaded five-petal flower -->
+  <g transform="translate(320 28)" fill="#1FB5B5" stroke="#004F45" stroke-width="2">
+    <ellipse cy="-12" rx="9" ry="12"/><ellipse cy="-12" rx="9" ry="12" transform="rotate(72)"/><ellipse cy="-12" rx="9" ry="12" transform="rotate(144)"/><ellipse cy="-12" rx="9" ry="12" transform="rotate(216)"/><ellipse cy="-12" rx="9" ry="12" transform="rotate(288)"/>
+  </g>
+  <g transform="translate(320 28)" fill="#F7F1E6" opacity=".9">
+    <circle cy="-15" r="1.6"/><circle cy="-15" r="1.6" transform="rotate(72)"/><circle cy="-15" r="1.6" transform="rotate(144)"/><circle cy="-15" r="1.6" transform="rotate(216)"/><circle cy="-15" r="1.6" transform="rotate(288)"/>
+  </g>
+  <circle cx="320" cy="28" r="6.5" fill="#F2B632" stroke="#B87333" stroke-width="1.5"/>
+</g>
+<text x="524" y="300" fill="#DCEBE6" font-family="Montserrat,'Helvetica Neue',Arial,sans-serif" font-size="34" font-weight="500">Discover and support Indigenous businesses</text>
+<text x="524" y="352" fill="#7FD8D4" font-family="Montserrat,'Helvetica Neue',Arial,sans-serif" font-size="24" font-style="italic" font-weight="600">RezSite · Connected. Grounded. Community-led.</text>
+<g transform="translate(0 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(160 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(320 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(480 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(640 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(800 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(960 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(1120 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(1280 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g><g transform="translate(1440 412)">
+  <rect width="160" height="48" fill="#004F45"/>
+  <!-- bead edges -->
+  <g fill="#F7F1E6"><circle cx="5" cy="5" r="2.4"/><circle cx="15" cy="5" r="2.4"/><circle cx="25" cy="5" r="2.4"/><circle cx="35" cy="5" r="2.4"/><circle cx="45" cy="5" r="2.4"/><circle cx="55" cy="5" r="2.4"/><circle cx="65" cy="5" r="2.4"/><circle cx="75" cy="5" r="2.4"/><circle cx="85" cy="5" r="2.4"/><circle cx="95" cy="5" r="2.4"/><circle cx="105" cy="5" r="2.4"/><circle cx="115" cy="5" r="2.4"/><circle cx="125" cy="5" r="2.4"/><circle cx="135" cy="5" r="2.4"/><circle cx="145" cy="5" r="2.4"/><circle cx="155" cy="5" r="2.4"/></g>
+  <g fill="#F7F1E6"><circle cx="5" cy="43" r="2.4"/><circle cx="15" cy="43" r="2.4"/><circle cx="25" cy="43" r="2.4"/><circle cx="35" cy="43" r="2.4"/><circle cx="45" cy="43" r="2.4"/><circle cx="55" cy="43" r="2.4"/><circle cx="65" cy="43" r="2.4"/><circle cx="75" cy="43" r="2.4"/><circle cx="85" cy="43" r="2.4"/><circle cx="95" cy="43" r="2.4"/><circle cx="105" cy="43" r="2.4"/><circle cx="115" cy="43" r="2.4"/><circle cx="125" cy="43" r="2.4"/><circle cx="135" cy="43" r="2.4"/><circle cx="145" cy="43" r="2.4"/><circle cx="155" cy="43" r="2.4"/></g>
+  <path d="M0 9.5 H160 M0 38.5 H160" stroke="#B87333" stroke-width="1.4"/>
+  <!-- vine -->
+  <path d="M0 24 C 20 14 40 34 60 24 S 100 14 120 24 S 150 32 160 24" fill="none" stroke="#D9A066" stroke-width="1.6"/>
+  <g fill="#7CB043" stroke="#003D35" stroke-width=".8">
+    <path d="M28 21 Q20 13 12 16 Q18 24 28 21 Z"/><path d="M100 22 Q108 30 118 28 Q112 20 100 22 Z"/>
+    <path d="M132 25 Q138 15 148 15 Q144 25 132 25 Z"/>
+  </g>
+  <g fill="#C44512"><circle cx="10" cy="26" r="2.2"/><circle cx="122" cy="17" r="2.2"/><circle cx="128" cy="32" r="2"/><circle cx="38" cy="30" r="2"/></g>
+  <!-- flower -->
+  <g transform="translate(64 24)" fill="#1FB5B5" stroke="#003D35" stroke-width="1">
+    <ellipse cy="-6.5" rx="4.6" ry="6.4"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(72)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(144)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(216)"/><ellipse cy="-6.5" rx="4.6" ry="6.4" transform="rotate(288)"/>
+    <circle r="3.4" fill="#F2B632" stroke="#B87333"/>
+  </g>
+</g>
+</svg>
