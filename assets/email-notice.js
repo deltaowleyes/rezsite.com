@@ -32,7 +32,7 @@
     '.enx-btns .enx-go{background:' + accent + ';border-color:' + accent + ';color:' + accentFg + '}' +
     '.enx-btns button:focus-visible{outline:3px solid ' + accent + ';outline-offset:2px}' +
     '.enx-note{display:block;min-height:1.2em;margin-top:10px;font-size:13px;color:#4b5563}' +
-    '@media (max-width:420px){.enx-btns button{flex:1 1 100%}}';
+    '.enx-btns .enx-go{flex:1 1 100%}.enx-btns .enx-copy,.enx-btns .enx-cancel{flex:1 1 0;white-space:nowrap}';
 
   var wrap, addrEl, noteEl, goBtn, pending = '', lastFocus = null;
 
