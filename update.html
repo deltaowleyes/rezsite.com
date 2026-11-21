@@ -109,7 +109,7 @@ input:focus,textarea:focus{outline:3px solid var(--gold);border-color:var(--gree
 
   <form class="panel" id="gate">
    <h2>Your code</h2>
-   <p class="lead">It's in the email from Chris Courteaux at RezSite (subject "Your RezSite code for …").</p>
+   <p class="lead">It's in the email from Leah Courteaux at RezSite (subject "Your RezSite code for …").</p>
    <input type="text" id="codeIn" maxlength="8" autocomplete="one-time-code" placeholder="ABC123" aria-label="Your 6-letter code" required>
    <p class="msg" id="gateMsg" role="status"></p>
    <div class="row"><button class="btn btn-primary" id="gateBtn">Open my listing</button></div>
@@ -199,7 +199,7 @@ input:focus,textarea:focus{outline:3px solid var(--gold);border-color:var(--gree
     if (biz.pitch_requested) pitchDone(false);
   }
   function pitchDone(fresh) {
-    $('#pitchBox').innerHTML = `<h2>✓ Your free designs are on the way</h2><p class="lead">${fresh ? 'Thanks! Chris got your request.' : 'We have your request.'} We'll send 3 designs for ${esc(biz.name)} within 1 to 2 business days. Sending photos below helps us make them yours.</p>`;
+    $('#pitchBox').innerHTML = `<h2>✓ Your free designs are on the way</h2><p class="lead">${fresh ? 'Thanks! Leah got your request.' : 'We have your request.'} We'll send 3 designs for ${esc(biz.name)} within 1 to 2 business days. Sending photos below helps us make them yours.</p>`;
   }
   if (!id) { say($('#gateMsg'), 'This link is missing your listing number. Please use the link from your email.', 'err'); $('#gateBtn').disabled = true; }
   $('#gate').addEventListener('submit', async e => {
