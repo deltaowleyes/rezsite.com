@@ -1,5 +1,5 @@
 (function(){
- var EMAIL='chris@rezsite.com';
+ var EMAIL='leah@rezsite.com';
  var $=function(id){return document.getElementById(id)};
  var slug=function(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/&/g,'and').replace(/[^a-z0-9]+/g,'').slice(0,40)};
  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
