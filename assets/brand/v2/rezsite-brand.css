@@ -58,3 +58,12 @@
 .rz-bead-strip{height:48px;background:url(beadwork-strip.svg) repeat-x center/auto 48px;border-top:2px solid var(--rz-copper)}
 /* focus visibility everywhere */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--rz-turq);outline-offset:3px}
+
+/* Header option A (chosen Nov 21): bigger, simpler canoe mark, larger name and menu; tagline stays in the footer */
+.rz-head-lockup{gap:12px}
+.rz-head-lockup .rz-mark{height:52px!important;width:52px!important}
+.rz-head-lockup .rz-name{font-size:38px}
+.rz-head-lockup .rz-tag{display:none}
+.rz-nav{font-size:16px;gap:0 34px}
+@media (max-width:980px){.rz-nav{font-size:15px;gap:0 22px}}
+@media (max-width:860px){.rz-head-lockup .rz-mark{height:42px!important;width:42px!important}.rz-head-lockup .rz-name{font-size:30px}}
