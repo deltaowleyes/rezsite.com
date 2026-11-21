@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>RezSite</title>
+  <!-- Dark green tile with a copper edge (stands out on light and dark browser tabs) -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="#004F45" stroke="#B87333" stroke-width="3"/>
+  <!-- Sunrise -->
+  <path d="M15 37a17 17 0 0 1 34 0z" fill="#E2683A"/>
+  <!-- Canoe -->
+  <path d="M5 31Q8 38 14 40.5Q22 43 32 43Q42 43 50 40.5Q56 38 59 31Q58 47 32 49.5Q6 47 5 31z" fill="#F7F1E6" stroke="#F7F1E6" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Water -->
+  <path d="M14 55.5h36" stroke="#1FB5B5" stroke-width="3.5" stroke-linecap="round"/>
+</svg>
